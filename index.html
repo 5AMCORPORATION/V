@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
-<title>Comunidad V · Serie N250 · 5AM Corporation</title>
-<meta name="description" content="La comunidad de la serie N250: gente que trabaja de día y construye lo suyo a las 5AM. Guías y plantillas en PDF gratis, grupo de WhatsApp y el Código V.">
-<meta name="theme-color" content="#0A0A0A">
+<title>Comunidad V · Serie N250</title>
+<meta name="description" content="La comunidad de la serie N250. La V es disciplina: lo que haces cuando nadie te ve. Grupo de WhatsApp, biblioteca de PDFs gratis y tu registro de días.">
+<meta name="theme-color" content="#050506">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
 <meta property="og:title" content="Comunidad V · Serie N250">
-<meta property="og:description" content="Para quien trabaja de día y construye lo suyo a las 5AM. Entra gratis: biblioteca de PDFs, grupo de WhatsApp y el Código V.">
+<meta property="og:description" content="Disciplina sin público. Entra gratis a la comunidad de la serie N250.">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A0A0A'/%3E%3Cpolygon points='20,30.8 32.6,30.8 50,68 67.4,20 80,20 56.6,80 43.4,80' fill='%23FFD60A'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23050506'/%3E%3Cpolygon points='20,20 36.2,20 50,58.4 63.8,20 80,20 57.2,80 42.8,80' fill='%23FFD60A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
 <script>
-  // Antes de pintar: marca que hay JavaScript y si esta persona ya se registró (para no mostrarle la entrada otra vez).
+  // Antes de pintar: marca que hay JavaScript y si esta persona ya se registró.
   (function () {
     var d = document.documentElement;
     d.classList.add('js');
     try {
-      if (/[?&]reset\b/.test(location.search)) localStorage.removeItem('v_miembro');
+      if (/[?&]reset\b/.test(location.search)) { localStorage.removeItem('v_miembro'); localStorage.removeItem('v_racha'); }
       if (localStorage.getItem('v_miembro')) d.classList.add('is-member', 'entered');
       else d.classList.add('gate-open');
     } catch (e) { d.classList.add('gate-open'); }
@@ -29,85 +29,69 @@
 </script>
 <style>
 /* =========================================================
-   COMUNIDAD V: tokens
-   Negro, blanco y amarillo. Una sola familia de letra: Archivo.
-   Títulos: Archivo comprimida, peso 800, en mayúsculas (energía de moto y de camiseta deportiva).
-   Texto: Archivo a ancho normal (limpia y fácil de leer, al estilo Apple).
-
-   Cómo se usa el color (60 / 30 / 10):
-   - Negro (60%): las 5AM. Es el fondo dominante y hace que todo se vea premium.
-   - Blanco (30%): el día. Donde se lee con calma: la carta, cómo funciona, las preguntas.
-   - Amarillo (10%): la luz y la acción. Solo en la V, en los botones principales
-     y en dos momentos completos: "V es cinco" (el amanecer) y "Entra al grupo" (la decisión).
+   COMUNIDAD V · SERIE N250
+   La V es disciplina: lo que haces cuando nadie te ve.
+   Noche (negro) como fondo, el amarillo es la luz.
+   Letra: Archivo. Títulos comprimidos y en mayúsculas, texto a ancho normal.
    ========================================================= */
 :root {
-  --black: #0A0A0A;
-  --graphite: #1C1C1E;
-  --graphite-2: #2C2C2E;
-  --graphite-3: #3A3A3C;
-  --graphite-4: #636366;
-  --yellow: #FFD60A;
-  --yellow-hover: #FFE14D;
+  --night: #050506;
+  --ink-1: #0C0C0E;
+  --ink-2: #141417;
+  --ink-3: #1D1D21;
+  --ink-4: #2A2A2F;
   --white: #FFFFFF;
-  --paper: #F5F5F7;
-  --paper-2: #E8E8ED;
-  --soft-on-dark: #A1A1A6;
-  --soft-on-light: #6E6E73;
+  --mute: #A1A1A6;
+  --mute-2: #6E6E73;
+  --yellow: #FFD60A;
+  --yellow-hi: #FFE766;
+  --gold: #FFB300;
+  --amber: #FF9F0A;
+  --glow: 255 214 10;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.16);
   --error: #FF8A80;
-
-  /* el amanecer: de las 5AM a la luz del día */
-  --dawn-1: #141204;
-  --dawn-2: #3D3505;
-  --dawn-3: #B39700;
-  --dawn-4: #FFD60A;
-  --dawn-5: #FFF3B0;
 
   --font: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --step-small: clamp(0.875rem, 0.84rem + 0.12vw, 0.9375rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.375rem, 1.05rem + 1.05vw, 2.25rem);
+  --step-sub: clamp(2.25rem, 1rem + 2.6vw, 3.5rem);
   --step-head: clamp(3rem, 1rem + 7vw, 8rem);
-  --step-display: clamp(4.5rem, 1rem + 14vw, 14rem);
+  --step-display: clamp(3.25rem, 0.75rem + 10vw, 11.5rem);
 
-  --margin: clamp(1rem, 2.2vw, 2rem);
+  --margin: clamp(1rem, 3vw, 3rem);
   --gutter: clamp(1rem, 2vw, 2rem);
-  --radius: 24px;
-  --bar: 56px;
+  --radius: 28px;
+  --radius-s: 18px;
+  --bar: 64px;
+
+  --shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 30px 60px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px var(--line);
+  --shadow-lift: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 40px 80px -30px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(var(--glow) / 0.35), 0 0 60px -10px rgba(var(--glow) / 0.25);
+  --gold-grad: linear-gradient(180deg, var(--yellow-hi) 0%, var(--yellow) 48%, var(--gold) 100%);
+  --steel-grad: linear-gradient(180deg, #FFFFFF 0%, #E6E6EA 45%, #8E8E93 100%);
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
-  --t-press: 140ms;
-  --t-hover: 180ms;
-  --t-ui: 240ms;
-  --t-reveal: 800ms;
 
   interpolate-size: allow-keywords;
 }
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  background: var(--black);
-  overflow-x: clip;
-}
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; background: var(--night); overflow-x: clip; }
 html.gate-open { overflow: hidden; }
 body {
-  margin: 0;
-  background: var(--black);
-  color: var(--white);
-  font-family: var(--font);
-  font-size: var(--step-body);
-  line-height: 1.5;
-  letter-spacing: 0;
-  font-kerning: normal;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-x: clip;
+  margin: 0; background: var(--night); color: var(--white);
+  font-family: var(--font); font-size: var(--step-body); line-height: 1.55;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip;
+}
+/* grano de película sobre toda la página */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 h1, h2, h3, h4, p, figure, ul, ol, blockquote { margin: 0; }
 ul[class], ol[class] { padding: 0; list-style: none; }
@@ -118,118 +102,120 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
 a { color: inherit; }
 input, textarea, select { font-size: max(16px, 1rem); }
 button, a, summary, [role="button"] { touch-action: manipulation; }
-button, .button, .folder__in, summary, .acc__hit { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
+button, .button, summary { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+h1, h2, h3, h4 { font-weight: 700; text-wrap: balance; }
 p { text-wrap: pretty; }
 :focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
-.f-yellow :focus-visible, .f-white :focus-visible, .f-paper :focus-visible, .folder--light :focus-visible, .sheet--light :focus-visible { outline-color: var(--black); }
-.tile--main :focus-visible, details[open] :focus-visible { outline-color: var(--yellow); }
-::selection { background: var(--yellow); color: var(--black); }
+.on-light :focus-visible { outline-color: var(--night); }
+::selection { background: var(--yellow); color: var(--night); }
 :target { scroll-margin-top: calc(var(--bar) + 16px); }
-.sr-only { position: absolute; width: 1px; height: 1px; /* taste-skill-ignore: lector de pantalla */ overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .nums { font-variant-numeric: tabular-nums; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
-/* ---------- type ---------- */
+/* ---------- tipo ---------- */
 .display { font-size: var(--step-display); }
 .head { font-size: var(--step-head); }
-/* títulos grandes: Archivo comprimida 800 en mayúsculas */
-.display, .head, .hero__title, .gate__title, .foot__line, .calc__big, .tile--main h2 {
+.display, .head, .cap {
   font-weight: 800; font-stretch: 62%; text-transform: uppercase;
-  line-height: 0.86; letter-spacing: -0.01em;
+  line-height: 0.86; letter-spacing: -0.005em;
 }
-.lead { font-size: var(--step-lead); line-height: 1.12; letter-spacing: -0.02em; }
-.small { font-size: var(--step-small); line-height: 1.45; letter-spacing: 0; }
+/* títulos con brillo metálico */
+.steel { background: var(--steel-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gold { background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+/* el degradado solo pinta dentro de la caja: se le da aire arriba para que los acentos (Ñ, Ú, Ó) no se pierdan */
+.steel, .gold { padding-top: 0.22em; margin-top: -0.22em; }
+.lead { font-size: var(--step-lead); line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; }
+.lines .line { display: block; overflow: hidden; padding-top: 0.28em; margin-top: -0.28em; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+.lines [data-line] { display: block; }
+.small { font-size: var(--step-small); line-height: 1.45; }
+.mute { color: var(--mute); }
 
-/* ---------- layout ---------- */
-.wrap {
-  padding-left: max(var(--margin), env(safe-area-inset-left));
-  padding-right: max(var(--margin), env(safe-area-inset-right));
-}
+/* ---------- estructura ---------- */
+.wrap { padding-left: max(var(--margin), env(safe-area-inset-left)); padding-right: max(var(--margin), env(safe-area-inset-right)); }
 .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
-.chapter { position: relative; min-height: 90svh; padding-block: clamp(72px, 10vw, 160px); }
-.f-black { background: var(--black); color: var(--white); }
-.f-yellow { background: var(--yellow); color: var(--black); }
-.f-white { background: var(--white); color: var(--black); }
-.f-graphite { background: var(--graphite); color: var(--white); }
-.f-paper { background: var(--paper); color: var(--black); }
+.chapter { position: relative; padding-block: clamp(96px, 12vw, 180px); isolation: isolate; }
+.chapter > .glow-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
 
-/* ---------- botones ----------
-   Anatomía (el script la arma sola a partir de un botón normal):
-   <a class="button button--yellow" data-arrow="out" data-magnet>Texto</a>
-   - el texto rueda hacia arriba al pasar el cursor
-   - un barrido de color cruza el botón de izquierda a derecha
-   - la flecha sale y entra otra (data-arrow: right, down u out)
-   - data-magnet: el botón sigue un poco al cursor (solo con mouse)
-   - al presionar se hunde un poco; en el registro muestra una barra de progreso */
+/* ---------- la V ---------- */
+.vmark { width: 1em; height: 1em; fill: currentColor; }
+.vgold { fill: url(#vFill); }
+.mark { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; font-stretch: 62%; text-transform: uppercase; font-size: var(--step-lead); line-height: 1; letter-spacing: 0.01em; text-decoration: none; }
+.mark .vmark { width: 26px; height: 26px; filter: drop-shadow(0 0 10px rgba(var(--glow) / 0.6)); }
+
+/* =========================================================
+   BOTONES: brillo que cruza, texto que rueda, flecha que cambia,
+   resplandor dorado y efecto magnético (solo con mouse)
+   ========================================================= */
 .button {
-  --bg: var(--yellow); --ink: var(--black); --sweep: var(--white);
-  --dot: var(--black); --dot-ink: var(--yellow);
+  --mx: 0px; --my: 0px; --press: 1;
   position: relative; isolation: isolate; overflow: hidden;
   display: inline-flex; align-items: center; justify-content: center; gap: 14px;
-  min-height: 56px; padding: 0 1.75rem;
+  min-height: 58px; padding: 0 1.8rem;
   border-radius: 999px;
-  background: var(--bg); color: var(--ink);
-  font-size: var(--step-body); font-weight: 600; line-height: 1;
+  font-size: var(--step-body); font-weight: 700; line-height: 1; letter-spacing: 0.005em;
   text-decoration: none; white-space: nowrap;
-  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(var(--press, 1));
-  transition: transform 340ms var(--ease-out), color 260ms ease, opacity var(--t-hover) ease;
+  transform: translate3d(var(--mx), var(--my), 0) scale(var(--press));
+  transition: transform 340ms var(--ease-out), box-shadow 400ms var(--ease-out), color 260ms ease, background-color 260ms ease;
 }
-.button.has-arrow { padding-right: 8px; }
-.button:active { --press: 0.96; transition-duration: 110ms, 260ms, 180ms; }
+.button.has-arrow { padding-right: 9px; }
+.button:active { --press: 0.96; transition-duration: 110ms, 400ms, 260ms, 260ms; }
 .button[disabled] { cursor: progress; }
-/* barrido de color */
 .button::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
-  background: var(--sweep);
-  transform: translateX(-101%);
-  transition: transform 560ms var(--ease-out);
+  content: ""; position: absolute; top: -20%; bottom: -20%; left: 0; width: 40%; z-index: 1; pointer-events: none;
+  background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+  transform: translateX(-160%) skewX(-20deg);
 }
-/* barra de progreso (registro) */
-.button::after {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: rgba(0, 0, 0, 0.14);
+.button::after { /* barra de progreso del registro */
+  content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(0, 0, 0, 0.16);
   transform: scaleX(0); transform-origin: left;
 }
 .button.is-loading::after { transform: scaleX(0.85); transition: transform 2400ms var(--ease-out); }
 .button.is-done::after { transform: scaleX(1); transition: transform 300ms var(--ease-out); }
-/* texto que rueda */
-.btn__roll { position: relative; display: block; height: 1.25em; line-height: 1.25; overflow: hidden; }
+.btn__roll { position: relative; z-index: 2; display: block; height: 1.25em; line-height: 1.25; overflow: hidden; }
 .btn__roll > span { display: block; transition: transform 480ms var(--ease-out); }
-/* círculo con flecha */
 .btn__dot {
-  position: relative; display: grid; place-items: center; flex: none;
-  width: 40px; height: 40px; border-radius: 50%; overflow: hidden;
-  background: var(--dot); color: var(--dot-ink);
+  position: relative; z-index: 2; display: grid; place-items: center; flex: none;
+  width: 42px; height: 42px; border-radius: 50%; overflow: hidden;
+  background: var(--night); color: var(--yellow);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transition: transform 420ms var(--ease-out), background-color 300ms ease, color 300ms ease;
 }
-.btn__dot svg { grid-area: 1 / 1; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 480ms var(--ease-out); }
+.btn__dot svg { grid-area: 1 / 1; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform 480ms var(--ease-out); }
 .btn__dot svg:last-child { transform: translateX(-190%); }
 .button[data-arrow="down"] .btn__dot svg:last-child { transform: translateY(-190%); }
 .button[data-arrow="out"] .btn__dot svg:last-child { transform: translate(-190%, 190%); }
 .button:active .btn__dot { transform: scale(0.88); }
-/* variantes: el amarillo es la acción; en fondos claros el botón es negro y se enciende en amarillo */
-.button--yellow { --bg: var(--yellow); --ink: var(--black); --sweep: var(--white); --dot: var(--black); --dot-ink: var(--yellow); }
-.button--black { --bg: var(--black); --ink: var(--white); --sweep: var(--yellow); --ink-h: var(--black); --dot: var(--yellow); --dot-ink: var(--black); --dot-h: var(--black); --dot-ink-h: var(--yellow); }
-.f-yellow .button--black, .folder--front .button--black { --sweep: var(--white); }
-.button--white { --bg: var(--white); --ink: var(--black); --sweep: var(--yellow); }
-.button--quiet { --bg: var(--graphite-3); --ink: var(--white); --sweep: #48484A; }
-.button--sm { min-height: 42px; padding: 0 1.15rem; gap: 8px; font-size: var(--step-small); }
-.button--sm.has-arrow { padding-right: 0.9rem; }
-.button--sm .btn__dot { width: 16px; height: 16px; background: transparent; color: currentColor; }
-.button--sm .btn__dot svg { width: 14px; height: 14px; }
-.link {
-  text-decoration: underline;
-  text-decoration-thickness: 0.07em;
-  text-underline-offset: 0.22em;
-  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
-  transition: text-decoration-color var(--t-hover) ease, text-underline-offset var(--t-hover) ease, opacity var(--t-hover) ease;
+
+.button--gold {
+  background: var(--gold-grad); color: var(--night);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(var(--glow) / 0.7), 0 10px 30px -8px rgba(255, 190, 0, 0.6);
 }
+.button--ghost {
+  background: rgba(255, 255, 255, 0.04); color: var(--white);
+  box-shadow: inset 0 0 0 1px var(--line-2), 0 10px 30px -12px rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
+.button--ghost .btn__dot { background: rgba(255, 255, 255, 0.08); color: var(--white); }
+.button--night {
+  background: linear-gradient(180deg, #2A2A2E 0%, #0A0A0B 100%); color: var(--white);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 14px 34px -10px rgba(0, 0, 0, 0.7);
+}
+.button--night .btn__dot { background: var(--gold-grad); color: var(--night); }
+.button--sm { min-height: 44px; padding: 0 1.2rem; gap: 8px; font-size: var(--step-small); }
+.button--sm.has-arrow { padding-right: 1rem; }
+.button--sm .btn__dot { width: 16px; height: 16px; background: transparent; color: currentColor; box-shadow: none; }
+.button--sm .btn__dot svg { width: 14px; height: 14px; }
+
+.link { text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.22em; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); transition: text-decoration-color 180ms ease, text-underline-offset 180ms ease, color 180ms ease; }
 .link:active { opacity: 0.7; }
+
 @media (hover: hover) and (pointer: fine) {
-  /* cuando el barrido ya cubrió el botón, el fondo toma su color (evita un borde fino del color anterior) */
-  .button:hover { color: var(--ink-h, var(--ink)); background-color: var(--sweep); transition: transform 340ms var(--ease-out), color 260ms ease, opacity 180ms ease, background-color 100ms ease 360ms; }
-  .button:hover::before { transform: none; }
-  .button:hover .btn__dot { background: var(--dot-h, var(--dot)); color: var(--dot-ink-h, var(--dot-ink)); }
+  .button:hover::before { transform: translateX(360%) skewX(-20deg); transition: transform 950ms var(--ease-out); }
+  .button--gold:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(var(--glow) / 0.9), 0 16px 44px -8px rgba(255, 190, 0, 0.85), 0 0 80px -10px rgba(var(--glow) / 0.55); }
+  .button--ghost:hover { color: var(--yellow); box-shadow: inset 0 0 0 1px rgba(var(--glow) / 0.65), 0 0 40px -6px rgba(var(--glow) / 0.3); }
+  .button--ghost:hover .btn__dot { background: var(--gold-grad); color: var(--night); }
+  .button--night:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 18px 44px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6); }
   .link:hover { text-decoration-color: currentColor; text-underline-offset: 0.3em; }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -239,413 +225,443 @@ p { text-wrap: pretty; }
   .button[data-arrow="out"]:hover .btn__dot svg:first-child { transform: translate(190%, -190%); }
   .button:hover .btn__dot svg:last-child { transform: none; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .button::before { transform: none; opacity: 0; transition: opacity 200ms ease; }
-  .button { transition: color 200ms ease; }
+
+/* ---------- tarjetas de vidrio con luz que sigue al cursor ---------- */
+.glass {
+  position: relative; isolation: isolate; overflow: hidden;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.015) 100%);
+  box-shadow: var(--shadow-card);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
 }
-@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
-  .button:hover::before { opacity: 1; }
+.spot::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(420px circle at var(--sx, 50%) var(--sy, 0%), rgba(var(--glow) / 0.16), transparent 60%);
+  opacity: 0; transition: opacity 400ms ease;
 }
-.vmark { width: 1em; height: 1em; fill: currentColor; }
-.mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; font-size: var(--step-small); letter-spacing: 0; }
-.mark .vmark { width: 22px; height: 22px; color: var(--yellow); }
+.spot { transition: translate 500ms var(--ease-out), box-shadow 500ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .spot:hover { translate: 0 -6px; box-shadow: var(--shadow-lift); }
+  .spot:hover::before { opacity: 1; }
+}
 
 /* =========================================================
-   LA ENTRADA (registro por correo)
+   LA ENTRADA (registro)
    ========================================================= */
 .gate { display: none; }
 .js .gate {
-  display: block;
-  position: fixed; inset: 0; z-index: 100;
-  background: var(--black); color: var(--white);
-  overflow-y: auto; overscroll-behavior: contain;
+  display: block; position: fixed; inset: 0; z-index: 100; overflow-y: auto; overscroll-behavior: contain;
+  background:
+    radial-gradient(900px 600px at 25% 40%, rgba(var(--glow) / 0.18), transparent 60%),
+    radial-gradient(700px 500px at 90% 110%, rgba(255, 159, 10, 0.1), transparent 60%),
+    var(--night);
 }
 .js.is-member .gate { display: none; }
 .gate__inner {
-  min-height: 100svh;
-  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
-  align-items: center;
+  min-height: 100svh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: center;
   padding: max(32px, env(safe-area-inset-top)) max(var(--margin), env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(var(--margin), env(safe-area-inset-left));
 }
-.gate__mark { grid-column: 1 / 7; color: var(--yellow); }
-.gate__mark .vmark { width: 100%; height: auto; max-height: 76svh; aspect-ratio: 1; }
-.gate__panel { grid-column: 8 / 13; max-width: 470px; }
+.gate__mark { grid-column: 1 / 7; position: relative; display: grid; place-items: center; }
+.gate__mark svg { width: min(100%, 62svh); height: auto; aspect-ratio: 1; overflow: visible; filter: drop-shadow(0 0 40px rgba(var(--glow) / 0.45)); }
+.gate__mark .v-line { fill: none; stroke: var(--yellow); stroke-width: 0.8; stroke-linejoin: miter; }
+.gate__panel { grid-column: 8 / 13; max-width: 480px; }
 .gate__title { font-size: var(--step-head); }
-.gate__lede { margin-top: 20px; max-width: 40ch; }
+.gate__lede { margin-top: 20px; max-width: 40ch; color: #D1D1D6; }
 .gate__form { margin-top: 32px; display: grid; gap: 14px; }
 .field { display: grid; gap: 8px; }
-.field label { font-size: var(--step-small); color: var(--soft-on-dark); }
+.field label { font-size: var(--step-small); color: var(--mute); }
 .input {
-  width: 100%; min-height: 56px; padding: 0 22px;
-  border: 0; border-radius: 999px;
-  background: var(--graphite-2); color: var(--white);
-  font-size: max(16px, var(--step-body));
-  transition: background-color var(--t-hover) ease;
+  width: 100%; min-height: 58px; padding: 0 22px; border: 0; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06); color: var(--white); font-size: max(16px, var(--step-body));
+  box-shadow: inset 0 0 0 1px var(--line-2), inset 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 220ms ease, background-color 220ms ease;
 }
 .input::placeholder { color: #8E8E93; }
-.input:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; background: var(--graphite-3); }
-.input[aria-invalid="true"] { outline: 2px solid var(--error); outline-offset: 2px; }
-.check { display: flex; gap: 12px; align-items: flex-start; font-size: var(--step-small); line-height: 1.4; margin-top: 4px; }
+.input:focus-visible { outline: none; background: rgba(255, 255, 255, 0.09); box-shadow: inset 0 0 0 1px rgba(var(--glow) / 0.8), 0 0 0 4px rgba(var(--glow) / 0.15), 0 0 30px -6px rgba(var(--glow) / 0.4); }
+.input[aria-invalid="true"] { box-shadow: inset 0 0 0 1px var(--error), 0 0 0 4px rgba(255, 138, 128, 0.15); }
+.check { display: flex; gap: 12px; align-items: flex-start; font-size: var(--step-small); line-height: 1.4; margin-top: 4px; color: #D1D1D6; }
 .check input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--yellow); }
-.check .link { font-size: inherit; }
 .gate__form .button { width: 100%; margin-top: 6px; }
 .gate__msg { min-height: 1.4em; font-size: var(--step-small); }
 .gate__msg.is-error { color: var(--error); }
-.gate__note { margin-top: 26px; font-size: var(--step-small); color: var(--soft-on-dark); }
+.gate__note { margin-top: 26px; font-size: var(--step-small); color: var(--mute); }
 .gate__done { display: none; }
 .gate.is-done .gate__form, .gate.is-done .gate__lede { display: none; }
 .gate.is-done .gate__done { display: block; margin-top: 24px; }
-.gate__done p { font-size: var(--step-lead); line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; max-width: 18ch; }
+.gate__done p { font-size: var(--step-lead); line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; max-width: 18ch; }
 .gate__done .button { margin-top: 28px; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; } /* taste-skill-ignore: campo trampa invisible para bots */
 .gate.is-leaving { transform: translateY(-100%); transition: transform 900ms var(--ease-in-out); }
 
 /* =========================================================
-   BARRA FIJA (aparece al salir del inicio)
+   BARRA SUPERIOR (vidrio al hacer scroll)
    ========================================================= */
 .bar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   height: calc(var(--bar) + env(safe-area-inset-top));
   padding: env(safe-area-inset-top) max(var(--margin), env(safe-area-inset-right)) 0 max(var(--margin), env(safe-area-inset-left));
   display: flex; align-items: center; gap: 28px;
-  background: var(--black); color: var(--white);
-  transform: translateY(-101%);
-  transition: transform 420ms var(--ease-out);
+  transition: background-color 400ms ease, box-shadow 400ms ease, -webkit-backdrop-filter 400ms ease, backdrop-filter 400ms ease;
 }
-.bar.is-on { transform: none; }
-.bar__links { display: flex; gap: 26px; margin-left: auto; font-size: var(--step-small); }
-.bar__links a { text-decoration: none; color: var(--soft-on-dark); transition: color var(--t-hover) ease; }
-.bar__links a:active { color: var(--white); }
-.bar .button { min-height: 38px; padding: 0 1rem; font-size: var(--step-small); }
-@media (hover: hover) and (pointer: fine) { .bar__links a:hover { color: var(--white); } }
+.bar.is-scrolled {
+  background: rgba(8, 8, 10, 0.62);
+  -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 1px 0 var(--line), 0 20px 40px -30px rgba(0, 0, 0, 0.9);
+}
+.bar__links { display: flex; gap: 28px; margin-left: auto; font-size: var(--step-small); }
+.bar__links a { position: relative; text-decoration: none; color: var(--mute); transition: color 200ms ease; }
+.bar__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: var(--gold-grad); box-shadow: 0 0 10px rgba(var(--glow) / 0.8); transform: scaleX(0); transition: transform 300ms var(--ease-out); }
+.bar__links a.is-active { color: var(--white); }
+.bar__links a.is-active::after { transform: scaleX(1); }
+.bar .button { min-height: 42px; padding: 0 1.1rem; font-size: var(--step-small); }
+@media (hover: hover) and (pointer: fine) { .bar__links a:hover { color: var(--white); } .bar__links a:hover::after { transform: scaleX(1); } }
 
 /* =========================================================
-   INICIO: carpetas
+   INICIO
    ========================================================= */
-.hero { position: relative; height: 100svh; min-height: 660px; overflow: hidden; background: var(--black); color: var(--white); }
-.hero__top {
-  position: relative; z-index: 6;
-  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-  min-height: 48px;
-  padding: max(18px, env(safe-area-inset-top)) max(var(--margin), env(safe-area-inset-right)) 0 max(var(--margin), env(safe-area-inset-left));
-  font-size: var(--step-small);
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 100svh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: center;
+  padding-top: calc(var(--bar) + 40px); padding-bottom: 96px;
+  background:
+    radial-gradient(1100px 700px at 78% -5%, rgba(var(--glow) / 0.20), transparent 62%),
+    radial-gradient(900px 600px at 0% 100%, rgba(255, 159, 10, 0.08), transparent 60%),
+    linear-gradient(180deg, var(--night) 0%, var(--ink-1) 100%);
 }
-.hero__top .mark { justify-self: center; }
-.hero__toplink { justify-self: end; text-decoration: none; }
-.hero__title { margin: clamp(36px, 7svh, 96px) auto 0; padding-inline: var(--margin); text-align: center; font-size: var(--step-display); }
-.lines .line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
-.lines [data-line] { display: block; }
-.hero__lede { margin: 22px auto 0; padding-inline: var(--margin); max-width: 46ch; text-align: center; }
-.folders { position: absolute; left: 0; right: 0; top: max(53%, 400px); bottom: 0; z-index: 4; }
-.folder { position: absolute; left: 7%; right: 7%; top: calc(var(--i) * 64px); bottom: -60px; z-index: var(--i); }
-.folder__in {
-  position: absolute; inset: 0; display: block;
-  background: var(--c); color: var(--ci);
-  text-decoration: none;
-  transition: transform 360ms var(--ease-out);
+.hero__beams { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.hero__beams span {
+  position: absolute; top: -20%; left: 72%; width: 34vw; height: 140%;
+  background: linear-gradient(180deg, rgba(var(--glow) / 0.28) 0%, rgba(var(--glow) / 0.08) 45%, transparent 75%);
+  clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%);
+  transform-origin: 50% 0; transform: translateX(-50%) rotate(14deg);
+  mix-blend-mode: screen; opacity: 0.8;
 }
-.folder__tab {
-  position: absolute; bottom: 100%; left: var(--x);
-  height: 40px; display: flex; align-items: center; padding: 0 32px;
-  background: var(--c); color: var(--ci);
-  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 100%, 0 100%);
-  font-size: var(--step-body); font-weight: 600; white-space: nowrap;
-  margin-bottom: -1px;
+.hero__beams span:nth-child(2) { left: 80%; transform: translateX(-50%) rotate(-10deg); opacity: 0.55; }
+.hero__cursor {
+  position: absolute; top: 0; left: 0; z-index: -1; width: 700px; height: 700px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(var(--glow) / 0.13) 0%, rgba(var(--glow) / 0.04) 35%, transparent 65%);
+  opacity: 0; transition: opacity 500ms ease; will-change: transform;
 }
-.folder__strip { display: flex; align-items: center; height: 64px; padding: 0 32px; font-size: var(--step-small); }
-a.folder__in:active { transform: translateY(-6px); }
-@media (hover: hover) and (pointer: fine) { a.folder__in:hover { transform: translateY(-12px); } }
-.folder--front .folder__band { padding: 30px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
-.folder--front .five { font-size: var(--step-small); }
+.hero.is-lit .hero__cursor { opacity: 1; }
+.hero__text { grid-column: 1 / 9; grid-row: 1; position: relative; z-index: 2; }
+.hero__title { font-size: var(--step-display); }
+.hero__lede { margin-top: 28px; max-width: 46ch; color: #D1D1D6; font-size: var(--step-body); }
+.hero__actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
+.hero__day { margin-top: 22px; min-height: 1.4em; font-size: var(--step-small); color: var(--mute); }
+.hero__day strong { color: var(--yellow); font-weight: 600; }
+.hero__emblem { grid-column: 8 / 13; grid-row: 1; position: relative; z-index: 1; display: grid; place-items: center; }
+.hero__emblem svg { width: 100%; max-width: 620px; height: auto; overflow: visible; filter: drop-shadow(0 0 32px rgba(var(--glow) / 0.45)) drop-shadow(0 30px 40px rgba(0, 0, 0, 0.7)); }
+.hero__halo { position: absolute; width: 90%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(var(--glow) / 0.35) 0%, rgba(var(--glow) / 0.08) 40%, transparent 68%); z-index: -1; }
+.v-solid { fill: url(#vFill); }
+.v-edge { fill: none; stroke: url(#vEdge); stroke-width: 0.6; }
+.v-shine-rect { fill: url(#vShine); }
+.hero__scroll { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); display: grid; justify-items: center; gap: 10px; font-size: var(--step-small); color: var(--mute); text-decoration: none; }
+.hero__scroll i { display: block; width: 2px; height: 44px; border-radius: 2px; background: linear-gradient(180deg, rgba(var(--glow) / 0.9), transparent); }
+
+/* ---------- banda en movimiento ---------- */
+.marquee {
+  position: relative; overflow: hidden; padding-block: 26px;
+  background: linear-gradient(90deg, var(--ink-1), var(--ink-2), var(--ink-1));
+  box-shadow: inset 0 1px 0 var(--line), inset 0 -1px 0 var(--line);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track { display: flex; width: max-content; align-items: center; }
+.marquee__track > * { margin-right: 40px; }
+.marquee__track span { font-weight: 800; font-stretch: 62%; text-transform: uppercase; font-size: var(--step-sub); line-height: 1; white-space: nowrap; }
+.marquee__track span:nth-child(odd) { color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55); }
+.marquee__track .vmark { width: 34px; height: 34px; flex: none; }
 
 /* =========================================================
-   V ES CINCO
+   LA V ES DISCIPLINA
    ========================================================= */
-.intro { display: flex; flex-direction: column; justify-content: center; }
-.intro__text { grid-column: 1 / 9; }
-.stair { margin-top: clamp(28px, 4vw, 56px); font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
-.stair > span { display: block; padding-left: calc(var(--s) * 6vw); }
-.intro__photos { grid-column: 9 / 13; display: grid; gap: 16px; align-self: start; margin-top: 0.6em; }
-.intro__photos figure { aspect-ratio: 3 / 2; overflow: hidden; }
-.ph { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.12); }
-.f-yellow .ph, .f-white .ph, .sheet--light .ph, .tile--main .ph { mix-blend-mode: multiply; }
-.intro__note { margin-top: clamp(40px, 6vw, 96px); max-width: 46ch; font-size: var(--step-small); }
+.lav { background: radial-gradient(900px 700px at 15% 20%, rgba(var(--glow) / 0.09), transparent 60%), var(--ink-1); }
+.lav__head { grid-column: 1 / 6; align-self: start; position: sticky; top: calc(var(--bar) + 48px); }
+.lav__statement { margin-top: 32px; max-width: 34ch; font-size: var(--step-lead); line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; color: #E5E5EA; }
+.lav__body { margin-top: 20px; max-width: 42ch; color: #C7C7CC; }
+.pillars { grid-column: 7 / 13; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pillar { padding: clamp(24px, 2.4vw, 36px); min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; }
+.pillar:nth-child(even) { margin-top: 48px; margin-bottom: -48px; }
+.pillar .vmark { width: 34px; height: 34px; filter: drop-shadow(0 0 12px rgba(var(--glow) / 0.6)); }
+.pillar h3 { margin-top: 40px; font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; }
+.pillar p { margin-top: 14px; color: #C7C7CC; }
 
 /* =========================================================
-   CARTA DE GROWTH
+   LA SERIE N250
    ========================================================= */
-.letter { display: flex; justify-content: center; align-items: center; padding-block: clamp(120px, 12vw, 180px); }
-.letter__col { width: min(560px, 100%); }
-.letter__from { display: flex; align-items: center; gap: 14px; font-size: var(--step-small); }
-.avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--black); color: var(--yellow); display: grid; place-items: center; flex: none; }
+.serie { background: linear-gradient(180deg, var(--ink-1) 0%, var(--night) 100%); }
+.serie__media { grid-column: 1 / 7; position: relative; border-radius: var(--radius); overflow: hidden; min-height: 640px; box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 1), 0 0 0 1px var(--line); }
+.serie__media img, .serie__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(0.72); }
+.serie__media::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(5, 5, 6, 0) 35%, rgba(5, 5, 6, 0.92) 100%), radial-gradient(600px 400px at 85% 0%, rgba(var(--glow) / 0.35), transparent 60%); }
+.serie__goal { position: absolute; left: clamp(24px, 3vw, 40px); right: clamp(24px, 3vw, 40px); bottom: clamp(24px, 3vw, 40px); z-index: 2; }
+.serie__goal span { display: block; margin-top: 10px; font-size: var(--step-small); color: #D1D1D6; }
+.serie__goal strong { display: block; font-size: var(--step-head); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.88; }
+.serie__body { grid-column: 8 / 13; align-self: center; }
+.serie__body > p { margin-top: 28px; color: #D1D1D6; max-width: 44ch; }
+.serie__redes { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+.letter { margin-top: 40px; padding: clamp(24px, 2.6vw, 36px); }
+.letter__from { display: flex; align-items: center; gap: 14px; font-size: var(--step-small); color: var(--mute); }
+.avatar { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; flex: none; background: radial-gradient(circle at 50% 30%, #2A2A2E, #050506); box-shadow: inset 0 0 0 1px rgba(var(--glow) / 0.5), 0 0 24px -4px rgba(var(--glow) / 0.5); }
 .avatar .vmark { width: 20px; height: 20px; }
-.letter__col > p { font-size: var(--step-body); line-height: 1.6; margin-top: 1.5em; }
-.letter__col > p:first-of-type { margin-top: 28px; }
-.marker { background: var(--yellow); padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-.sign { font-size: var(--step-body); font-weight: 600; margin-top: 44px !important; line-height: 1.2; }
-.role { font-size: var(--step-small) !important; color: var(--soft-on-light); margin-top: 4px !important; }
+.letter blockquote { margin-top: 20px; font-size: var(--step-body); line-height: 1.6; color: #E5E5EA; }
+.letter blockquote p + p { margin-top: 0.9em; }
+.letter__sign { margin-top: 22px; font-weight: 700; }
+.letter__sign span { display: block; font-weight: 400; font-size: var(--step-small); color: var(--mute); }
+
+/* ---------- banda de foto ---------- */
+.band { position: relative; min-height: 78svh; display: grid; place-items: center; overflow: hidden; isolation: isolate; text-align: center; }
+.band img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; z-index: -2; filter: grayscale(1) contrast(1.2) brightness(0.55); }
+.band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(700px 500px at 50% 40%, rgba(var(--glow) / 0.22), transparent 65%), linear-gradient(180deg, var(--night) 0%, rgba(5, 5, 6, 0.2) 30%, rgba(5, 5, 6, 0.2) 70%, var(--night) 100%); }
+.band h2 { font-size: var(--step-head); filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8)); }
 
 /* =========================================================
-   LO QUE HAY DENTRO: hojas que se apilan
+   CÓMO SE VIVE LA V: línea de luz
    ========================================================= */
-.features { padding-bottom: 0; }
-.features__head { padding-bottom: 48px; }
-.features__head p { margin-top: 20px; max-width: 46ch; color: var(--white); }
-.sheet {
-  position: sticky; top: calc(var(--bar) + var(--k) * 72px);
-  min-height: calc(86svh - var(--k) * 72px); /* las hojas terminan a la misma altura: salen juntas y ningún título queda tapado */
-  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 72px 1fr; column-gap: var(--gutter);
-  padding-left: max(var(--margin), env(safe-area-inset-left));
-  background: var(--c); color: var(--ci);
-  border-radius: var(--radius) var(--radius) 0 0;
-  overflow: hidden;
-}
-.sheet__name { grid-column: 1 / 7; grid-row: 1; align-self: center; font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
-.sheet__text { grid-column: 1 / 6; grid-row: 2; align-self: end; padding: 40px 0 clamp(32px, 4vw, 56px); }
-.sheet__text p { max-width: 40ch; }
-.sheet__text .button, .sheet__text .link { margin-top: 24px; }
-.sheet__text .link { display: inline-block; }
-.sheet__media { position: relative; grid-column: 7 / 13; grid-row: 2; overflow: hidden; }
-.sheet__media img, .sheet__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.calc { grid-column: 7 / 13; grid-row: 2; align-self: center; padding: 40px max(var(--margin), env(safe-area-inset-right)) 40px 0; }
-.calc__label { display: block; font-size: var(--step-body); }
-.calc__label output { font-weight: 500; }
-.calc input[type="range"] { width: 100%; height: 44px; margin: 14px 0 6px; accent-color: var(--yellow); cursor: pointer; }
-.calc__big { display: block; font-size: var(--step-head); margin-top: 18px; color: var(--yellow); }
-.calc__sub { margin-top: 14px; max-width: 34ch; }
+.como { background: var(--night); }
+.como__aside { grid-column: 1 / 6; align-self: start; }
+.como__aside p { margin-top: 24px; max-width: 36ch; color: #D1D1D6; }
+.como__photo { margin-top: 36px; position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; box-shadow: 0 40px 80px -40px #000, 0 0 0 1px var(--line); }
+.como__photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(0.7); }
+.como__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(5, 5, 6, 0.85)), radial-gradient(400px 300px at 50% 0%, rgba(var(--glow) / 0.25), transparent 70%); }
+.timeline { grid-column: 7 / 13; position: relative; padding-left: 64px; }
+.timeline__rail { position: absolute; left: 22px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; background: rgba(255, 255, 255, 0.1); }
+.timeline__fill { position: absolute; inset: 0; border-radius: 2px; background: linear-gradient(180deg, var(--yellow-hi), var(--gold)); box-shadow: 0 0 16px rgba(var(--glow) / 0.8), 0 0 40px rgba(var(--glow) / 0.4); transform-origin: top; transform: scaleY(0); }
+.step { position: relative; padding-block: 36px; }
+.step__node { position: absolute; left: -51px; top: 44px; width: 20px; height: 20px; border-radius: 50%; background: var(--ink-3); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.18); transition: background 400ms ease, box-shadow 400ms ease, transform 400ms var(--ease-out); }
+.step.is-lit .step__node { background: var(--gold-grad); box-shadow: 0 0 0 6px rgba(var(--glow) / 0.15), 0 0 24px rgba(var(--glow) / 0.9); transform: scale(1.1); }
+.step h3 { font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; color: var(--mute-2); transition: color 500ms ease; }
+.step.is-lit h3 { color: var(--white); }
+.step p { margin-top: 12px; max-width: 40ch; color: #C7C7CC; }
+
+/* =========================================================
+   TU RACHA
+   ========================================================= */
+.racha { background: radial-gradient(1000px 600px at 80% 30%, rgba(var(--glow) / 0.1), transparent 60%), var(--ink-1); }
+.racha__head { grid-column: 1 / 7; }
+.racha__head p { margin-top: 24px; max-width: 42ch; color: #D1D1D6; }
+.racha__panel { grid-column: 1 / 13; margin-top: clamp(48px, 6vw, 80px); padding: clamp(24px, 3vw, 48px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 36px; align-items: start; }
+.racha__left { grid-column: 1 / 6; }
+.racha__right { grid-column: 7 / 13; }
+.compromiso label { display: block; font-size: var(--step-small); color: var(--mute); margin-bottom: 10px; }
+.compromiso__row { display: flex; gap: 10px; }
+.compromiso__row .input { flex: 1; min-width: 0; }
+.compromiso__show { margin-top: 14px; min-height: 1.5em; color: #E5E5EA; }
+.compromiso__show strong { color: var(--yellow); font-weight: 600; }
+.racha__count { margin-top: 36px; display: flex; align-items: flex-end; gap: 16px; }
+.racha__count output { font-size: var(--step-display); font-weight: 800; font-stretch: 62%; line-height: 0.8; }
+.racha__count span { padding-bottom: 10px; font-size: var(--step-lead); font-weight: 600; line-height: 1.1; }
+.racha__stats { margin-top: 18px; display: flex; gap: 28px; color: var(--mute); font-size: var(--step-small); }
+.racha__stats strong { color: var(--white); font-weight: 600; }
+.racha__actions { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.cells { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 8px; }
+.cell { aspect-ratio: 1; border-radius: 10px; display: grid; place-items: center; font-size: var(--step-small); color: var(--mute-2); background: rgba(255, 255, 255, 0.04); box-shadow: inset 0 0 0 1px var(--line); transition: background 400ms ease, box-shadow 400ms ease, color 400ms ease, transform 400ms var(--ease-out); }
+.cell.is-on { background: var(--gold-grad); color: var(--night); font-weight: 700; box-shadow: 0 0 18px -2px rgba(var(--glow) / 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6); }
+.cell.is-today { box-shadow: inset 0 0 0 2px rgba(var(--glow) / 0.8); color: var(--white); }
+.cell.is-today.is-on { box-shadow: 0 0 0 3px rgba(var(--glow) / 0.25), 0 0 26px rgba(var(--glow) / 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.6); color: var(--night); }
+.cell.pop { animation: pop 600ms var(--ease-out); }
+@keyframes pop { 0% { transform: scale(0.7); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+.cells__legend { margin-top: 14px; display: flex; justify-content: space-between; font-size: var(--step-small); color: var(--mute); }
+.racha__note { margin-top: 18px; font-size: var(--step-small); color: var(--mute); }
 
 /* =========================================================
    BIBLIOTECA
    ========================================================= */
+.library { background: var(--night); }
 .library__head { align-items: end; }
 .library__head h2 { grid-column: 1 / 8; }
-.library__head p { grid-column: 8 / 12; }
+.library__head p { grid-column: 8 / 12; color: #D1D1D6; }
 .library__body { margin-top: clamp(56px, 7vw, 112px); }
 .library__list { grid-column: 1 / 8; }
 .library__frame { grid-column: 9 / 13; position: sticky; top: calc(var(--bar) + 40px); align-self: start; aspect-ratio: 3 / 4; }
-.cat { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: clamp(56px, 7vw, 96px) 0 24px; }
+.cat { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: clamp(56px, 7vw, 96px) 0 18px; }
 .cat:first-child { margin-top: 0; }
-.cat h3 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
-.cat span { font-size: var(--step-small); color: var(--soft-on-dark); }
-.res { padding-block: 22px; transition: opacity var(--t-hover) ease; }
+.cat h3 { font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; }
+.cat span { font-size: var(--step-small); color: var(--mute); }
+.res { position: relative; padding: 22px 22px; margin-inline: -22px; border-radius: var(--radius-s); transition: opacity 200ms ease, background-color 300ms ease, box-shadow 300ms ease; }
 .res__cover { display: none; }
 .res__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 28px; align-items: start; }
-.res__side { padding-top: 4px; }
-.res__name { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
-.res__kind { font-size: var(--step-small); color: var(--soft-on-dark); white-space: nowrap; }
+.res__name { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
 .res__desc { margin-top: 8px; font-size: var(--step-small); line-height: 1.45; color: #C7C7CC; max-width: 48ch; }
+.res__side { padding-top: 4px; }
 .res__actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.res__soon { max-width: 20ch; font-size: var(--step-small); color: var(--soft-on-dark); text-align: right; }
+.res__soon { max-width: 20ch; font-size: var(--step-small); color: var(--mute); text-align: right; }
 .res.is-soon .res__actions { display: none; }
-.res.is-soon .res__cover { opacity: 0.45; }
+.res.is-soon .res__name { color: var(--mute); }
 @media (hover: hover) and (pointer: fine) {
-  .library__list:hover .res:not(:hover) { opacity: 0.35; }
+  .library__list:hover .res:not(:hover) { opacity: 0.4; }
+  .res:hover { background: rgba(255, 255, 255, 0.035); box-shadow: inset 0 0 0 1px var(--line); }
 }
-.library__list:has(.res :focus-visible) .res:not(:has(:focus-visible)) { opacity: 0.35; }
+.library__list:has(.res :focus-visible) .res:not(:has(:focus-visible)) { opacity: 0.4; }
 .cover {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; justify-content: space-between;
-  padding: clamp(24px, 2.6vw, 44px);
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: clamp(24px, 2.6vw, 44px); border-radius: var(--radius); overflow: hidden;
   background: var(--c); color: var(--ci);
-  opacity: 0; transition: opacity var(--t-ui) ease;
+  box-shadow: 0 50px 90px -40px #000, 0 0 0 1px var(--line), 0 0 80px -30px rgba(var(--glow) / 0.35);
+  opacity: 0; transform: translateY(10px) scale(0.98); transition: opacity 260ms ease, transform 420ms var(--ease-out);
 }
-.cover.is-on { opacity: 1; }
-.frame__v { position: absolute; top: clamp(24px, 2.6vw, 44px); left: clamp(24px, 2.6vw, 44px); width: 56px; height: 56px; color: var(--vc, var(--black)); transition: color var(--t-ui) ease; }
-.cover__kind { font-size: var(--step-small); margin-top: auto; margin-bottom: 14px; }
-.cover__title { display: block; font-size: var(--step-lead); line-height: 1.08; letter-spacing: -0.02em; font-weight: 600; }
+.cover.is-on { opacity: 1; transform: none; }
+.cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 35%); pointer-events: none; }
+.cover__kind { font-size: var(--step-small); margin-bottom: 14px; }
+.cover__title { display: block; font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; }
 .cover__foot { display: flex; justify-content: space-between; font-size: var(--step-small); margin-top: 28px; opacity: 0.75; }
-
-/* =========================================================
-   CÓMO FUNCIONA: acordeón del amanecer
-   ========================================================= */
-.how__intro { align-items: end; }
-.how__intro h2 { grid-column: 1 / 6; }
-.how__intro p { grid-column: 7 / 12; }
-.acc { display: flex; height: 520px; margin-top: 64px; border-radius: var(--radius); overflow: hidden; }
-.acc__panel { position: relative; flex: 1 1 0; min-width: 0; background: var(--bg); color: var(--ink); transition: flex-grow 450ms var(--ease-in-out); }
-.acc__panel.is-open { flex-grow: 5.6; }
-.acc__hit { position: absolute; inset: 0; width: 100%; text-align: left; color: inherit; }
-.acc__label { position: absolute; left: 22px; bottom: 26px; writing-mode: vertical-rl; transform: rotate(180deg); font-size: var(--step-body); font-weight: 600; white-space: nowrap; transition: opacity 200ms ease; }
-.acc__panel.is-open .acc__hit { visibility: hidden; }
-.acc__panel.is-open .acc__label { opacity: 0; }
-.acc__content {
-  position: absolute; top: 0; bottom: 0; left: 0; width: min(640px, 54vw);
-  padding: 36px; display: flex; flex-direction: column; justify-content: space-between;
-  opacity: 0; visibility: hidden; transition: opacity 200ms ease, visibility 0s linear 200ms;
-}
-.acc__panel.is-open .acc__content { opacity: 1; visibility: visible; transition: opacity 360ms ease 220ms, visibility 0s; }
-.acc__content h3 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
-.acc__content p { max-width: 36ch; }
-.acc__panel:active .acc__label { opacity: 0.7; }
-@media (hover: hover) and (pointer: fine) { .acc__panel:not(.is-open):hover .acc__label { transform: rotate(180deg) translateY(6px); transition: transform var(--t-hover) var(--ease-out); } }
+.frame__v { position: absolute; z-index: 2; top: clamp(24px, 2.6vw, 44px); left: clamp(24px, 2.6vw, 44px); width: 64px; height: 64px; color: var(--vc, var(--night)); transition: color 260ms ease; }
 
 /* =========================================================
    CÓDIGO V
    ========================================================= */
-.code__top { align-items: end; }
-.code__top h2 { grid-column: 1 / 7; }
-.code__top p { grid-column: 7 / 12; }
-.rules { margin-top: clamp(64px, 8vw, 128px); display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gutter); row-gap: clamp(44px, 5vw, 80px); }
-.rule h3 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
-.rule p { margin-top: 12px; max-width: 42ch; }
+.codigo { background: linear-gradient(180deg, var(--night), var(--ink-1)); overflow: hidden; }
+.codigo__watermark { position: absolute; right: -6vw; top: 50%; width: 60vw; max-width: 900px; transform: translateY(-50%); z-index: -1; opacity: 0.5; pointer-events: none; }
+.codigo__watermark svg { width: 100%; height: auto; }
+.codigo__top { align-items: end; }
+.codigo__top h2 { grid-column: 1 / 7; }
+.codigo__top p { grid-column: 7 / 12; color: #D1D1D6; }
+.rules { margin-top: clamp(64px, 8vw, 120px); display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gutter); }
+.rule { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 18px; padding-block: 32px; }
+.rule::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(var(--glow) / 0.6), rgba(255, 255, 255, 0.08) 40%, transparent); }
+.rule .vmark { width: 28px; height: 28px; margin-top: 4px; filter: drop-shadow(0 0 10px rgba(var(--glow) / 0.6)); }
+.rule h3 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; }
+.rule p { margin-top: 10px; max-width: 42ch; color: #C7C7CC; }
 
 /* =========================================================
-   ÚNETE: fila de tarjetas
+   ENTRA AL GRUPO (la luz)
    ========================================================= */
-.cta { display: flex; align-items: center; overflow-x: clip; }
-.tiles { width: 100%; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 12px; }
-.tile { height: min(560px, 62svh); border-radius: var(--radius); overflow: hidden; }
-.tile--left { grid-column: 1 / 3; margin-left: calc(-1 * var(--margin) - 40px); }
-.tile--left img { width: 100%; height: 100%; object-fit: cover; }
-.tile--main { grid-column: 3 / 11; background: var(--black); color: var(--white); padding: clamp(28px, 3.4vw, 56px); display: flex; flex-direction: column; justify-content: center; }
-.tile--main h2 { font-size: var(--step-head); }
-.tile--main p { margin-top: 20px; max-width: 46ch; }
-.cta__actions { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
-.tile--right { grid-column: 11 / 13; margin-right: calc(-1 * var(--margin) - 40px); background: var(--white); color: var(--black); display: grid; place-items: center; }
-.tile--right .vmark { width: 44%; height: auto; aspect-ratio: 1; }
+.cta { color: var(--night); text-align: center; overflow: hidden; background: radial-gradient(120% 130% at 50% 0%, #FFF3A6 0%, var(--yellow) 30%, var(--gold) 70%, var(--amber) 100%); }
+.cta::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(600px 400px at 50% 30%, rgba(255, 255, 255, 0.55), transparent 70%); animation: breathe 7s ease-in-out infinite; }
+.cta__v { width: clamp(80px, 10vw, 140px); height: auto; margin: 0 auto; filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.35)); }
+.cta h2 { margin-top: 28px; text-shadow: 0 2px 0 rgba(255, 255, 255, 0.35); }
+.cta p { margin: 24px auto 0; max-width: 46ch; font-size: var(--step-body); }
+.cta__actions { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 28px; }
+.cta .link { font-weight: 600; }
+@keyframes breathe { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 
 /* =========================================================
    PREGUNTAS
    ========================================================= */
-.faq__head { grid-column: 1 / 6; position: sticky; top: calc(var(--bar) + 40px); align-self: start; }
-.faq__head p { margin-top: 18px; max-width: 28ch; }
-.faq__list { grid-column: 7 / 13; display: grid; gap: 8px; }
-.q { background: var(--paper-2); border-radius: var(--radius); transition: background-color var(--t-ui) ease; }
-.q[open] { background: var(--black); color: var(--white); }
-.q[open] .plus { color: var(--yellow); }
-.q summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 72px; padding: 18px 26px; cursor: pointer; font-weight: 500; font-size: var(--step-body); line-height: 1.3; }
+.faq { background: var(--night); }
+.faq__head { grid-column: 1 / 6; position: sticky; top: calc(var(--bar) + 48px); align-self: start; }
+.faq__head p { margin-top: 20px; max-width: 30ch; color: #D1D1D6; }
+.faq__photo { margin-top: 36px; position: relative; aspect-ratio: 3 / 2; border-radius: var(--radius); overflow: hidden; box-shadow: 0 40px 80px -40px #000, 0 0 0 1px var(--line); }
+.faq__photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(0.7); }
+.faq__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 6, 0.8)), radial-gradient(400px 260px at 80% 0%, rgba(var(--glow) / 0.28), transparent 70%); }
+.faq__list { grid-column: 7 / 13; display: grid; gap: 10px; }
+.q { border-radius: var(--radius-s); background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); box-shadow: inset 0 0 0 1px var(--line); transition: background-color 300ms ease, box-shadow 300ms ease; }
+.q[open] { background: linear-gradient(180deg, rgba(var(--glow) / 0.1), rgba(255, 255, 255, 0.02)); box-shadow: inset 0 0 0 1px rgba(var(--glow) / 0.45), 0 0 40px -12px rgba(var(--glow) / 0.35); }
+.q summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 74px; padding: 18px 26px; cursor: pointer; font-weight: 600; font-size: var(--step-body); line-height: 1.3; }
 .q summary::-webkit-details-marker { display: none; }
 .q summary:active { opacity: 0.75; }
-@media (hover: hover) and (pointer: fine) { .q:not([open]):hover { background: #DCDCE1; } }
-.plus { position: relative; width: 16px; height: 16px; flex: none; }
-.plus::before, .plus::after { content: ""; position: absolute; left: 0; top: 6.5px; width: 16px; height: 3px; background: currentColor; border-radius: 2px; transition: transform var(--t-ui) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .q:not([open]):hover { box-shadow: inset 0 0 0 1px var(--line-2); } }
+.plus { position: relative; width: 16px; height: 16px; flex: none; color: var(--yellow); }
+.plus::before, .plus::after { content: ""; position: absolute; left: 0; top: 6.5px; width: 16px; height: 3px; background: currentColor; border-radius: 2px; transition: transform 260ms var(--ease-out); }
 .plus::after { transform: rotate(90deg); }
 .q[open] .plus::after { transform: rotate(0deg); }
 .q__a { padding: 0 26px 26px; }
-.q__a p { max-width: 52ch; font-size: var(--step-body); }
+.q__a p { max-width: 52ch; color: #D1D1D6; }
 .q::details-content { block-size: 0; overflow: hidden; transition: block-size 320ms var(--ease-out), content-visibility 320ms allow-discrete; }
 .q[open]::details-content { block-size: auto; }
 
 /* =========================================================
    CIERRE
    ========================================================= */
-.foot { min-height: 90svh; display: flex; flex-direction: column; justify-content: space-between; gap: 64px; padding-top: 40px; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
-.foot__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; font-size: var(--step-small); }
-.foot__notes { display: flex; flex-wrap: wrap; gap: 8px 40px; }
-.foot__notes p { max-width: 30ch; }
-.foot__line { display: block; margin-top: auto; color: var(--yellow); text-decoration: none; font-size: var(--step-display); transition: opacity var(--t-hover) ease, color var(--t-hover) ease; }
-.foot__line:active { opacity: 0.75; }
-@media (hover: hover) and (pointer: fine) { .foot__line:hover { opacity: 0.85; } }
-.foot__meta { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: end; font-size: var(--step-small); color: var(--soft-on-dark); }
+.foot { position: relative; isolation: isolate; overflow: hidden; min-height: 62svh; display: flex; flex-direction: column; justify-content: space-between; gap: 64px; padding-top: 48px; padding-bottom: max(28px, env(safe-area-inset-bottom)); background: radial-gradient(1000px 500px at 50% 120%, rgba(var(--glow) / 0.22), transparent 60%), var(--night); box-shadow: inset 0 1px 0 var(--line); }
+.foot__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; font-size: var(--step-small); color: var(--mute); }
+.foot__line { display: block; margin-top: auto; text-decoration: none; font-size: var(--step-display); }
+.foot__meta { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: end; font-size: var(--step-small); color: var(--mute); }
 .foot__meta nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
 .foot__meta nav a, .foot__meta nav button { color: var(--white); text-decoration: none; font-size: var(--step-small); }
 .foot__credits { max-width: 52ch; text-align: center; }
 .foot__place { justify-self: end; text-align: right; }
 
 /* =========================================================
-   VENTANAS (visor de PDF y aviso de privacidad) + aviso flotante
+   VENTANAS Y AVISO
    ========================================================= */
 dialog {
-  border: 0; padding: 0;
-  border-radius: var(--radius);
-  background: var(--white); color: var(--black);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5); /* taste-skill-ignore: ventana flotante */
-  max-width: min(720px, calc(100vw - 32px));
-  max-height: calc(100svh - 48px);
-  opacity: 1; transform: none;
+  border: 0; padding: 0; border-radius: var(--radius); background: var(--ink-2); color: var(--white);
+  box-shadow: 0 50px 120px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--line-2);
+  max-width: min(720px, calc(100vw - 32px)); max-height: calc(100svh - 48px);
   transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), display 240ms allow-discrete, overlay 240ms allow-discrete;
 }
 @starting-style { dialog[open] { opacity: 0; transform: scale(0.97); } }
-dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
+dialog::backdrop { background: rgba(0, 0, 0, 0.75); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .privacy__body { padding: clamp(28px, 4vw, 48px); overflow-y: auto; max-height: calc(100svh - 48px); }
 .privacy__body h2 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
-.privacy__body p { margin-top: 16px; font-size: var(--step-body); }
+.privacy__body p { margin-top: 16px; color: #D1D1D6; }
 .privacy__body .button { margin-top: 28px; }
 .viewer { width: min(1100px, calc(100vw - 32px)); height: calc(100svh - 48px); max-width: none; overflow: hidden; }
 .viewer[open] { display: flex; flex-direction: column; }
-.viewer__bar { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 26px; background: var(--white); }
-.viewer__bar h2 { margin-right: auto; font-size: var(--step-body); font-weight: 500; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.viewer iframe { flex: 1; width: 100%; border: 0; background: var(--paper); }
+.viewer__bar { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 26px; }
+.viewer__bar h2 { margin-right: auto; font-size: var(--step-body); font-weight: 600; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.viewer iframe { flex: 1; width: 100%; border: 0; background: #2A2A2F; }
 .toast {
-  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 200;
-  max-width: calc(100vw - 32px);
-  padding: 14px 22px; border-radius: 999px;
-  background: var(--white); color: var(--black); font-size: var(--step-small); line-height: 1.35;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35); /* taste-skill-ignore: aviso flotante */
-  opacity: 0; transform: translate(-50%, 16px); pointer-events: none;
-  transition: opacity var(--t-ui) ease, transform var(--t-ui) var(--ease-out);
+  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 200; max-width: calc(100vw - 32px);
+  padding: 14px 22px; border-radius: 999px; background: var(--white); color: var(--night); font-size: var(--step-small); line-height: 1.35;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6), 0 0 40px -10px rgba(var(--glow) / 0.5);
+  opacity: 0; transform: translate(-50%, 16px); pointer-events: none; transition: opacity 240ms ease, transform 240ms var(--ease-out);
 }
 .toast.is-on { opacity: 1; transform: translate(-50%, 0); }
 
 /* =========================================================
    TELÉFONO
    ========================================================= */
-@media (max-width: 800px) {
-  .grid > * { grid-column: 1 / -1 !important; }
-  .chapter { padding-block: 88px; }
+@media (max-width: 860px) {
+  .grid > *, .racha__panel > * { grid-column: 1 / -1 !important; }
+  .chapter { padding-block: 96px; }
+  :root { --bar: 58px; }
 
-  .gate__inner { grid-template-columns: 1fr; align-content: start; row-gap: 28px; padding-top: max(44px, env(safe-area-inset-top)); }
+  .gate__inner { grid-template-columns: 1fr; align-content: start; row-gap: 20px; padding-top: max(36px, env(safe-area-inset-top)); }
   .gate__mark, .gate__panel { grid-column: 1; }
-  .gate__mark .vmark { width: 38vw; max-width: 200px; }
+  .gate__mark { justify-items: start; }
+  .gate__mark svg { width: 40vw; max-width: 200px; }
 
   .bar__links { display: none; }
   .bar .button { margin-left: auto; }
 
-  .hero__title { margin-top: 72px; }
-  .hero__lede { margin-top: 18px; max-width: 32ch; }
-  .folders { top: max(50svh, 420px); }
-  .folder { left: 0; right: 0; top: calc(var(--i) * 52px); }
-  .folder__tab { left: var(--xm); height: 32px; padding: 0 20px; font-size: var(--step-small); clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%); }
-  .folder__strip { height: 52px; padding: 0 20px; }
-  .folder__strip span { display: none; }
-  .folder--front .folder__band { padding: 20px; gap: 14px; }
-  .folder--front .button { width: 100%; }
+  .hero { grid-template-columns: 1fr; align-content: start; padding-top: calc(var(--bar) + 24px); padding-bottom: 110px; }
+  .hero__emblem { grid-column: 1; grid-row: 1; justify-self: center; width: 70vw; max-width: 340px; margin-bottom: 8px; }
+  .hero__text { grid-column: 1; grid-row: 2; }
+  .hero__title { font-size: clamp(3rem, 13.5vw, 5.5rem); }
+  .hero__actions .button { width: 100%; }
+  .hero__beams span { left: 50%; width: 90vw; }
+  .hero__beams span:nth-child(2) { left: 62%; }
 
-  .intro__photos { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 48px; }
-  .stair > span { padding-left: calc(var(--s) * 5vw); }
+  .lav__head, .como__aside, .faq__head { position: static; }
+  .pillars { margin-top: 48px; grid-template-columns: 1fr; gap: 12px; }
+  .pillar { min-height: 0; }
+  .pillar:nth-child(even) { margin-top: 0; margin-bottom: 0; }
+  .pillar h3 { margin-top: 28px; }
 
-  .letter { padding-block: 120px; }
-  .avatar { width: 40px; height: 40px; }
+  .serie__media { min-height: 480px; }
+  .serie__body { margin-top: 48px; }
 
-  .sheet { top: calc(var(--bar) + var(--k) * 52px); min-height: calc(76svh - var(--k) * 52px); grid-template-columns: 1fr; grid-template-rows: 52px auto auto; padding-left: 0; }
-  .sheet__name { grid-column: 1; grid-row: 1; padding-inline: 20px; }
-  .sheet__media { grid-column: 1; grid-row: 2; aspect-ratio: 4 / 3; }
-  .sheet__text { grid-column: 1; grid-row: 3; padding: 24px 20px 36px; }
-  .calc { grid-column: 1; grid-row: 2; padding: 12px 20px 8px; }
-  .sheet--calc .sheet__text { grid-row: 3; padding-top: 8px; }
+  .band { min-height: 60svh; }
+
+  .timeline { margin-top: 56px; padding-left: 52px; }
+  .timeline__rail { left: 14px; }
+  .step__node { left: -47px; }
+
+  .racha__panel { row-gap: 40px; }
+  .compromiso__row { flex-direction: column; }
+  .cells { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 7px; }
+  .racha__actions .button { width: 100%; }
 
   .library__head p { margin-top: 18px; }
   .library__frame { display: none; }
-  .res__cover { display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 2.4 / 1; margin-bottom: 16px; padding: 18px 20px; background: var(--c); color: var(--ci); }
+  .res { margin-inline: 0; padding: 18px 0; }
+  .res__cover { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 2.3 / 1; margin-bottom: 16px; padding: 18px 20px; border-radius: var(--radius-s); background: var(--c); color: var(--ci); box-shadow: 0 20px 40px -24px #000; }
+  .res__cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent 40%); }
   .res__cover span { font-size: var(--step-small); }
-  .res__cover strong { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; margin-top: 4px; }
-  .res__name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* taste-skill-ignore: el título sigue para lectores de pantalla */
+  .res__cover strong { font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; }
+  .res__cover span { margin-top: 8px; }
+  .res__name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .res__row { grid-template-columns: 1fr; row-gap: 14px; }
   .res__desc { margin-top: 0; }
   .res__side { padding-top: 0; }
   .res__soon { text-align: left; max-width: none; }
+  .res.is-soon .res__cover { opacity: 0.4; }
 
-  .how__intro p { margin-top: 18px; }
-  .acc { flex-direction: column; height: auto; margin-top: 44px; }
-  .acc__panel { flex: none; min-height: 64px; }
-  .acc__hit { position: relative; display: flex; align-items: center; min-height: 64px; padding: 0 20px; }
-  .acc__label { position: static; writing-mode: horizontal-tb; transform: none; }
-  .acc__panel.is-open .acc__hit { display: none; }
-  .acc__content { position: static; width: auto; padding: 22px 20px 26px; display: none; gap: 14px; }
-  .acc__panel.is-open .acc__content { display: flex; }
-
-  .code__top p { margin-top: 18px; }
+  .codigo__top p { margin-top: 18px; }
   .rules { grid-template-columns: 1fr; }
+  .codigo__watermark { width: 120vw; right: -40vw; opacity: 0.35; }
 
-  .cta { padding-block: 72px; }
-  .tiles { grid-template-columns: 1fr 1fr; row-gap: 12px; }
-  .tile--main { grid-column: 1 / -1; grid-row: 1; height: auto; min-height: 300px; padding: 28px 22px; }
-  .tile--main .button { width: 100%; }
-  .tile--left { grid-column: 1; grid-row: 2; height: 120px; margin-left: 0; }
-  .tile--right { grid-column: 2; grid-row: 2; height: 120px; margin-right: 0; }
-
-  .faq__head { position: static; }
-  .faq__list { margin-top: 36px; gap: 6px; }
+  .cta__actions .button { width: 100%; }
+  .faq__list { margin-top: 36px; }
   .q summary { min-height: 64px; padding: 16px 20px; }
   .q__a { padding: 0 20px 20px; }
 
@@ -653,8 +669,11 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
   .foot__meta { grid-template-columns: 1fr; }
   .foot__credits { text-align: left; }
   .foot__place { justify-self: start; text-align: left; }
-
   .viewer { width: calc(100vw - 16px); height: calc(100svh - 16px); }
+
+  body::after { display: none; }
+  /* en teléfono el vidrio pesa mucho: fondo sólido */
+  .glass { -webkit-backdrop-filter: none; backdrop-filter: none; background: linear-gradient(180deg, #17171A, #101012); }
 }
 
 /* =========================================================
@@ -662,46 +681,72 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
    ========================================================= */
 @media (prefers-reduced-motion: no-preference) {
   /* entrada */
-  .js .gate__mark .vmark { clip-path: inset(100% 0 0 0); animation: v-in 1100ms var(--ease-in-out) 150ms forwards; }
+  .js .gate__mark .v-line { stroke-dasharray: 460; stroke-dashoffset: 460; animation: draw 1600ms var(--ease-in-out) 150ms forwards; }
+  .js .gate__mark .v-solid { opacity: 0; animation: fade-in 900ms ease 1200ms forwards; }
   .js .gate [data-rise] { opacity: 0; transform: translateY(18px); animation: rise 800ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 500ms); }
 
   /* inicio */
-  .js .hero [data-rise] { opacity: 0; transform: translateY(18px); }
+  .js .hero [data-rise] { opacity: 0; transform: translateY(22px); }
   .js .hero .lines [data-line] { transform: translateY(105%); }
-  .js .folder { transform: translateY(140px); }
-  .entered .hero [data-rise] { animation: rise var(--t-reveal) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 200ms); }
-  .entered .hero .lines [data-line] { animation: line-up 900ms var(--ease-out) 120ms forwards; }
-  .entered .folder { animation: folder-up 1000ms var(--ease-out) forwards; animation-delay: calc(var(--i) * 70ms + 420ms); }
+  .js .hero__emblem { opacity: 0; transform: scale(0.92); }
+  .entered .hero [data-rise] { animation: rise 900ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 100ms + 250ms); }
+  .entered .hero .lines [data-line] { animation: line-up 1000ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 110ms + 100ms); }
+  .entered .hero__emblem { animation: emblem-in 1400ms var(--ease-out) 200ms forwards; }
+  .hero__beams span { animation: sway 11s ease-in-out infinite alternate; }
+  .hero__beams span:nth-child(2) { animation-duration: 14s; animation-direction: alternate-reverse; }
+  .hero__halo { animation: breathe 6s ease-in-out infinite; }
+  .v-shine-rect { animation: shine 5.5s var(--ease-in-out) 1.6s infinite; }
+  .hero__scroll i { transform-origin: top; animation: drip 2.2s var(--ease-in-out) infinite; }
+  .marquee__track { animation: marquee 38s linear infinite; }
 
   /* secciones */
-  .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: calc(var(--d, 0) * 80ms); }
+  .js [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 800ms var(--ease-out), transform 1000ms var(--ease-out); transition-delay: calc(var(--d, 0) * 90ms); }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
-  /* el recorte va en la imagen, no en el marco: así el marco sigue siendo visible para el observador */
-  .js .shutter[data-reveal] { opacity: 1; transform: none; }
-  .js .shutter[data-reveal] img { clip-path: inset(0 0 100% 0); transform: scale(1.12); transition: clip-path 1100ms var(--ease-in-out), transform 1500ms var(--ease-soft); transition-delay: calc(var(--d, 0) * 80ms); }
-  .js .shutter[data-reveal].is-in img { clip-path: inset(0); transform: none; }
-
-  /* una imagen que se mueve con el scroll */
+  .js .spot[data-reveal] { transition: opacity 800ms var(--ease-out), transform 1000ms var(--ease-out), translate 500ms var(--ease-out), box-shadow 500ms var(--ease-out); transition-delay: calc(var(--d, 0) * 90ms), calc(var(--d, 0) * 90ms), 0s, 0s; }
+  .js .clip[data-reveal] { opacity: 1; transform: none; }
+  .js .clip[data-reveal] > img { clip-path: inset(100% 0 0 0); transform: scale(1.15); transition: clip-path 1300ms var(--ease-in-out), transform 1800ms var(--ease-soft); }
+  .js .clip[data-reveal].is-in > img { clip-path: inset(0); transform: none; }
   @supports (animation-timeline: view()) {
-    .drift { animation: drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    .band img { animation: parallax linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .gate.is-leaving { transform: none; opacity: 0; transition: opacity 300ms ease; }
-  .acc__panel, .folder__in, .bar { transition: none; }
+  .button, .spot, .cover, .step__node, .cell { transition: none; }
+  .cta::before { animation: none; }
 }
 @keyframes rise { to { opacity: 1; transform: none; } }
 @keyframes line-up { to { transform: none; } }
-@keyframes folder-up { to { transform: none; } }
-@keyframes v-in { to { clip-path: inset(0 0 0 0); } }
-@keyframes drift { from { transform: scale(1.1) translateY(-3%); } to { transform: scale(1.1) translateY(3%); } }
+@keyframes fade-in { to { opacity: 1; } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes emblem-in { to { opacity: 1; transform: none; } }
+@keyframes sway { from { rotate: -3deg; } to { rotate: 3deg; } }
+@keyframes shine { 0% { transform: translateX(-60px) skewX(-18deg); } 45%, 100% { transform: translateX(170px) skewX(-18deg); } }
+@keyframes drip { 0% { transform: scaleY(0); opacity: 1; } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes parallax { from { transform: translateY(-6%); } to { transform: translateY(6%); } }
 </style>
 </head>
 <body>
 
-<!-- Símbolo V (se reutiliza en toda la página) -->
+<!-- Símbolo V y sus degradados (se reutilizan en toda la página) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="v" viewBox="0 0 100 100"><polygon points="0,18 21,18 50,80 79,0 100,0 61,100 39,100"/></symbol>
+  <defs>
+    <linearGradient id="vFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE766"/><stop offset="0.5" stop-color="#FFD60A"/><stop offset="1" stop-color="#FF9F0A"/>
+    </linearGradient>
+    <linearGradient id="vEdge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"/><stop offset="0.5" stop-color="#FFD60A" stop-opacity="0.2"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="vShine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.85"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="vGhost" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFD60A" stop-opacity="0.35"/><stop offset="1" stop-color="#FFD60A" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="vClip"><polygon points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/></clipPath>
+  </defs>
+  <symbol id="v" viewBox="0 0 100 100"><polygon points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/></symbol>
 </svg>
 
 <!-- =========================================================
@@ -709,10 +754,15 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
      ========================================================= -->
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
   <div class="gate__inner">
-    <div class="gate__mark" aria-hidden="true"><svg class="vmark"><use href="#v"/></svg></div>
+    <div class="gate__mark" aria-hidden="true">
+      <svg viewBox="-4 -4 108 108">
+        <polygon class="v-solid" points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/>
+        <polygon class="v-line" points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/>
+      </svg>
+    </div>
     <div class="gate__panel">
-      <h2 class="gate__title" id="gate-title" data-rise style="--i:0">Entra a la V.</h2>
-      <p class="gate__lede" data-rise style="--i:1">La comunidad de la serie N250. Deja tu nombre y tu correo para abrir la biblioteca, el grupo de WhatsApp y todo lo que viene.</p>
+      <h2 class="gate__title head steel" id="gate-title" data-rise style="--i:0">Entra a la V.</h2>
+      <p class="gate__lede" data-rise style="--i:1">La comunidad de la serie N250. Deja tu nombre y tu correo para abrir la biblioteca, el grupo de WhatsApp y tu registro de días.</p>
 
       <form class="gate__form" id="gate-form" novalidate data-rise style="--i:2">
         <div class="field">
@@ -728,32 +778,33 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
           <input type="checkbox" id="g-acepto" required>
           <span>Acepto el <button type="button" class="link" data-privacy>aviso de privacidad</button> y recibir avisos de la comunidad.</span>
         </label>
-        <button class="button button--yellow" type="submit" id="g-enviar" data-arrow="right" data-magnet>Entrar a la comunidad</button>
+        <button class="button button--gold" type="submit" id="g-enviar" data-arrow="right" data-magnet>Entrar a la comunidad</button>
         <p class="gate__msg" id="g-msg" role="status" aria-live="polite"></p>
       </form>
 
       <div class="gate__done" id="gate-done">
         <p id="gate-done-text">Listo. Hoy es tu día 1 en la V.</p>
-        <button class="button button--yellow" type="button" id="gate-enter" data-arrow="right">Ver la comunidad</button>
+        <button class="button button--gold" type="button" id="gate-enter" data-arrow="right">Ver la comunidad</button>
       </div>
 
-      <p class="gate__note" data-rise style="--i:3">Gratis. Sin spam. <span data-five>Faltan pocas horas para las 5:00 en CDMX.</span></p>
+      <p class="gate__note" data-rise style="--i:3">Gratis. Sin spam. Solo disciplina.</p>
     </div>
   </div>
 </div>
 
 <div id="site">
 
-<!-- Barra fija -->
+<!-- Barra superior -->
 <header class="bar" id="bar" aria-label="Navegación">
-  <a class="mark" href="#inicio"><svg class="vmark" aria-hidden="true"><use href="#v"/></svg>Comunidad V</a>
+  <a class="mark" href="#inicio"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>Comunidad V</a>
   <nav class="bar__links" aria-label="Secciones">
+    <a href="#la-v">La V</a>
     <a href="#serie">La serie</a>
+    <a href="#racha">Tu racha</a>
     <a href="#biblioteca">Biblioteca</a>
-    <a href="#codigo">Código V</a>
-    <a href="#preguntas">Preguntas</a>
+    <a href="#codigo">Código</a>
   </nav>
-  <a class="button button--yellow" data-wa href="#unete">WhatsApp</a>
+  <a class="button button--gold" data-wa href="#unete">WhatsApp</a>
 </header>
 
 <main>
@@ -761,156 +812,180 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
 <!-- =========================================================
      INICIO
      ========================================================= -->
-<section class="hero" id="inicio" aria-labelledby="titulo">
-  <header class="hero__top">
-    <span aria-hidden="true"></span>
-    <a class="mark" href="#inicio" aria-label="Comunidad V, inicio"><svg class="vmark" aria-hidden="true"><use href="#v"/></svg>5AM Corporation</a>
-    <a class="hero__toplink link" href="#biblioteca">Biblioteca</a>
-  </header>
+<section class="hero wrap" id="inicio" aria-labelledby="titulo">
+  <div class="hero__beams" aria-hidden="true"><span></span><span></span></div>
+  <div class="hero__cursor" aria-hidden="true"></div>
 
-  <h1 class="hero__title lines" id="titulo"><span class="line"><span data-line>Comunidad V</span></span></h1>
-  <p class="hero__lede" data-rise style="--i:1">La comunidad de la serie N250. Para quien trabaja de día y construye lo suyo a las 5AM.</p>
+  <div class="hero__emblem" aria-hidden="true">
+    <div class="hero__halo"></div>
+    <svg viewBox="-6 -6 112 112">
+      <polygon class="v-solid" points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/>
+      <g clip-path="url(#vClip)"><rect class="v-shine-rect" x="-30" y="-10" width="22" height="130" transform="skewX(-18)"/></g>
+      <polygon class="v-edge" points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/>
+    </svg>
+  </div>
 
-  <nav class="folders" aria-label="Capítulos">
-    <div class="folder" style="--i:0; --c:var(--graphite-2); --ci:var(--white); --x:3%; --xm:4%">
-      <a class="folder__in" href="#preguntas">
-        <span class="folder__tab">Preguntas</span>
-        <span class="folder__strip"><span>Gratis, tu correo, cómo salir</span></span>
-      </a>
+  <div class="hero__text">
+    <h1 class="hero__title display lines" id="titulo">
+      <span class="line"><span data-line class="steel" style="--i:0">Disciplina</span></span>
+      <span class="line"><span data-line class="gold" style="--i:1">sin público.</span></span>
+    </h1>
+    <p class="hero__lede" data-rise style="--i:2">Lo que haces cuando nadie te ve. La comunidad de la serie N250: un lugar para entrenar constancia, enfoque y palabra, un día a la vez.</p>
+    <div class="hero__actions" data-rise style="--i:3">
+      <a class="button button--gold" data-wa href="#unete" data-arrow="out" data-magnet>Unirme al grupo</a>
+      <a class="button button--ghost" href="#la-v" data-arrow="down">Qué es la V</a>
     </div>
-    <div class="folder" style="--i:1; --c:var(--graphite-3); --ci:var(--white); --x:26%; --xm:36%">
-      <a class="folder__in" href="#codigo">
-        <span class="folder__tab">Código V</span>
-        <span class="folder__strip"><span>Seis reglas del grupo</span></span>
-      </a>
+    <p class="hero__day" data-day data-rise style="--i:4"></p>
+  </div>
+
+  <a class="hero__scroll" href="#la-v" aria-label="Bajar a la siguiente sección"><span>Desliza</span><i aria-hidden="true"></i></a>
+</section>
+
+<!-- Banda en movimiento -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Disciplina</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Constancia</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Silencio</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Enfoque</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Palabra</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Disciplina</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Constancia</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Silencio</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Enfoque</span><svg class="vmark vgold"><use href="#v"/></svg>
+    <span>Palabra</span><svg class="vmark vgold"><use href="#v"/></svg>
+  </div>
+</div>
+
+<!-- =========================================================
+     LA V ES DISCIPLINA
+     ========================================================= -->
+<section class="chapter lav wrap" id="la-v" aria-labelledby="lav-titulo">
+  <div class="grid">
+    <div class="lav__head">
+      <h2 class="head steel" id="lav-titulo" data-reveal>La V es disciplina.</h2>
+      <p class="lav__statement" data-reveal style="--d:1">No es motivación. La motivación se va. La V es lo que haces cuando ya se fue.</p>
+      <p class="lav__body" data-reveal style="--d:2">Cumplir aunque estés cansado, aunque nadie te vea y aunque nadie aplauda. Eso se entrena, y aquí lo entrenamos juntos.</p>
     </div>
-    <div class="folder" style="--i:2; --c:var(--graphite-4); --ci:var(--white); --x:44%; --xm:62%">
-      <a class="folder__in" href="#biblioteca">
-        <span class="folder__tab">Biblioteca</span>
-        <span class="folder__strip"><span>Guías y plantillas en PDF</span></span>
-      </a>
+    <div class="pillars">
+      <article class="pillar glass spot" data-reveal>
+        <svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>
+        <div><h3>Constancia</h3><p>Un día a la vez. El día 100 vale más que el día 1.</p></div>
+      </article>
+      <article class="pillar glass spot" data-reveal style="--d:1">
+        <svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>
+        <div><h3>Silencio</h3><p>Entrena callado. Que hablen tus días, no tus promesas.</p></div>
+      </article>
+      <article class="pillar glass spot" data-reveal style="--d:2">
+        <svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>
+        <div><h3>Enfoque</h3><p>Decirle que no a lo que te distrae también es avanzar.</p></div>
+      </article>
+      <article class="pillar glass spot" data-reveal style="--d:3">
+        <svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>
+        <div><h3>Palabra</h3><p>Cumplirte a ti mismo es la promesa más difícil. Y la que más pesa.</p></div>
+      </article>
     </div>
-    <div class="folder folder--light" style="--i:3; --c:var(--paper); --ci:var(--black); --x:62%; --xm:4%">
-      <a class="folder__in" href="#serie">
-        <span class="folder__tab">La serie N250</span>
-        <span class="folder__strip"><span>Carta de Growth</span></span>
-      </a>
+  </div>
+</section>
+
+<!-- =========================================================
+     LA SERIE N250
+     ========================================================= -->
+<section class="chapter serie wrap" id="serie" aria-labelledby="serie-titulo">
+  <div class="grid">
+    <figure class="serie__media clip" data-reveal>
+      <img data-foto="serie" src="https://picsum.photos/id/338/1000/1300?grayscale" width="1000" height="1300" alt="Una persona con abrigo y capucha, de espaldas, mira el mar entre la neblina." loading="lazy" decoding="async">
+      <figcaption class="serie__goal"><strong class="gold">Pulsar N250</strong><span>La meta de la serie. Se gana día por día.</span></figcaption>
+    </figure>
+    <div class="serie__body">
+      <h2 class="head steel" id="serie-titulo" data-reveal>La serie N250</h2>
+      <p data-reveal style="--d:1">Una serie de días reales en TikTok, Reels y Shorts. Despertar temprano, ir a trabajar, regresar cansado y, aun así, avanzar. La meta se puede tocar: una Pulsar N250. Lo que se cuenta es el camino, día por día y sin filtros.</p>
+      <div class="serie__redes" data-redes data-reveal style="--d:2"></div>
+      <article class="letter glass spot" data-reveal style="--d:3">
+        <div class="letter__from"><span class="avatar" aria-hidden="true"><svg class="vmark vgold"><use href="#v"/></svg></span><span>Una carta de Growth</span></div>
+        <blockquote>
+          <p>Hola, soy Growth. Esta serie no va de motivación, va de disciplina. Documento mis días reales rumbo a una meta concreta, y la V es la comunidad que me acompaña en ese camino.</p>
+          <p>Aquí no hay atajos ni promesas: hay días. Si tú también estás construyendo algo en silencio, este es tu lugar.</p>
+        </blockquote>
+        <p class="letter__sign">Growth <span>Creador de la serie N250</span></p>
+      </article>
     </div>
-    <div class="folder folder--front folder--light" style="--i:4; --c:var(--yellow); --ci:var(--black); --x:80%; --xm:44%">
-      <div class="folder__in">
-        <span class="folder__tab">Comunidad</span>
-        <div class="folder__band">
-          <a class="button button--black" data-wa href="#unete" data-arrow="out" data-magnet>Unirme al grupo de WhatsApp</a>
-          <p class="five"><span data-day></span> <span data-five>Faltan pocas horas para las 5:00 en CDMX.</span></p>
+  </div>
+</section>
+
+<!-- Banda de foto -->
+<section class="band" aria-label="Frase de la comunidad">
+  <img data-foto="banda" src="https://picsum.photos/id/685/1800/1100?grayscale" width="1800" height="1100" alt="Una persona sentada sobre una roca mira un mar de nubes." loading="lazy" decoding="async">
+  <h2 class="head steel" data-reveal>Nadie te ve.<br>Hazlo igual.</h2>
+</section>
+
+<!-- =========================================================
+     CÓMO SE VIVE LA V
+     ========================================================= -->
+<section class="chapter como wrap" id="como" aria-labelledby="como-titulo">
+  <div class="grid">
+    <div class="como__aside">
+      <h2 class="head steel" id="como-titulo" data-reveal>Cómo se vive la V</h2>
+      <p data-reveal style="--d:1">Cinco pasos. La línea se enciende mientras bajas, igual que la disciplina: un tramo a la vez.</p>
+      <figure class="como__photo clip" data-reveal style="--d:2">
+        <img data-foto="como" src="https://picsum.photos/id/669/900/1125?grayscale" width="900" height="1125" alt="Una persona camina de espaldas entre la neblina." loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="timeline__rail" aria-hidden="true"><span class="timeline__fill" id="tl-fill"></span></div>
+      <ol class="steps">
+      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Regístrate</h3><p>Tu nombre y tu correo en la entrada. Con eso ya eres parte de la V.</p></li>
+      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Entra al grupo</h3><p>La comunidad de WhatsApp: avisos de cada episodio, recursos nuevos y retos.</p></li>
+      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Haz tu compromiso</h3><p>Escribe qué vas a cumplir cada día. Uno solo, claro y medible.</p></li>
+      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Marca tu día</h3><p>Cada día que cumples, lo marcas en tu racha. Sin trampas: solo tú lo sabes.</p></li>
+      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Repite</h3><p>Día 2, día 30, día 100. La disciplina no se siente: se acumula.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     TU RACHA (se guarda solo en este navegador)
+     ========================================================= -->
+<section class="chapter racha wrap" id="racha" aria-labelledby="racha-titulo">
+  <div class="grid">
+    <div class="racha__head">
+      <h2 class="head steel" id="racha-titulo" data-reveal>Tu racha</h2>
+      <p data-reveal style="--d:1">La disciplina se mide en días. Escribe tu compromiso y marca cada día que lo cumplas. Sin público, sin pretextos.</p>
+    </div>
+    <div class="racha__panel glass" data-reveal style="--d:2">
+      <div class="racha__left">
+        <form class="compromiso" id="compromiso-form">
+          <label for="compromiso">Mi compromiso diario</label>
+          <div class="compromiso__row">
+            <input class="input" id="compromiso" type="text" maxlength="80" placeholder="Ej. entrenar 30 minutos" enterkeyhint="done">
+            <button class="button button--ghost button--sm" type="submit">Guardar</button>
+          </div>
+          <p class="compromiso__show" id="compromiso-show" aria-live="polite"></p>
+        </form>
+        <div class="racha__count"><output class="gold nums" id="racha-num">0</output><span id="racha-label">días seguidos</span></div>
+        <p class="racha__stats"><span>Total: <strong class="nums" id="racha-total">0</strong> <span id="racha-total-label">días</span></span><span>Mejor racha: <strong class="nums" id="racha-best">0</strong></span></p>
+        <div class="racha__actions">
+          <button class="button button--gold" type="button" id="racha-btn" data-arrow="right" data-magnet>Cumplí hoy</button>
+          <button class="link" type="button" id="racha-undo" hidden>Desmarcar hoy</button>
         </div>
       </div>
+      <div class="racha__right">
+        <ol class="cells" id="cells" aria-label="Tus últimos 30 días"></ol>
+        <p class="cells__legend"><span>Hace 30 días</span><span>Hoy</span></p>
+        <p class="racha__note">Tu racha se guarda solo en este dispositivo. Nadie más la ve.</p>
+      </div>
     </div>
-  </nav>
-</section>
-
-<!-- =========================================================
-     V ES CINCO
-     ========================================================= -->
-<section class="chapter f-yellow intro wrap" id="cinco" aria-labelledby="v-titulo">
-  <div class="grid">
-    <div class="intro__text">
-      <h2 class="display" id="v-titulo" data-reveal>V es cinco.</h2>
-      <p class="stair" data-reveal style="--d:1">
-        <span style="--s:0">Las 5 de la mañana:</span>
-        <span style="--s:1">la hora de construir lo tuyo</span>
-        <span style="--s:2">antes de trabajar para otros.</span>
-      </p>
-    </div>
-    <div class="intro__photos">
-      <figure class="shutter" data-reveal style="--d:2">
-        <img class="ph" data-foto="intro1" src="https://picsum.photos/id/685/1200/800?grayscale" width="1200" height="800" alt="Una persona sentada sobre una roca mira un mar de nubes al amanecer." loading="lazy" decoding="async">
-      </figure>
-      <figure class="shutter" data-reveal style="--d:3">
-        <img class="ph" data-foto="intro2" src="https://picsum.photos/id/177/1200/800?grayscale" width="1200" height="800" alt="Un excursionista con mochila mira un valle con neblina." loading="lazy" decoding="async">
-      </figure>
-    </div>
-  </div>
-  <p class="intro__note" data-reveal style="--d:2">V es el número cinco en romano. Por eso es nuestro símbolo: cinco, como las 5AM, la hora en que empieza el día de quien construye algo propio.</p>
-</section>
-
-<!-- =========================================================
-     LA SERIE N250: carta de Growth
-     ========================================================= -->
-<section class="chapter f-white letter wrap" id="serie" aria-label="Carta de Growth sobre la serie N250">
-  <article class="letter__col">
-    <div class="letter__from" data-reveal>
-      <span class="avatar" aria-hidden="true"><svg class="vmark"><use href="#v"/></svg></span>
-      <span>Una carta de Growth</span>
-    </div>
-    <p data-reveal style="--d:1">Hola, soy Growth. Trabajo de tiempo completo como empleado y, junto con mi socio, construyo negocios en las horas que me quedan: temprano, antes de salir, y de noche, cuando regreso cansado.</p>
-    <p data-reveal style="--d:2">Así nació la serie N250. Cada episodio es un día real: levantarme temprano, ir al trabajo, abrir la laptop al regresar, vender, registrar ingresos y gastos, aprender algo nuevo y ponerlo a prueba.</p>
-    <p data-reveal style="--d:3">La meta visible es una Pulsar N250. La meta de fondo es <span class="marker">tener libertad de tiempo y no depender de un jefe.</span></p>
-    <p data-reveal style="--d:4">La V es la comunidad que acompaña la serie. Aquí comparto lo que me sirve —guías, plantillas y herramientas— y aquí puedes mostrar tu propio proceso. No prometo dinero fácil ni atajos: prometo enseñar el proceso como es, con errores incluidos.</p>
-    <p data-reveal style="--d:5">Si tú también construyes algo en tus horas libres, este es tu lugar.</p>
-    <p class="sign" data-reveal>Growth</p>
-    <p class="role" data-reveal>Fundador de 5AM Corporation</p>
-  </article>
-</section>
-
-<!-- =========================================================
-     LO QUE HAY DENTRO
-     ========================================================= -->
-<section class="chapter f-black features" id="dentro" aria-labelledby="dentro-titulo">
-  <div class="features__head wrap">
-    <h2 class="head" id="dentro-titulo" data-reveal>Lo que hay dentro</h2>
-    <p data-reveal style="--d:1">Cuatro cosas, todas gratis. Desliza: cada hoja se apila sobre la anterior.</p>
-  </div>
-
-  <div class="sheets">
-    <article class="sheet sheet--light" style="--k:0; --c:var(--paper); --ci:var(--black)">
-      <h3 class="sheet__name">Biblioteca de PDFs</h3>
-      <div class="sheet__text">
-        <p>Guías y plantillas para ordenar tu tiempo, tu dinero y tu primer negocio. Las abres aquí mismo y las descargas gratis.</p>
-        <a class="button button--black" href="#biblioteca" data-arrow="down">Abrir la biblioteca</a>
-      </div>
-      <figure class="sheet__media"><img class="ph drift" data-foto="hoja1" src="https://picsum.photos/id/669/1200/1200?grayscale" width="1200" height="1200" alt="Una persona con chamarra y gorro camina entre la neblina, de espaldas." loading="lazy" decoding="async"></figure>
-    </article>
-
-    <article class="sheet" style="--k:1; --c:var(--graphite); --ci:var(--white)">
-      <h3 class="sheet__name">Grupo de WhatsApp</h3>
-      <div class="sheet__text">
-        <p>Avisos de recursos nuevos y de cada episodio, retos para todos y gente que está en lo mismo que tú. Preguntas sin pena, respuestas sin rollo.</p>
-        <a class="button button--yellow" data-wa href="#unete" data-arrow="out">Unirme al grupo</a>
-      </div>
-      <figure class="sheet__media"><img class="ph drift" data-foto="hoja2" src="https://picsum.photos/id/550/1200/1200?grayscale" width="1200" height="1200" alt="Una mujer de espaldas mira una ciudad desenfocada al atardecer." loading="lazy" decoding="async"></figure>
-    </article>
-
-    <article class="sheet sheet--light" style="--k:2; --c:var(--white); --ci:var(--black)">
-      <h3 class="sheet__name">La serie N250</h3>
-      <div class="sheet__text">
-        <p>Cada día N, documentado en TikTok, Reels y Shorts: el trabajo, el cansancio, las ventas y los errores. En el grupo puedes proponer qué probar en un episodio.</p>
-        <a class="button button--black" data-tiktok href="#" target="_blank" rel="noopener" data-arrow="out">Ver la serie en TikTok</a>
-      </div>
-      <figure class="sheet__media"><img class="ph drift" data-foto="hoja3" src="https://picsum.photos/id/338/1200/1200?grayscale" width="1200" height="1200" alt="Una persona con abrigo y capucha mira el mar con neblina." loading="lazy" decoding="async"></figure>
-    </article>
-
-    <article class="sheet sheet--calc" style="--k:3; --c:var(--graphite); --ci:var(--white)">
-      <h3 class="sheet__name">Tus horas</h3>
-      <div class="sheet__text">
-        <p>Growth le dedica entre 15 y 30 horas a la semana a sus negocios, además de su trabajo. Mueve la barra y mira lo que suman tus horas en un año.</p>
-      </div>
-      <div class="calc">
-        <label class="calc__label" for="horas">Horas a la semana para lo tuyo: <output id="horas-out" class="nums" for="horas">15</output></label>
-        <input id="horas" type="range" min="1" max="40" step="1" value="15" aria-describedby="calc-total calc-sub">
-        <output class="calc__big nums" id="calc-total" for="horas">780 horas</output>
-        <p class="calc__sub" id="calc-sub">En un año. Son 98 jornadas completas de 8 horas: unas 2 h 9 min al día.</p>
-      </div>
-    </article>
   </div>
 </section>
 
 <!-- =========================================================
      BIBLIOTECA (los PDFs se configuran en RECURSOS, abajo en el script)
      ========================================================= -->
-<section class="chapter f-black library wrap" id="biblioteca" aria-labelledby="bib-titulo">
+<section class="chapter library wrap" id="biblioteca" aria-labelledby="bib-titulo">
   <div class="grid library__head">
-    <h2 class="head" id="bib-titulo" data-reveal>Biblioteca V</h2>
-    <p data-reveal style="--d:1">Guías y plantillas en PDF, hechas para aplicarse. Ábrelas aquí o descárgalas gratis.</p>
+    <h2 class="head steel" id="bib-titulo" data-reveal>Biblioteca V</h2>
+    <p data-reveal style="--d:1">Guías y plantillas en PDF para entrenar la disciplina. Ábrelas aquí o descárgalas gratis.</p>
   </div>
   <div class="grid library__body">
     <div class="library__list" id="lista"></div>
@@ -920,90 +995,56 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
 </section>
 
 <!-- =========================================================
-     CÓMO FUNCIONA
-     ========================================================= -->
-<section class="chapter f-white how wrap" id="como" aria-labelledby="como-titulo">
-  <div class="grid how__intro">
-    <h2 class="head" id="como-titulo" data-reveal>Cómo funciona</h2>
-    <p data-reveal style="--d:1">Como el amanecer: de lo oscuro a lo claro, un paso a la vez. Toca cada franja para abrirla.</p>
-  </div>
-  <div class="acc" id="pasos" data-reveal style="--d:2">
-    <div class="acc__panel is-open" style="--bg:var(--dawn-1); --ink:var(--white)">
-      <button class="acc__hit" type="button" aria-expanded="true" aria-controls="paso-1"><span class="acc__label">Regístrate</span></button>
-      <div class="acc__content" id="paso-1"><h3>Regístrate</h3><p>Dejas tu nombre y tu correo en la entrada. Con eso ya eres parte de la V y te enteras de cada recurso nuevo.</p></div>
-    </div>
-    <div class="acc__panel" style="--bg:var(--dawn-2); --ink:var(--white)">
-      <button class="acc__hit" type="button" aria-expanded="false" aria-controls="paso-2"><span class="acc__label">Entra al grupo</span></button>
-      <div class="acc__content" id="paso-2"><h3>Entra al grupo</h3><p>Únete a la comunidad de WhatsApp: avisos, retos y un lugar para preguntar sin pena.</p></div>
-    </div>
-    <div class="acc__panel" style="--bg:var(--dawn-3); --ink:var(--black)">
-      <button class="acc__hit" type="button" aria-expanded="false" aria-controls="paso-3"><span class="acc__label">Descarga y aplica</span></button>
-      <div class="acc__content" id="paso-3"><h3>Descarga y aplica</h3><p>Elige un PDF de la biblioteca y ponlo en práctica esta semana. Uno a la vez, y completo.</p></div>
-    </div>
-    <div class="acc__panel" style="--bg:var(--dawn-4); --ink:var(--black)">
-      <button class="acc__hit" type="button" aria-expanded="false" aria-controls="paso-4"><span class="acc__label">Publica tu día 1</span></button>
-      <div class="acc__content" id="paso-4"><h3>Publica tu día 1</h3><p>Graba o escribe tu primer día y compártelo en el grupo. No tiene que salir perfecto; tiene que salir.</p></div>
-    </div>
-    <div class="acc__panel" style="--bg:var(--dawn-5); --ink:var(--black)">
-      <button class="acc__hit" type="button" aria-expanded="false" aria-controls="paso-5"><span class="acc__label">Repite</span></button>
-      <div class="acc__content" id="paso-5"><h3>Repite</h3><p>Día 2, día 3, día 30. Lo que se acumula no es la motivación: es el registro de lo que hiciste.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
      CÓDIGO V
      ========================================================= -->
-<section class="chapter f-graphite code wrap" id="codigo" aria-labelledby="codigo-titulo">
-  <div class="grid code__top">
-    <h2 class="head" id="codigo-titulo" data-reveal>Código V</h2>
+<section class="chapter codigo wrap" id="codigo" aria-labelledby="codigo-titulo">
+  <div class="codigo__watermark" aria-hidden="true"><svg viewBox="0 0 100 100"><polygon points="0,0 27,0 50,64 73,0 100,0 62,100 38,100" fill="url(#vGhost)"/></svg></div>
+  <div class="grid codigo__top">
+    <h2 class="head steel" id="codigo-titulo" data-reveal>Código V</h2>
     <p data-reveal style="--d:1">Seis reglas para que el grupo siga valiendo la pena. Al entrar, aceptas cumplirlas.</p>
   </div>
   <ul class="rules">
-    <li class="rule" data-reveal><h3>Proceso real.</h3><p>Comparte lo que de verdad hiciste, también lo que salió mal. Aquí no se presume: se muestra.</p></li>
-    <li class="rule" data-reveal style="--d:1"><h3>Respeto siempre.</h3><p>Cero burlas, ataques o discriminación. Se critica la idea, nunca a la persona.</p></li>
-    <li class="rule" data-reveal><h3>Cero spam.</h3><p>Nada de cadenas, links de afiliado ni ventas sin permiso de los administradores.</p></li>
-    <li class="rule" data-reveal style="--d:1"><h3>Nada de dinero fácil.</h3><p>Nadie aquí promete ganancias, ni en negocios ni en inversiones. Si alguien lo hace, avisa.</p></li>
-    <li class="rule" data-reveal><h3>Aporta antes de pedir.</h3><p>Un dato, una herramienta, una pregunta bien hecha. Todo suma para todos.</p></li>
-    <li class="rule" data-reveal style="--d:1"><h3>Lo del grupo, se queda ahí.</h3><p>No compartas capturas ni datos de otros miembros sin su permiso.</p></li>
+    <li class="rule" data-reveal><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Proceso real.</h3><p>Comparte lo que de verdad hiciste, también lo que salió mal. Aquí no se presume: se muestra.</p></div></li>
+    <li class="rule" data-reveal style="--d:1"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Respeto siempre.</h3><p>Se critica la idea, nunca a la persona. Cero burlas y cero ataques.</p></div></li>
+    <li class="rule" data-reveal><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Cero spam.</h3><p>Nada de cadenas, links ni ventas sin permiso de los administradores.</p></div></li>
+    <li class="rule" data-reveal style="--d:1"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Sin atajos.</h3><p>Nadie vende fórmulas mágicas ni promete resultados rápidos. Si alguien lo hace, avisa.</p></div></li>
+    <li class="rule" data-reveal><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Aporta antes de pedir.</h3><p>Un dato, una herramienta, una pregunta bien hecha. Todo suma para todos.</p></div></li>
+    <li class="rule" data-reveal style="--d:1"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Lo del grupo, se queda ahí.</h3><p>No compartas capturas ni datos de otros miembros sin su permiso.</p></div></li>
   </ul>
 </section>
 
 <!-- =========================================================
-     ÚNETE
+     ENTRA AL GRUPO
      ========================================================= -->
-<section class="chapter f-yellow cta wrap" id="unete" aria-labelledby="unete-titulo">
-  <div class="tiles">
-    <figure class="tile tile--left" data-reveal><img class="ph drift" data-foto="cta" src="https://picsum.photos/id/1014/800/1000?grayscale" width="800" height="1000" alt="Una mujer de espaldas mira un mar con neblina." loading="lazy" decoding="async"></figure>
-    <div class="tile tile--main" data-reveal style="--d:1">
-      <h2 id="unete-titulo">Entra al grupo.</h2>
-      <p>Ahí avisamos de cada recurso y episodio nuevo, y ahí se hacen los retos. Gratis y sin spam.</p>
-      <div class="cta__actions">
-        <a class="button button--yellow" data-wa href="#unete" data-arrow="out" data-magnet>Unirme por WhatsApp</a>
-        <button class="link" type="button" data-share>Invitar a alguien</button>
-      </div>
-    </div>
-    <div class="tile tile--right" data-reveal style="--d:2" aria-hidden="true"><svg class="vmark"><use href="#v"/></svg></div>
+<section class="chapter cta wrap on-light" id="unete" aria-labelledby="unete-titulo">
+  <svg class="cta__v" viewBox="0 0 100 100" aria-hidden="true"><use href="#v" fill="#0A0A0B"/></svg>
+  <h2 class="head" id="unete-titulo" data-reveal>Entra al grupo.</h2>
+  <p data-reveal style="--d:1">Avisos de cada episodio, recursos nuevos y retos de disciplina. Gratis y sin spam.</p>
+  <div class="cta__actions" data-reveal style="--d:2">
+    <a class="button button--night" data-wa href="#unete" data-arrow="out" data-magnet>Unirme por WhatsApp</a>
+    <button class="link" type="button" data-share>Invitar a alguien</button>
   </div>
 </section>
 
 <!-- =========================================================
      PREGUNTAS
      ========================================================= -->
-<section class="chapter f-paper faq wrap" id="preguntas" aria-labelledby="faq-titulo">
+<section class="chapter faq wrap" id="preguntas" aria-labelledby="faq-titulo">
   <div class="grid">
     <div class="faq__head">
-      <h2 class="head" id="faq-titulo" data-reveal>Preguntas</h2>
+      <h2 class="head steel" id="faq-titulo" data-reveal>Preguntas</h2>
       <p data-reveal style="--d:1">Si la tuya no está, pregúntala en el grupo.</p>
+      <figure class="faq__photo clip" data-reveal style="--d:2"><img data-foto="preguntas" src="https://picsum.photos/id/550/1200/800?grayscale" width="1200" height="800" alt="Una persona de espaldas mira una ciudad desenfocada al anochecer." loading="lazy" decoding="async"></figure>
     </div>
     <div class="faq__list">
       <details class="q" name="faq" data-reveal><summary>¿Cuesta algo entrar?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Nada. Registrarte, entrar al grupo de WhatsApp y descargar los PDFs es gratis.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:1"><summary>¿Qué hacen con mi correo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Lo usamos solo para avisarte de recursos nuevos, episodios de la serie y novedades de la comunidad. No lo vendemos ni lo compartimos. Si quieres que lo borremos, lo pides y listo.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:2"><summary>¿Necesito tener un negocio?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>No. La V es para quien apenas empieza y para quien ya vende algo. Lo único que se pide es avanzar y compartir el proceso.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:3"><summary>¿Qué es la serie N250?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Una serie en TikTok, Reels y Shorts que muestra días reales construyendo negocios mientras se trabaja de tiempo completo. La meta visible es una moto Pulsar N250.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:4"><summary>¿Por qué la letra V?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Porque V es el cinco en números romanos. Cinco, como las 5AM: la hora en que se construye lo propio antes de trabajar para otros.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:5"><summary>¿Aquí dan consejos de inversión o trading?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>No damos asesoría financiera ni prometemos ganancias. Compartimos lo que aprendemos y cómo cuidamos el riesgo; cada quien decide qué hace con su dinero.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:6"><summary>¿Cómo me salgo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Sales del grupo de WhatsApp cuando quieras. Para borrar tu correo de la lista, pídelo en el grupo o responde a cualquier correo de la comunidad.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:1"><summary>¿Qué significa la V?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Disciplina. Hacer lo que dijiste que harías aunque estés cansado, aunque nadie te vea y aunque nadie aplauda.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:2"><summary>¿Qué es la serie N250?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Una serie de días reales en TikTok, Reels y Shorts rumbo a una meta concreta: una Pulsar N250. Cada episodio es un día; la disciplina es el hilo.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:3"><summary>¿Necesito tener una meta como la moto?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>No. Cada quien trae la suya: entrenar, estudiar, ahorrar, crear. Lo que compartimos es la forma de llegar: un día a la vez.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:4"><summary>¿Qué hacen con mi correo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Lo usamos solo para avisarte de episodios, recursos nuevos y novedades de la comunidad. No lo vendemos ni lo compartimos. Si quieres que lo borremos, lo pides y listo.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:5"><summary>¿Mi racha se guarda en algún lado?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Solo en tu navegador. Nosotros no la vemos y no se sube a ningún servidor. Si cambias de teléfono o borras los datos del navegador, empieza de cero.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:6"><summary>¿Aquí se vende algo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>No. Entrar, el grupo y los PDFs son gratis, y en el grupo no se permite vender sin permiso.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:7"><summary>¿Cómo me salgo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Sales del grupo de WhatsApp cuando quieras. Para borrar tu correo de la lista, pídelo en el grupo o responde a cualquier correo de la comunidad.</p></div></details>
     </div>
   </div>
 </section>
@@ -1013,27 +1054,23 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
 <!-- =========================================================
      CIERRE
      ========================================================= -->
-<footer class="f-black foot wrap">
+<footer class="foot wrap">
   <div class="foot__top">
-    <div class="foot__notes">
-      <a class="mark" href="#inicio"><svg class="vmark" aria-hidden="true"><use href="#v"/></svg>Comunidad V</a>
-      <p>La comunidad de la serie N250, parte de 5AM Corporation.</p>
-      <p>Hecha en la Ciudad de México, para quien construye a las 5.</p>
-    </div>
+    <a class="mark" href="#inicio"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>Comunidad V</a>
+    <p>La comunidad de la serie N250.</p>
     <a class="link" href="#inicio">Volver arriba</a>
   </div>
 
-  <a class="foot__line" data-wa href="#unete" data-reveal>Nos vemos a las 5.</a>
+  <a class="foot__line display gold" data-wa href="#unete" data-reveal>Mañana, otra vez.</a>
 
   <div class="foot__meta">
-    <nav aria-label="Enlaces">
+    <nav aria-label="Enlaces" data-redes-foot>
       <a data-wa href="#unete">WhatsApp</a>
-      <a data-tiktok href="#" target="_blank" rel="noopener">TikTok</a>
       <button type="button" data-privacy>Aviso de privacidad</button>
       <button type="button" data-share>Invitar a alguien</button>
     </nav>
-    <p class="foot__credits">Fotos: Joshua Earle, Danka &amp; Peter, Luke Pamer, Christopher Sardegna, Patryk Sobczak y Oscar Keys en Unsplash, vía Lorem Picsum.</p>
-    <p class="foot__place">CDMX · <span data-year>2026</span></p>
+    <p class="foot__credits">Fotos: Patryk Sobczak, Joshua Earle, Luke Pamer y Christopher Sardegna en Unsplash, vía Lorem Picsum.</p>
+    <p class="foot__place">Serie N250 · <span data-year>2026</span></p>
   </div>
 </footer>
 
@@ -1043,8 +1080,8 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
 <dialog class="viewer" id="visor" aria-labelledby="visor-titulo">
   <div class="viewer__bar">
     <h2 id="visor-titulo">Documento</h2>
-    <a class="button button--yellow button--sm" id="visor-descargar" href="#" download data-arrow="down">Descargar</a>
-    <button class="button button--quiet button--sm" type="button" data-close>Cerrar</button>
+    <a class="button button--gold button--sm" id="visor-descargar" href="#" download data-arrow="down">Descargar</a>
+    <button class="button button--ghost button--sm" type="button" data-close>Cerrar</button>
   </div>
   <iframe id="visor-frame" title="Vista del PDF" src="about:blank"></iframe>
 </dialog>
@@ -1053,11 +1090,11 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
 <dialog id="privacidad" aria-labelledby="priv-titulo">
   <div class="privacy__body">
     <h2 id="priv-titulo">Aviso de privacidad simplificado</h2>
-    <p>5AM Corporation, responsable de la Comunidad V, recaba tu nombre y tu correo electrónico con una sola finalidad: registrarte en la comunidad y enviarte avisos sobre recursos, episodios de la serie N250 y novedades.</p>
-    <p>No vendemos ni compartimos tus datos con terceros para fines comerciales. Para recibir y guardar tu registro usamos dos servicios: FormSubmit (envía el registro por correo) y Google Sheets (guarda la lista de miembros).</p>
+    <p>La Comunidad V, de la serie N250, recaba tu nombre y tu correo electrónico con una sola finalidad: registrarte en la comunidad y enviarte avisos sobre episodios, recursos y novedades.</p>
+    <p>No vendemos ni compartimos tus datos con terceros para fines comerciales. Para recibir y guardar tu registro usamos dos servicios: FormSubmit (envía el registro por correo) y Google Sheets (guarda la lista de miembros). Tu racha de días no sale de tu navegador.</p>
     <p>En cualquier momento puedes pedir acceder, corregir o eliminar tus datos, u oponerte a su uso (derechos ARCO), en el grupo de WhatsApp o respondiendo a cualquier correo de la comunidad.</p>
     <p>Última actualización: octubre de 2026.</p>
-    <button class="button button--black" type="button" data-close>Entendido</button>
+    <button class="button button--gold" type="button" data-close>Entendido</button>
   </div>
 </dialog>
 
@@ -1071,36 +1108,40 @@ const CONFIG = {
   // Enlace de invitación de tu comunidad de WhatsApp (WhatsApp > Comunidad > Invitar).
   whatsapp: 'https://chat.whatsapp.com/TU-ENLACE-AQUI',
 
-  // Tu perfil de TikTok de la serie (confirma tu usuario).
-  tiktok: 'https://www.tiktok.com/@5am.growth',
+  // Enlaces de la serie N250. Los que dejes vacíos no aparecen en la página.
+  redes: {
+    tiktok: '',
+    instagram: '',
+    youtube: ''
+  },
 
   // FormSubmit: cada registro te llega a este correo.
-  // Después de activarlo, cámbialo por el código que te da FormSubmit para no dejar tu correo visible.
+  // Después de activarlo, cámbialo por el código que te da FormSubmit para que tu correo no quede visible en el código.
   formsubmit: '5amcorporation.hq@gmail.com',
 
   // Google Sheets: pega aquí la URL que termina en /exec de tu Apps Script (ver la guía).
   sheets: '',
 
   // Opcional: un clip tuyo de la serie (MP4 corto, sin audio, menos de 8 MB) en la carpeta "videos".
-  // Si existe, reemplaza la foto de la hoja "La serie N250" por tu video en loop.
+  // Si existe, reemplaza la foto de "La serie N250" por tu video en loop.
   videoSerie: 'videos/serie-n250.mp4'
 };
 
 /* Biblioteca: para agregar un PDF, súbelo a la carpeta "pdfs" del repositorio y copia una línea.
-   Si el archivo todavía no existe, la página lo muestra como "Próximamente". */
+   Si el archivo todavía no existe, la página lo muestra como "Llega pronto". */
 const RECURSOS = [
-  { categoria: 'Guías', tipo: 'Guía', titulo: 'Rutina 5AM', archivo: 'pdfs/rutina-5am.pdf',
-    descripcion: 'Cómo armar una mañana de trabajo propio antes del empleo: horario, bloques y qué hacer el día que fallas.' },
-  { categoria: 'Guías', tipo: 'Guía', titulo: 'Tu primer negocio con poco', archivo: 'pdfs/primer-negocio.pdf',
-    descripcion: 'Lista para validar una idea, ponerle precio y hacer tu primera venta sin invertir de más.' },
+  { categoria: 'Guías', tipo: 'Guía', titulo: 'El código de la disciplina', archivo: 'pdfs/codigo-disciplina.pdf',
+    descripcion: 'Qué es la disciplina, cómo se entrena y qué hacer los días que no tienes ganas.' },
+  { categoria: 'Guías', tipo: 'Guía', titulo: 'Rutina de la mañana', archivo: 'pdfs/rutina-manana.pdf',
+    descripcion: 'Cómo armar una mañana que te dé ventaja: horario, bloques y qué hacer el día que fallas.' },
   { categoria: 'Guías', tipo: 'Guía', titulo: 'Graba tu proceso', archivo: 'pdfs/graba-tu-proceso.pdf',
     descripcion: 'Cómo documentar tus días en TikTok, Reels y Shorts: tomas, voz en off y constancia.' },
   { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Bitácora día N', archivo: 'pdfs/bitacora-dia-n.pdf',
-    descripcion: 'Una hoja por día: qué hiciste, cuánto avanzaste y qué sigue. La misma lógica de la serie N250.' },
-  { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Ingreso, egreso y ahorro', archivo: 'pdfs/ingreso-egreso-ahorro.pdf',
-    descripcion: 'Registra cada peso del mes y mira cuánto queda para tu meta.' },
+    descripcion: 'Una hoja por día: qué hiciste, qué te costó y qué sigue.' },
+  { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Registro de 30 días', archivo: 'pdfs/registro-30-dias.pdf',
+    descripcion: 'Marca tus hábitos un mes completo y mira tu racha también en papel.' },
   { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Meta grande, pasos chicos', archivo: 'pdfs/meta-grande.pdf',
-    descripcion: 'Divide una meta grande, como una moto, en montos semanales y marca tu avance.' }
+    descripcion: 'Divide una meta grande, como una moto, en pasos semanales y marca tu avance.' }
 ];
 
 /* =========================================================
@@ -1119,8 +1160,13 @@ const RECURSOS = [
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  /* ---------- botones animados ----------
-     Convierte <a class="button">Texto</a> en: texto que rueda + flecha que cambia. */
+  /* ---------- fechas (hora local de quien visita) ---------- */
+  const dos = (n) => String(n).padStart(2, '0');
+  const fechaLocal = (d = new Date()) => `${d.getFullYear()}-${dos(d.getMonth() + 1)}-${dos(d.getDate())}`;
+  const sumarDias = (f, n) => { const [y, m, d] = f.split('-').map(Number); return fechaLocal(new Date(y, m - 1, d + n)); };
+  const diasEntre = (a, b) => { const [y1, m1, d1] = a.split('-').map(Number); const [y2, m2, d2] = b.split('-').map(Number); return Math.round((new Date(y2, m2 - 1, d2) - new Date(y1, m1 - 1, d1)) / 86400000); };
+
+  /* ---------- botones animados ---------- */
   const FLECHAS = {
     right: '<path d="M3 8h10M9 4l4 4-4 4"/>',
     down: '<path d="M8 3v10M4 9l4 4 4-4"/>',
@@ -1137,7 +1183,6 @@ const RECURSOS = [
       btn.insertAdjacentHTML('beforeend', `<span class="btn__dot" aria-hidden="true">${svg}${svg}</span>`);
       btn.classList.add('has-arrow');
     }
-    // Efecto magnético: solo con mouse y si la persona no pidió reducir el movimiento.
     if (btn.hasAttribute('data-magnet') && finePointer && !reduceMotion) {
       btn.addEventListener('pointermove', (e) => {
         const r = btn.getBoundingClientRect();
@@ -1149,9 +1194,20 @@ const RECURSOS = [
       btn.addEventListener('pointerleave', () => { btn.style.setProperty('--mx', '0px'); btn.style.setProperty('--my', '0px'); });
     }
   }
-  function setLabel(btn, texto) {
-    $$('.btn__roll > span', btn).forEach((s) => { s.textContent = texto; });
+  function setLabel(btn, texto) { $$('.btn__roll > span', btn).forEach((s) => { s.textContent = texto; }); }
+
+  /* ---------- enlaces de redes (solo los que configuraste) ---------- */
+  const REDES = [['tiktok', 'TikTok'], ['instagram', 'Instagram'], ['youtube', 'YouTube']];
+  const redesActivas = REDES.filter(([k]) => CONFIG.redes && CONFIG.redes[k]);
+  const cajaRedes = $('[data-redes]');
+  if (redesActivas.length) {
+    cajaRedes.innerHTML = redesActivas.map(([k, n]) => `<a class="button button--ghost" href="${esc(CONFIG.redes[k])}" target="_blank" rel="noopener" data-arrow="out">Ver en ${n}</a>`).join('');
+    const pie = $('[data-redes-foot]');
+    redesActivas.slice().reverse().forEach(([k, n]) => pie.insertAdjacentHTML('afterbegin', `<a href="${esc(CONFIG.redes[k])}" target="_blank" rel="noopener">${n}</a>`));
+  } else {
+    cajaRedes.remove();
   }
+
   $$('.button').forEach(armar);
 
   /* ---------- aviso flotante ---------- */
@@ -1164,67 +1220,27 @@ const RECURSOS = [
     toastTimer = setTimeout(() => t.classList.remove('is-on'), 3200);
   }
 
-  /* ---------- hora de la Ciudad de México ---------- */
-  function cdmx() {
-    const parts = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'America/Mexico_City', hourCycle: 'h23',
-      year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'
-    }).formatToParts(new Date());
-    const o = {};
-    parts.forEach((p) => { o[p.type] = p.value; });
-    return { fecha: `${o.year}-${o.month}-${o.day}`, h: +o.hour % 24, m: +o.minute, s: +o.second };
-  }
-  function updateFive() {
-    const t = cdmx();
-    let text;
-    if (t.h === 5) {
-      text = 'Son las 5 en CDMX. Hora de construir.';
-    } else {
-      let diff = 5 * 3600 - (t.h * 3600 + t.m * 60 + t.s);
-      if (diff <= 0) diff += 86400;
-      const h = Math.floor(diff / 3600);
-      const m = Math.floor((diff % 3600) / 60);
-      const partes = h > 0 ? `${h} h ${m} min` : `${m} min`;
-      text = `Faltan ${partes} para las 5:00 en CDMX.`;
-    }
-    $$('[data-five]').forEach((el) => { el.textContent = text; });
-  }
-  updateFive();
-  setInterval(updateFive, 30000);
-
   /* ---------- tu día N en la V ---------- */
-  function dayNumber(desde) {
-    const a = Date.parse(desde + 'T00:00:00Z');
-    const b = Date.parse(cdmx().fecha + 'T00:00:00Z');
-    if (isNaN(a) || isNaN(b)) return 1;
-    return Math.max(1, Math.round((b - a) / 86400000) + 1);
-  }
   function paintDay() {
     const m = store.get('v_miembro');
-    if (!m) return;
-    const n = dayNumber(m.desde);
-    $$('[data-day]').forEach((el) => { el.textContent = `Tu día ${fmt.format(n)} en la V.`; });
+    if (!m || !m.desde) return;
+    const n = Math.max(1, diasEntre(m.desde, fechaLocal()) + 1);
+    $$('[data-day]').forEach((el) => { el.innerHTML = `Hoy es tu <strong>día ${fmt.format(n)}</strong> en la V.`; });
   }
   paintDay();
 
-  /* ---------- enlaces de WhatsApp, TikTok y año ---------- */
+  /* ---------- WhatsApp, invitar y año ---------- */
   const waReady = CONFIG.whatsapp && !/TU-ENLACE/i.test(CONFIG.whatsapp);
   $$('[data-wa]').forEach((a) => {
     if (waReady) { a.href = CONFIG.whatsapp; a.target = '_blank'; a.rel = 'noopener'; }
     else a.addEventListener('click', (e) => { e.preventDefault(); toast('El enlace del grupo se activa muy pronto.'); });
   });
-  $$('[data-tiktok]').forEach((a) => { if (CONFIG.tiktok) a.href = CONFIG.tiktok; });
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
-
-  /* ---------- invitar a alguien ---------- */
   $$('[data-share]').forEach((b) => b.addEventListener('click', async () => {
     const url = location.href.split('#')[0].split('?')[0];
     const text = 'Me uní a la Comunidad V, la comunidad de la serie N250. Entra gratis:';
-    if (navigator.share) {
-      try { await navigator.share({ title: 'Comunidad V', text, url }); } catch (e) {}
-    } else {
-      window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
-    }
+    if (navigator.share) { try { await navigator.share({ title: 'Comunidad V', text, url }); } catch (e) {} }
+    else window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
   }));
 
   /* ---------- ventanas ---------- */
@@ -1270,9 +1286,7 @@ const RECURSOS = [
   $$('.input', form).forEach((i) => i.addEventListener('input', () => { i.removeAttribute('aria-invalid'); msg.textContent = ''; msg.classList.remove('is-error'); }));
   $('#g-acepto').addEventListener('change', () => { msg.textContent = ''; msg.classList.remove('is-error'); });
 
-  function withTimeout(promise, ms) {
-    return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej(new Error('tiempo agotado')), ms))]);
-  }
+  const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('tiempo agotado')), ms))]);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -1291,10 +1305,10 @@ const RECURSOS = [
     msg.textContent = '';
     msg.classList.remove('is-error');
 
-    const t = cdmx();
+    const ahora = new Date();
     const registro = {
       nombre, correo,
-      fecha: `${t.fecha} ${String(t.h).padStart(2, '0')}:${String(t.m).padStart(2, '0')} (CDMX)`,
+      fecha: `${fechaLocal(ahora)} ${dos(ahora.getHours())}:${dos(ahora.getMinutes())}`,
       origen: location.href.split('#')[0]
     };
 
@@ -1306,19 +1320,14 @@ const RECURSOS = [
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          name: registro.nombre,
-          email: registro.correo,
-          fecha: registro.fecha,
-          origen: registro.origen,
-          _subject: 'Nuevo miembro en la Comunidad V: ' + registro.nombre,
-          _template: 'table'
+          name: registro.nombre, email: registro.correo, fecha: registro.fecha, origen: registro.origen,
+          _subject: 'Nuevo miembro en la Comunidad V: ' + registro.nombre, _template: 'table'
         })
       }).then((r) => r.json()), 9000));
     }
     if (!esBot && CONFIG.sheets) {
       envios.push(withTimeout(fetch(CONFIG.sheets, {
-        method: 'POST',
-        mode: 'no-cors',
+        method: 'POST', mode: 'no-cors',
         body: new URLSearchParams({ nombre: registro.nombre, correo: registro.correo, fecha: registro.fecha, origen: registro.origen })
       }), 9000));
     }
@@ -1328,9 +1337,8 @@ const RECURSOS = [
     resultados.forEach((r) => { if (r.status === 'rejected') console.warn('[Comunidad V] Un envío falló:', r.reason); });
 
     // En este navegador solo guardamos tu nombre y la fecha de entrada (para contar tu día N), nunca tu correo.
-    store.set('v_miembro', { nombre: registro.nombre, desde: t.fecha });
+    store.set('v_miembro', { nombre: registro.nombre, desde: fechaLocal(ahora) });
 
-    // La barra de progreso termina y el botón confirma antes de cambiar de vista.
     btn.classList.add('is-done');
     setLabel(btn, 'Listo');
     await new Promise((res) => setTimeout(res, reduceMotion ? 0 : 450));
@@ -1343,41 +1351,168 @@ const RECURSOS = [
   $('#gate-enter').addEventListener('click', leaveGate);
 
   /* =========================================================
-     BARRA FIJA
+     BARRA: vidrio al hacer scroll y sección activa
      ========================================================= */
   const bar = $('#bar');
+  const onScrollBar = () => bar.classList.toggle('is-scrolled', scrollY > 24);
+  addEventListener('scroll', onScrollBar, { passive: true });
+  onScrollBar();
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(([e]) => bar.classList.toggle('is-on', !e.isIntersecting), { threshold: 0, rootMargin: '-60px 0px 0px 0px' })
-      .observe($('#inicio'));
-  } else bar.classList.add('is-on');
+    const links = $$('.bar__links a');
+    const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        links.forEach((a) => a.classList.remove('is-active'));
+        const a = map.get(en.target.id);
+        if (a) a.classList.add('is-active');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    $$('main section[id]').forEach((s) => io.observe(s));
+  }
 
   /* =========================================================
-     CALCULADORA DE HORAS
+     LUZ QUE SIGUE AL CURSOR (inicio) Y TARJETAS QUE SE ILUMINAN
      ========================================================= */
-  const range = $('#horas');
-  function calc() {
-    const h = +range.value;
-    const anual = h * 52;
-    const jornadas = Math.round(anual / 8);
-    const diario = h / 7;
-    let hh = Math.floor(diario);
-    let mm = Math.round((diario - hh) * 60);
-    if (mm === 60) { hh += 1; mm = 0; }
-    const dia = hh > 0 ? `${hh} h${mm ? ' ' + mm + ' min' : ''}` : `${mm} min`;
-    $('#horas-out').textContent = h;
-    $('#calc-total').textContent = `${fmt.format(anual)} horas`;
-    $('#calc-sub').textContent = `En un año. Son ${fmt.format(jornadas)} jornadas completas de 8 horas: unas ${dia} al día.`;
+  const hero = $('#inicio');
+  const luz = $('.hero__cursor');
+  if (finePointer && !reduceMotion) {
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    const paso = () => {
+      cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
+      luz.style.transform = `translate3d(${(cx - 350).toFixed(1)}px, ${(cy - 350).toFixed(1)}px, 0)`;
+      raf = (Math.abs(tx - cx) > 0.4 || Math.abs(ty - cy) > 0.4) ? requestAnimationFrame(paso) : 0;
+    };
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      tx = e.clientX - r.left; ty = e.clientY - r.top;
+      if (!hero.classList.contains('is-lit')) { cx = tx; cy = ty; hero.classList.add('is-lit'); }
+      if (!raf) raf = requestAnimationFrame(paso);
+    });
+    hero.addEventListener('pointerleave', () => hero.classList.remove('is-lit'));
   }
-  range.addEventListener('input', calc);
-  calc();
+  function iluminar(el) {
+    if (!finePointer) return;
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--sx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--sy', `${e.clientY - r.top}px`);
+    });
+  }
+  $$('.spot').forEach(iluminar);
+
+  /* =========================================================
+     LÍNEA DE LUZ (cómo se vive la V)
+     ========================================================= */
+  const tl = $('#timeline');
+  const tlFill = $('#tl-fill');
+  const pasos = $$('.step', tl);
+  let tlRaf = 0;
+  function pintarLinea() {
+    tlRaf = 0;
+    const r = tl.getBoundingClientRect();
+    const centro = innerHeight * 0.6;
+    const p = Math.min(1, Math.max(0, (centro - r.top) / r.height));
+    tlFill.style.transform = `scaleY(${p.toFixed(3)})`;
+    pasos.forEach((s) => {
+      const n = s.querySelector('.step__node').getBoundingClientRect();
+      s.classList.toggle('is-lit', n.top + n.height / 2 < centro);
+    });
+  }
+  addEventListener('scroll', () => { if (!tlRaf) tlRaf = requestAnimationFrame(pintarLinea); }, { passive: true });
+  addEventListener('resize', pintarLinea);
+  pintarLinea();
+
+  /* =========================================================
+     TU RACHA (localStorage, solo en este navegador)
+     ========================================================= */
+  const racha = Object.assign({ compromiso: '', dias: [] }, store.get('v_racha') || {});
+  const cells = $('#cells');
+  const rBtn = $('#racha-btn');
+  const rUndo = $('#racha-undo');
+  const compInput = $('#compromiso');
+  const compShow = $('#compromiso-show');
+  const fechaCorta = new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'short' });
+
+  function calcular() {
+    const set = new Set(racha.dias);
+    const hoy = fechaLocal();
+    let actual = 0;
+    let dia = set.has(hoy) ? hoy : sumarDias(hoy, -1);
+    while (set.has(dia)) { actual++; dia = sumarDias(dia, -1); }
+    const orden = [...set].sort();
+    let mejor = 0, corrida = 0, previo = null;
+    orden.forEach((f) => { corrida = (previo && diasEntre(previo, f) === 1) ? corrida + 1 : 1; mejor = Math.max(mejor, corrida); previo = f; });
+    return { set, hoy, actual, mejor, total: set.size };
+  }
+  function contar(el, hasta) {
+    const desde = +el.dataset.v || 0;
+    el.dataset.v = hasta;
+    if (reduceMotion || desde === hasta) { el.textContent = fmt.format(hasta); return; }
+    const t0 = performance.now();
+    const dur = 700;
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / dur);
+      const e = 1 - Math.pow(1 - k, 3);
+      el.textContent = fmt.format(Math.round(desde + (hasta - desde) * e));
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  function pintarRacha(nuevo) {
+    const r = calcular();
+    cells.innerHTML = '';
+    for (let i = 29; i >= 0; i--) {
+      const f = sumarDias(r.hoy, -i);
+      const [y, m, d] = f.split('-').map(Number);
+      const li = document.createElement('li');
+      li.className = 'cell' + (r.set.has(f) ? ' is-on' : '') + (i === 0 ? ' is-today' : '') + (nuevo && f === nuevo ? ' pop' : '');
+      li.textContent = d;
+      li.setAttribute('aria-label', `${fechaCorta.format(new Date(y, m - 1, d))}: ${r.set.has(f) ? 'cumplido' : 'sin marcar'}`);
+      cells.appendChild(li);
+    }
+    contar($('#racha-num'), r.actual);
+    $('#racha-label').textContent = r.actual === 1 ? 'día seguido' : 'días seguidos';
+    $('#racha-total').textContent = fmt.format(r.total);
+    $('#racha-total-label').textContent = r.total === 1 ? 'día' : 'días';
+    $('#racha-best').textContent = fmt.format(r.mejor);
+    const hecho = r.set.has(r.hoy);
+    setLabel(rBtn, hecho ? 'Hoy ya cumpliste' : 'Cumplí hoy');
+    rBtn.disabled = hecho;
+    rBtn.style.opacity = hecho ? '0.65' : '';
+    rUndo.hidden = !hecho;
+    compShow.innerHTML = racha.compromiso ? `Tu compromiso: <strong>${esc(racha.compromiso)}</strong>` : '';
+    if (racha.compromiso && !compInput.value) compInput.value = racha.compromiso;
+  }
+  rBtn.addEventListener('click', () => {
+    const hoy = fechaLocal();
+    if (!racha.dias.includes(hoy)) racha.dias.push(hoy);
+    store.set('v_racha', racha);
+    pintarRacha(hoy);
+    toast(calcular().actual > 1 ? `${calcular().actual} días seguidos. Mañana, otra vez.` : 'Día marcado. Mañana, otra vez.');
+  });
+  rUndo.addEventListener('click', () => {
+    const hoy = fechaLocal();
+    racha.dias = racha.dias.filter((f) => f !== hoy);
+    store.set('v_racha', racha);
+    pintarRacha();
+  });
+  $('#compromiso-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    racha.compromiso = compInput.value.trim().slice(0, 80);
+    store.set('v_racha', racha);
+    pintarRacha();
+    if (racha.compromiso) toast('Compromiso guardado.');
+  });
+  pintarRacha();
 
   /* =========================================================
      BIBLIOTECA
      ========================================================= */
   const TONOS = [
-    { c: 'var(--yellow)', ci: 'var(--black)', vc: 'var(--black)' },
-    { c: 'var(--white)', ci: 'var(--black)', vc: 'var(--yellow)' },
-    { c: 'var(--graphite-2)', ci: 'var(--white)', vc: 'var(--yellow)' }
+    { c: 'linear-gradient(160deg, #FFE766 0%, #FFD60A 45%, #FF9F0A 100%)', ci: 'var(--night)', vc: 'var(--night)' },
+    { c: 'linear-gradient(160deg, #2E2E33 0%, #111113 100%)', ci: 'var(--white)', vc: 'var(--yellow)' },
+    { c: 'linear-gradient(160deg, #FFFFFF 0%, #D8D8DE 100%)', ci: 'var(--night)', vc: 'var(--gold)' }
   ];
   const list = $('#lista');
   const frame = $('#portadas');
@@ -1402,7 +1537,7 @@ const RECURSOS = [
       li.setAttribute('data-reveal', '');
       li.style.cssText = vars + `;--d:${i % 3}`;
       li.innerHTML = `
-        <div class="res__cover" aria-hidden="true"><span>${esc(r.tipo || 'PDF')} en PDF</span><strong>${esc(r.titulo)}</strong></div>
+        <div class="res__cover" aria-hidden="true"><strong>${esc(r.titulo)}</strong><span>${esc(r.tipo || 'PDF')} en PDF</span></div>
         <div class="res__row">
           <div class="res__main">
             <h4 class="res__name">${esc(r.titulo)}</h4>
@@ -1410,8 +1545,8 @@ const RECURSOS = [
           </div>
           <div class="res__side">
             <div class="res__actions">
-              <button class="button button--white button--sm" type="button" data-ver aria-label="Ver ${esc(r.titulo)}">Ver</button>
-              <a class="button button--yellow button--sm" href="${esc(r.archivo)}" download data-arrow="down" aria-label="Descargar ${esc(r.titulo)}">Descargar</a>
+              <button class="button button--ghost button--sm" type="button" data-ver aria-label="Ver ${esc(r.titulo)}">Ver</button>
+              <a class="button button--gold button--sm" href="${esc(r.archivo)}" download data-arrow="down" aria-label="Descargar ${esc(r.titulo)}">Descargar</a>
             </div>
             <p class="res__soon" hidden>Llega pronto. Te avisamos en el grupo.</p>
           </div>
@@ -1426,14 +1561,12 @@ const RECURSOS = [
       cover.className = 'cover' + (i === 0 ? ' is-on' : '');
       cover.style.cssText = vars;
       cover.dataset.vc = tono.vc;
-      cover.innerHTML = `<span class="cover__kind">${esc(r.tipo || 'PDF')}</span><strong class="cover__title">${esc(r.titulo)}</strong><span class="cover__foot"><span>Comunidad V</span><span>PDF</span></span>`;
+      cover.innerHTML = `<span class="cover__kind">${esc(r.tipo || 'PDF')}</span><strong class="cover__title">${esc(r.titulo)}</strong><span class="cover__foot"><span>Comunidad V · Serie N250</span><span>PDF</span></span>`;
       frame.appendChild(cover);
       if (i === 0) frame.style.setProperty('--vc', tono.vc);
     });
     list.appendChild(ul);
   });
-
-  // Una sola V encima de las portadas: cambia de color con la portada activa.
   frame.insertAdjacentHTML('beforeend', '<svg class="vmark frame__v" aria-hidden="true"><use href="#v"/></svg>');
   function showCover(i) {
     $$('.cover', frame).forEach((c, k) => {
@@ -1441,28 +1574,24 @@ const RECURSOS = [
       if (k === i) frame.style.setProperty('--vc', c.dataset.vc);
     });
   }
-
   function openPdf(r) {
-    const touch = matchMedia('(pointer: coarse)').matches || innerWidth < 800;
+    const touch = matchMedia('(pointer: coarse)').matches || innerWidth < 860;
     if (touch) { window.open(r.archivo, '_blank', 'noopener'); return; }
     $('#visor-titulo').textContent = r.titulo;
     $('#visor-descargar').href = r.archivo;
     $('#visor-frame').src = r.archivo + '#view=FitH';
     viewer.showModal();
   }
-
-  // Marca como "Próximamente" los PDFs que todavía no subiste.
+  // Marca como "Llega pronto" los PDFs que todavía no subiste.
   if (location.protocol !== 'file:') {
     RECURSOS.forEach((r, i) => {
-      fetch(r.archivo, { method: 'HEAD', cache: 'no-store' })
-        .then((res) => {
-          if (res.ok) return;
-          const li = list.querySelector(`.res[data-i="${i}"]`);
-          if (!li) return;
-          li.classList.add('is-soon');
-          li.querySelector('.res__soon').hidden = false;
-        })
-        .catch(() => {});
+      fetch(r.archivo, { method: 'HEAD', cache: 'no-store' }).then((res) => {
+        if (res.ok) return;
+        const li = list.querySelector(`.res[data-i="${i}"]`);
+        if (!li) return;
+        li.classList.add('is-soon');
+        li.querySelector('.res__soon').hidden = false;
+      }).catch(() => {});
     });
   }
 
@@ -1472,10 +1601,9 @@ const RECURSOS = [
   if (CONFIG.videoSerie && location.protocol !== 'file:') {
     fetch(CONFIG.videoSerie, { method: 'HEAD', cache: 'no-store' }).then((res) => {
       if (!res.ok) return;
-      const img = $('[data-foto="hoja3"]');
+      const img = $('[data-foto="serie"]');
       if (!img) return;
       const v = document.createElement('video');
-      v.className = img.className;
       v.muted = true; v.loop = true; v.playsInline = true;
       v.setAttribute('playsinline', '');
       v.preload = 'metadata';
@@ -1483,22 +1611,10 @@ const RECURSOS = [
       v.src = CONFIG.videoSerie;
       v.setAttribute('aria-label', 'Fragmento de un episodio de la serie N250');
       img.replaceWith(v);
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      if (reduceMotion || !('IntersectionObserver' in window)) return;
       new IntersectionObserver(([en]) => { if (en.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: 0.25 }).observe(v);
     }).catch(() => {});
   }
-
-  /* =========================================================
-     CÓMO FUNCIONA: acordeón
-     ========================================================= */
-  const panels = $$('#pasos .acc__panel');
-  panels.forEach((p) => p.querySelector('.acc__hit').addEventListener('click', () => {
-    panels.forEach((x) => {
-      const on = x === p;
-      x.classList.toggle('is-open', on);
-      x.querySelector('.acc__hit').setAttribute('aria-expanded', String(on));
-    });
-  }));
 
   /* =========================================================
      APARICIÓN AL HACER SCROLL (una sola vez)
@@ -1514,6 +1630,9 @@ const RECURSOS = [
       targets.forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('is-in'); });
     }, 2500));
   }
+
+  /* Si la persona pidió menos movimiento, se detiene el brillo de la V. */
+  if (reduceMotion) $$('svg').forEach((s) => s.pauseAnimations && s.pauseAnimations());
 })();
 </script>
 </body>
