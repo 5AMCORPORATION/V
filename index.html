@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Comunidad V · Serie N250 · 5AM Corporation</title>
+<meta name="description" content="La comunidad de la serie N250: gente que trabaja de día y construye lo suyo a las 5AM. Guías y plantillas en PDF gratis, grupo de WhatsApp y el Código V.">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Comunidad V · Serie N250">
+<meta property="og:description" content="Para quien trabaja de día y construye lo suyo a las 5AM. Entra gratis: biblioteca de PDFs, grupo de WhatsApp y el Código V.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A0A0A'/%3E%3Cpolygon points='20,30.8 32.6,30.8 50,68 67.4,20 80,20 56.6,80 43.4,80' fill='%23FFD60A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<script>
+  // Antes de pintar: marca que hay JavaScript y si esta persona ya se registró (para no mostrarle la entrada otra vez).
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    try {
+      if (/[?&]reset\b/.test(location.search)) localStorage.removeItem('v_miembro');
+      if (localStorage.getItem('v_miembro')) d.classList.add('is-member', 'entered');
+      else d.classList.add('gate-open');
+    } catch (e) { d.classList.add('gate-open'); }
+  })();
+</script>
+<style>
+/* =========================================================
+   COMUNIDAD V: tokens
+   Negro, blanco y amarillo. Una sola familia de letra: Archivo.
+   Títulos: Archivo comprimida, peso 800, en mayúsculas (energía de moto y de camiseta deportiva).
+   Texto: Archivo a ancho normal (limpia y fácil de leer, al estilo Apple).
+
+   Cómo se usa el color (60 / 30 / 10):
+   - Negro (60%): las 5AM. Es el fondo dominante y hace que todo se vea premium.
+   - Blanco (30%): el día. Donde se lee con calma: la carta, cómo funciona, las preguntas.
+   - Amarillo (10%): la luz y la acción. Solo en la V, en los botones principales
+     y en dos momentos completos: "V es cinco" (el amanecer) y "Entra al grupo" (la decisión).
+   ========================================================= */
+:root {
+  --black: #0A0A0A;
+  --graphite: #1C1C1E;
+  --graphite-2: #2C2C2E;
+  --graphite-3: #3A3A3C;
+  --graphite-4: #636366;
+  --yellow: #FFD60A;
+  --yellow-hover: #FFE14D;
+  --white: #FFFFFF;
+  --paper: #F5F5F7;
+  --paper-2: #E8E8ED;
+  --soft-on-dark: #A1A1A6;
+  --soft-on-light: #6E6E73;
+  --error: #FF8A80;
+
+  /* el amanecer: de las 5AM a la luz del día */
+  --dawn-1: #141204;
+  --dawn-2: #3D3505;
+  --dawn-3: #B39700;
+  --dawn-4: #FFD60A;
+  --dawn-5: #FFF3B0;
+
+  --font: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --step-small: clamp(0.875rem, 0.84rem + 0.12vw, 0.9375rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.375rem, 1.05rem + 1.05vw, 2.25rem);
+  --step-head: clamp(3rem, 1rem + 7vw, 8rem);
+  --step-display: clamp(4.5rem, 1rem + 14vw, 14rem);
+
+  --margin: clamp(1rem, 2.2vw, 2rem);
+  --gutter: clamp(1rem, 2vw, 2rem);
+  --radius: 24px;
+  --bar: 56px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --t-reveal: 800ms;
+
+  interpolate-size: allow-keywords;
+}
+
+/* ---------- base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  background: var(--black);
+  overflow-x: clip;
+}
+html.gate-open { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: var(--step-body);
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+h1, h2, h3, h4, p, figure, ul, ol, blockquote { margin: 0; }
+ul[class], ol[class] { padding: 0; list-style: none; }
+img, svg, video, iframe { display: block; max-width: 100%; }
+img { height: auto; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+input, textarea, select { font-size: max(16px, 1rem); }
+button, a, summary, [role="button"] { touch-action: manipulation; }
+button, .button, .folder__in, summary, .acc__hit { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
+p { text-wrap: pretty; }
+:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+.f-yellow :focus-visible, .f-white :focus-visible, .f-paper :focus-visible, .folder--light :focus-visible, .sheet--light :focus-visible { outline-color: var(--black); }
+.tile--main :focus-visible, details[open] :focus-visible { outline-color: var(--yellow); }
+::selection { background: var(--yellow); color: var(--black); }
+:target { scroll-margin-top: calc(var(--bar) + 16px); }
+.sr-only { position: absolute; width: 1px; height: 1px; /* taste-skill-ignore: lector de pantalla */ overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.nums { font-variant-numeric: tabular-nums; }
+
+/* ---------- type ---------- */
+.display { font-size: var(--step-display); }
+.head { font-size: var(--step-head); }
+/* títulos grandes: Archivo comprimida 800 en mayúsculas */
+.display, .head, .hero__title, .gate__title, .foot__line, .calc__big, .tile--main h2 {
+  font-weight: 800; font-stretch: 62%; text-transform: uppercase;
+  line-height: 0.86; letter-spacing: -0.01em;
+}
+.lead { font-size: var(--step-lead); line-height: 1.12; letter-spacing: -0.02em; }
+.small { font-size: var(--step-small); line-height: 1.45; letter-spacing: 0; }
+
+/* ---------- layout ---------- */
+.wrap {
+  padding-left: max(var(--margin), env(safe-area-inset-left));
+  padding-right: max(var(--margin), env(safe-area-inset-right));
+}
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+.chapter { position: relative; min-height: 90svh; padding-block: clamp(72px, 10vw, 160px); }
+.f-black { background: var(--black); color: var(--white); }
+.f-yellow { background: var(--yellow); color: var(--black); }
+.f-white { background: var(--white); color: var(--black); }
+.f-graphite { background: var(--graphite); color: var(--white); }
+.f-paper { background: var(--paper); color: var(--black); }
+
+/* ---------- botones ----------
+   Anatomía (el script la arma sola a partir de un botón normal):
+   <a class="button button--yellow" data-arrow="out" data-magnet>Texto</a>
+   - el texto rueda hacia arriba al pasar el cursor
+   - un barrido de color cruza el botón de izquierda a derecha
+   - la flecha sale y entra otra (data-arrow: right, down u out)
+   - data-magnet: el botón sigue un poco al cursor (solo con mouse)
+   - al presionar se hunde un poco; en el registro muestra una barra de progreso */
+.button {
+  --bg: var(--yellow); --ink: var(--black); --sweep: var(--white);
+  --dot: var(--black); --dot-ink: var(--yellow);
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+  min-height: 56px; padding: 0 1.75rem;
+  border-radius: 999px;
+  background: var(--bg); color: var(--ink);
+  font-size: var(--step-body); font-weight: 600; line-height: 1;
+  text-decoration: none; white-space: nowrap;
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(var(--press, 1));
+  transition: transform 340ms var(--ease-out), color 260ms ease, opacity var(--t-hover) ease;
+}
+.button.has-arrow { padding-right: 8px; }
+.button:active { --press: 0.96; transition-duration: 110ms, 260ms, 180ms; }
+.button[disabled] { cursor: progress; }
+/* barrido de color */
+.button::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  background: var(--sweep);
+  transform: translateX(-101%);
+  transition: transform 560ms var(--ease-out);
+}
+/* barra de progreso (registro) */
+.button::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(0, 0, 0, 0.14);
+  transform: scaleX(0); transform-origin: left;
+}
+.button.is-loading::after { transform: scaleX(0.85); transition: transform 2400ms var(--ease-out); }
+.button.is-done::after { transform: scaleX(1); transition: transform 300ms var(--ease-out); }
+/* texto que rueda */
+.btn__roll { position: relative; display: block; height: 1.25em; line-height: 1.25; overflow: hidden; }
+.btn__roll > span { display: block; transition: transform 480ms var(--ease-out); }
+/* círculo con flecha */
+.btn__dot {
+  position: relative; display: grid; place-items: center; flex: none;
+  width: 40px; height: 40px; border-radius: 50%; overflow: hidden;
+  background: var(--dot); color: var(--dot-ink);
+  transition: transform 420ms var(--ease-out), background-color 300ms ease, color 300ms ease;
+}
+.btn__dot svg { grid-area: 1 / 1; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 480ms var(--ease-out); }
+.btn__dot svg:last-child { transform: translateX(-190%); }
+.button[data-arrow="down"] .btn__dot svg:last-child { transform: translateY(-190%); }
+.button[data-arrow="out"] .btn__dot svg:last-child { transform: translate(-190%, 190%); }
+.button:active .btn__dot { transform: scale(0.88); }
+/* variantes: el amarillo es la acción; en fondos claros el botón es negro y se enciende en amarillo */
+.button--yellow { --bg: var(--yellow); --ink: var(--black); --sweep: var(--white); --dot: var(--black); --dot-ink: var(--yellow); }
+.button--black { --bg: var(--black); --ink: var(--white); --sweep: var(--yellow); --ink-h: var(--black); --dot: var(--yellow); --dot-ink: var(--black); --dot-h: var(--black); --dot-ink-h: var(--yellow); }
+.f-yellow .button--black, .folder--front .button--black { --sweep: var(--white); }
+.button--white { --bg: var(--white); --ink: var(--black); --sweep: var(--yellow); }
+.button--quiet { --bg: var(--graphite-3); --ink: var(--white); --sweep: #48484A; }
+.button--sm { min-height: 42px; padding: 0 1.15rem; gap: 8px; font-size: var(--step-small); }
+.button--sm.has-arrow { padding-right: 0.9rem; }
+.button--sm .btn__dot { width: 16px; height: 16px; background: transparent; color: currentColor; }
+.button--sm .btn__dot svg { width: 14px; height: 14px; }
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.22em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: text-decoration-color var(--t-hover) ease, text-underline-offset var(--t-hover) ease, opacity var(--t-hover) ease;
+}
+.link:active { opacity: 0.7; }
+@media (hover: hover) and (pointer: fine) {
+  /* cuando el barrido ya cubrió el botón, el fondo toma su color (evita un borde fino del color anterior) */
+  .button:hover { color: var(--ink-h, var(--ink)); background-color: var(--sweep); transition: transform 340ms var(--ease-out), color 260ms ease, opacity 180ms ease, background-color 100ms ease 360ms; }
+  .button:hover::before { transform: none; }
+  .button:hover .btn__dot { background: var(--dot-h, var(--dot)); color: var(--dot-ink-h, var(--dot-ink)); }
+  .link:hover { text-decoration-color: currentColor; text-underline-offset: 0.3em; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button:hover .btn__roll > span { transform: translateY(-100%); }
+  .button:hover .btn__dot svg:first-child { transform: translateX(190%); }
+  .button[data-arrow="down"]:hover .btn__dot svg:first-child { transform: translateY(190%); }
+  .button[data-arrow="out"]:hover .btn__dot svg:first-child { transform: translate(190%, -190%); }
+  .button:hover .btn__dot svg:last-child { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button::before { transform: none; opacity: 0; transition: opacity 200ms ease; }
+  .button { transition: color 200ms ease; }
+}
+@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  .button:hover::before { opacity: 1; }
+}
+.vmark { width: 1em; height: 1em; fill: currentColor; }
+.mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; font-size: var(--step-small); letter-spacing: 0; }
+.mark .vmark { width: 22px; height: 22px; color: var(--yellow); }
+
+/* =========================================================
+   LA ENTRADA (registro por correo)
+   ========================================================= */
+.gate { display: none; }
+.js .gate {
+  display: block;
+  position: fixed; inset: 0; z-index: 100;
+  background: var(--black); color: var(--white);
+  overflow-y: auto; overscroll-behavior: contain;
+}
+.js.is-member .gate { display: none; }
+.gate__inner {
+  min-height: 100svh;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: center;
+  padding: max(32px, env(safe-area-inset-top)) max(var(--margin), env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(var(--margin), env(safe-area-inset-left));
+}
+.gate__mark { grid-column: 1 / 7; color: var(--yellow); }
+.gate__mark .vmark { width: 100%; height: auto; max-height: 76svh; aspect-ratio: 1; }
+.gate__panel { grid-column: 8 / 13; max-width: 470px; }
+.gate__title { font-size: var(--step-head); }
+.gate__lede { margin-top: 20px; max-width: 40ch; }
+.gate__form { margin-top: 32px; display: grid; gap: 14px; }
+.field { display: grid; gap: 8px; }
+.field label { font-size: var(--step-small); color: var(--soft-on-dark); }
+.input {
+  width: 100%; min-height: 56px; padding: 0 22px;
+  border: 0; border-radius: 999px;
+  background: var(--graphite-2); color: var(--white);
+  font-size: max(16px, var(--step-body));
+  transition: background-color var(--t-hover) ease;
+}
+.input::placeholder { color: #8E8E93; }
+.input:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; background: var(--graphite-3); }
+.input[aria-invalid="true"] { outline: 2px solid var(--error); outline-offset: 2px; }
+.check { display: flex; gap: 12px; align-items: flex-start; font-size: var(--step-small); line-height: 1.4; margin-top: 4px; }
+.check input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--yellow); }
+.check .link { font-size: inherit; }
+.gate__form .button { width: 100%; margin-top: 6px; }
+.gate__msg { min-height: 1.4em; font-size: var(--step-small); }
+.gate__msg.is-error { color: var(--error); }
+.gate__note { margin-top: 26px; font-size: var(--step-small); color: var(--soft-on-dark); }
+.gate__done { display: none; }
+.gate.is-done .gate__form, .gate.is-done .gate__lede { display: none; }
+.gate.is-done .gate__done { display: block; margin-top: 24px; }
+.gate__done p { font-size: var(--step-lead); line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; max-width: 18ch; }
+.gate__done .button { margin-top: 28px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; } /* taste-skill-ignore: campo trampa invisible para bots */
+.gate.is-leaving { transform: translateY(-100%); transition: transform 900ms var(--ease-in-out); }
+
+/* =========================================================
+   BARRA FIJA (aparece al salir del inicio)
+   ========================================================= */
+.bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  height: calc(var(--bar) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) max(var(--margin), env(safe-area-inset-right)) 0 max(var(--margin), env(safe-area-inset-left));
+  display: flex; align-items: center; gap: 28px;
+  background: var(--black); color: var(--white);
+  transform: translateY(-101%);
+  transition: transform 420ms var(--ease-out);
+}
+.bar.is-on { transform: none; }
+.bar__links { display: flex; gap: 26px; margin-left: auto; font-size: var(--step-small); }
+.bar__links a { text-decoration: none; color: var(--soft-on-dark); transition: color var(--t-hover) ease; }
+.bar__links a:active { color: var(--white); }
+.bar .button { min-height: 38px; padding: 0 1rem; font-size: var(--step-small); }
+@media (hover: hover) and (pointer: fine) { .bar__links a:hover { color: var(--white); } }
+
+/* =========================================================
+   INICIO: carpetas
+   ========================================================= */
+.hero { position: relative; height: 100svh; min-height: 660px; overflow: hidden; background: var(--black); color: var(--white); }
+.hero__top {
+  position: relative; z-index: 6;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  min-height: 48px;
+  padding: max(18px, env(safe-area-inset-top)) max(var(--margin), env(safe-area-inset-right)) 0 max(var(--margin), env(safe-area-inset-left));
+  font-size: var(--step-small);
+}
+.hero__top .mark { justify-self: center; }
+.hero__toplink { justify-self: end; text-decoration: none; }
+.hero__title { margin: clamp(36px, 7svh, 96px) auto 0; padding-inline: var(--margin); text-align: center; font-size: var(--step-display); }
+.lines .line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.lines [data-line] { display: block; }
+.hero__lede { margin: 22px auto 0; padding-inline: var(--margin); max-width: 46ch; text-align: center; }
+.folders { position: absolute; left: 0; right: 0; top: max(53%, 400px); bottom: 0; z-index: 4; }
+.folder { position: absolute; left: 7%; right: 7%; top: calc(var(--i) * 64px); bottom: -60px; z-index: var(--i); }
+.folder__in {
+  position: absolute; inset: 0; display: block;
+  background: var(--c); color: var(--ci);
+  text-decoration: none;
+  transition: transform 360ms var(--ease-out);
+}
+.folder__tab {
+  position: absolute; bottom: 100%; left: var(--x);
+  height: 40px; display: flex; align-items: center; padding: 0 32px;
+  background: var(--c); color: var(--ci);
+  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 100%, 0 100%);
+  font-size: var(--step-body); font-weight: 600; white-space: nowrap;
+  margin-bottom: -1px;
+}
+.folder__strip { display: flex; align-items: center; height: 64px; padding: 0 32px; font-size: var(--step-small); }
+a.folder__in:active { transform: translateY(-6px); }
+@media (hover: hover) and (pointer: fine) { a.folder__in:hover { transform: translateY(-12px); } }
+.folder--front .folder__band { padding: 30px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.folder--front .five { font-size: var(--step-small); }
+
+/* =========================================================
+   V ES CINCO
+   ========================================================= */
+.intro { display: flex; flex-direction: column; justify-content: center; }
+.intro__text { grid-column: 1 / 9; }
+.stair { margin-top: clamp(28px, 4vw, 56px); font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
+.stair > span { display: block; padding-left: calc(var(--s) * 6vw); }
+.intro__photos { grid-column: 9 / 13; display: grid; gap: 16px; align-self: start; margin-top: 0.6em; }
+.intro__photos figure { aspect-ratio: 3 / 2; overflow: hidden; }
+.ph { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.12); }
+.f-yellow .ph, .f-white .ph, .sheet--light .ph, .tile--main .ph { mix-blend-mode: multiply; }
+.intro__note { margin-top: clamp(40px, 6vw, 96px); max-width: 46ch; font-size: var(--step-small); }
+
+/* =========================================================
+   CARTA DE GROWTH
+   ========================================================= */
+.letter { display: flex; justify-content: center; align-items: center; padding-block: clamp(120px, 12vw, 180px); }
+.letter__col { width: min(560px, 100%); }
+.letter__from { display: flex; align-items: center; gap: 14px; font-size: var(--step-small); }
+.avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--black); color: var(--yellow); display: grid; place-items: center; flex: none; }
+.avatar .vmark { width: 20px; height: 20px; }
+.letter__col > p { font-size: var(--step-body); line-height: 1.6; margin-top: 1.5em; }
+.letter__col > p:first-of-type { margin-top: 28px; }
+.marker { background: var(--yellow); padding: 0.05em 0.25em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.sign { font-size: var(--step-body); font-weight: 600; margin-top: 44px !important; line-height: 1.2; }
+.role { font-size: var(--step-small) !important; color: var(--soft-on-light); margin-top: 4px !important; }
+
+/* =========================================================
+   LO QUE HAY DENTRO: hojas que se apilan
+   ========================================================= */
+.features { padding-bottom: 0; }
+.features__head { padding-bottom: 48px; }
+.features__head p { margin-top: 20px; max-width: 46ch; color: var(--white); }
+.sheet {
+  position: sticky; top: calc(var(--bar) + var(--k) * 72px);
+  min-height: calc(86svh - var(--k) * 72px); /* las hojas terminan a la misma altura: salen juntas y ningún título queda tapado */
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 72px 1fr; column-gap: var(--gutter);
+  padding-left: max(var(--margin), env(safe-area-inset-left));
+  background: var(--c); color: var(--ci);
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+}
+.sheet__name { grid-column: 1 / 7; grid-row: 1; align-self: center; font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
+.sheet__text { grid-column: 1 / 6; grid-row: 2; align-self: end; padding: 40px 0 clamp(32px, 4vw, 56px); }
+.sheet__text p { max-width: 40ch; }
+.sheet__text .button, .sheet__text .link { margin-top: 24px; }
+.sheet__text .link { display: inline-block; }
+.sheet__media { position: relative; grid-column: 7 / 13; grid-row: 2; overflow: hidden; }
+.sheet__media img, .sheet__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.calc { grid-column: 7 / 13; grid-row: 2; align-self: center; padding: 40px max(var(--margin), env(safe-area-inset-right)) 40px 0; }
+.calc__label { display: block; font-size: var(--step-body); }
+.calc__label output { font-weight: 500; }
+.calc input[type="range"] { width: 100%; height: 44px; margin: 14px 0 6px; accent-color: var(--yellow); cursor: pointer; }
+.calc__big { display: block; font-size: var(--step-head); margin-top: 18px; color: var(--yellow); }
+.calc__sub { margin-top: 14px; max-width: 34ch; }
+
+/* =========================================================
+   BIBLIOTECA
+   ========================================================= */
+.library__head { align-items: end; }
+.library__head h2 { grid-column: 1 / 8; }
+.library__head p { grid-column: 8 / 12; }
+.library__body { margin-top: clamp(56px, 7vw, 112px); }
+.library__list { grid-column: 1 / 8; }
+.library__frame { grid-column: 9 / 13; position: sticky; top: calc(var(--bar) + 40px); align-self: start; aspect-ratio: 3 / 4; }
+.cat { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: clamp(56px, 7vw, 96px) 0 24px; }
+.cat:first-child { margin-top: 0; }
+.cat h3 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
+.cat span { font-size: var(--step-small); color: var(--soft-on-dark); }
+.res { padding-block: 22px; transition: opacity var(--t-hover) ease; }
+.res__cover { display: none; }
+.res__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 28px; align-items: start; }
+.res__side { padding-top: 4px; }
+.res__name { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
+.res__kind { font-size: var(--step-small); color: var(--soft-on-dark); white-space: nowrap; }
+.res__desc { margin-top: 8px; font-size: var(--step-small); line-height: 1.45; color: #C7C7CC; max-width: 48ch; }
+.res__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.res__soon { max-width: 20ch; font-size: var(--step-small); color: var(--soft-on-dark); text-align: right; }
+.res.is-soon .res__actions { display: none; }
+.res.is-soon .res__cover { opacity: 0.45; }
+@media (hover: hover) and (pointer: fine) {
+  .library__list:hover .res:not(:hover) { opacity: 0.35; }
+}
+.library__list:has(.res :focus-visible) .res:not(:has(:focus-visible)) { opacity: 0.35; }
+.cover {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: clamp(24px, 2.6vw, 44px);
+  background: var(--c); color: var(--ci);
+  opacity: 0; transition: opacity var(--t-ui) ease;
+}
+.cover.is-on { opacity: 1; }
+.frame__v { position: absolute; top: clamp(24px, 2.6vw, 44px); left: clamp(24px, 2.6vw, 44px); width: 56px; height: 56px; color: var(--vc, var(--black)); transition: color var(--t-ui) ease; }
+.cover__kind { font-size: var(--step-small); margin-top: auto; margin-bottom: 14px; }
+.cover__title { display: block; font-size: var(--step-lead); line-height: 1.08; letter-spacing: -0.02em; font-weight: 600; }
+.cover__foot { display: flex; justify-content: space-between; font-size: var(--step-small); margin-top: 28px; opacity: 0.75; }
+
+/* =========================================================
+   CÓMO FUNCIONA: acordeón del amanecer
+   ========================================================= */
+.how__intro { align-items: end; }
+.how__intro h2 { grid-column: 1 / 6; }
+.how__intro p { grid-column: 7 / 12; }
+.acc { display: flex; height: 520px; margin-top: 64px; border-radius: var(--radius); overflow: hidden; }
+.acc__panel { position: relative; flex: 1 1 0; min-width: 0; background: var(--bg); color: var(--ink); transition: flex-grow 450ms var(--ease-in-out); }
+.acc__panel.is-open { flex-grow: 5.6; }
+.acc__hit { position: absolute; inset: 0; width: 100%; text-align: left; color: inherit; }
+.acc__label { position: absolute; left: 22px; bottom: 26px; writing-mode: vertical-rl; transform: rotate(180deg); font-size: var(--step-body); font-weight: 600; white-space: nowrap; transition: opacity 200ms ease; }
+.acc__panel.is-open .acc__hit { visibility: hidden; }
+.acc__panel.is-open .acc__label { opacity: 0; }
+.acc__content {
+  position: absolute; top: 0; bottom: 0; left: 0; width: min(640px, 54vw);
+  padding: 36px; display: flex; flex-direction: column; justify-content: space-between;
+  opacity: 0; visibility: hidden; transition: opacity 200ms ease, visibility 0s linear 200ms;
+}
+.acc__panel.is-open .acc__content { opacity: 1; visibility: visible; transition: opacity 360ms ease 220ms, visibility 0s; }
+.acc__content h3 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
+.acc__content p { max-width: 36ch; }
+.acc__panel:active .acc__label { opacity: 0.7; }
+@media (hover: hover) and (pointer: fine) { .acc__panel:not(.is-open):hover .acc__label { transform: rotate(180deg) translateY(6px); transition: transform var(--t-hover) var(--ease-out); } }
+
+/* =========================================================
+   CÓDIGO V
+   ========================================================= */
+.code__top { align-items: end; }
+.code__top h2 { grid-column: 1 / 7; }
+.code__top p { grid-column: 7 / 12; }
+.rules { margin-top: clamp(64px, 8vw, 128px); display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gutter); row-gap: clamp(44px, 5vw, 80px); }
+.rule h3 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
+.rule p { margin-top: 12px; max-width: 42ch; }
+
+/* =========================================================
+   ÚNETE: fila de tarjetas
+   ========================================================= */
+.cta { display: flex; align-items: center; overflow-x: clip; }
+.tiles { width: 100%; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 12px; }
+.tile { height: min(560px, 62svh); border-radius: var(--radius); overflow: hidden; }
+.tile--left { grid-column: 1 / 3; margin-left: calc(-1 * var(--margin) - 40px); }
+.tile--left img { width: 100%; height: 100%; object-fit: cover; }
+.tile--main { grid-column: 3 / 11; background: var(--black); color: var(--white); padding: clamp(28px, 3.4vw, 56px); display: flex; flex-direction: column; justify-content: center; }
+.tile--main h2 { font-size: var(--step-head); }
+.tile--main p { margin-top: 20px; max-width: 46ch; }
+.cta__actions { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.tile--right { grid-column: 11 / 13; margin-right: calc(-1 * var(--margin) - 40px); background: var(--white); color: var(--black); display: grid; place-items: center; }
+.tile--right .vmark { width: 44%; height: auto; aspect-ratio: 1; }
+
+/* =========================================================
+   PREGUNTAS
+   ========================================================= */
+.faq__head { grid-column: 1 / 6; position: sticky; top: calc(var(--bar) + 40px); align-self: start; }
+.faq__head p { margin-top: 18px; max-width: 28ch; }
+.faq__list { grid-column: 7 / 13; display: grid; gap: 8px; }
+.q { background: var(--paper-2); border-radius: var(--radius); transition: background-color var(--t-ui) ease; }
+.q[open] { background: var(--black); color: var(--white); }
+.q[open] .plus { color: var(--yellow); }
+.q summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 72px; padding: 18px 26px; cursor: pointer; font-weight: 500; font-size: var(--step-body); line-height: 1.3; }
+.q summary::-webkit-details-marker { display: none; }
+.q summary:active { opacity: 0.75; }
+@media (hover: hover) and (pointer: fine) { .q:not([open]):hover { background: #DCDCE1; } }
+.plus { position: relative; width: 16px; height: 16px; flex: none; }
+.plus::before, .plus::after { content: ""; position: absolute; left: 0; top: 6.5px; width: 16px; height: 3px; background: currentColor; border-radius: 2px; transition: transform var(--t-ui) var(--ease-out); }
+.plus::after { transform: rotate(90deg); }
+.q[open] .plus::after { transform: rotate(0deg); }
+.q__a { padding: 0 26px 26px; }
+.q__a p { max-width: 52ch; font-size: var(--step-body); }
+.q::details-content { block-size: 0; overflow: hidden; transition: block-size 320ms var(--ease-out), content-visibility 320ms allow-discrete; }
+.q[open]::details-content { block-size: auto; }
+
+/* =========================================================
+   CIERRE
+   ========================================================= */
+.foot { min-height: 90svh; display: flex; flex-direction: column; justify-content: space-between; gap: 64px; padding-top: 40px; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+.foot__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; font-size: var(--step-small); }
+.foot__notes { display: flex; flex-wrap: wrap; gap: 8px 40px; }
+.foot__notes p { max-width: 30ch; }
+.foot__line { display: block; margin-top: auto; color: var(--yellow); text-decoration: none; font-size: var(--step-display); transition: opacity var(--t-hover) ease, color var(--t-hover) ease; }
+.foot__line:active { opacity: 0.75; }
+@media (hover: hover) and (pointer: fine) { .foot__line:hover { opacity: 0.85; } }
+.foot__meta { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: end; font-size: var(--step-small); color: var(--soft-on-dark); }
+.foot__meta nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.foot__meta nav a, .foot__meta nav button { color: var(--white); text-decoration: none; font-size: var(--step-small); }
+.foot__credits { max-width: 52ch; text-align: center; }
+.foot__place { justify-self: end; text-align: right; }
+
+/* =========================================================
+   VENTANAS (visor de PDF y aviso de privacidad) + aviso flotante
+   ========================================================= */
+dialog {
+  border: 0; padding: 0;
+  border-radius: var(--radius);
+  background: var(--white); color: var(--black);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5); /* taste-skill-ignore: ventana flotante */
+  max-width: min(720px, calc(100vw - 32px));
+  max-height: calc(100svh - 48px);
+  opacity: 1; transform: none;
+  transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), display 240ms allow-discrete, overlay 240ms allow-discrete;
+}
+@starting-style { dialog[open] { opacity: 0; transform: scale(0.97); } }
+dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
+.privacy__body { padding: clamp(28px, 4vw, 48px); overflow-y: auto; max-height: calc(100svh - 48px); }
+.privacy__body h2 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
+.privacy__body p { margin-top: 16px; font-size: var(--step-body); }
+.privacy__body .button { margin-top: 28px; }
+.viewer { width: min(1100px, calc(100vw - 32px)); height: calc(100svh - 48px); max-width: none; overflow: hidden; }
+.viewer[open] { display: flex; flex-direction: column; }
+.viewer__bar { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 26px; background: var(--white); }
+.viewer__bar h2 { margin-right: auto; font-size: var(--step-body); font-weight: 500; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.viewer iframe { flex: 1; width: 100%; border: 0; background: var(--paper); }
+.toast {
+  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 200;
+  max-width: calc(100vw - 32px);
+  padding: 14px 22px; border-radius: 999px;
+  background: var(--white); color: var(--black); font-size: var(--step-small); line-height: 1.35;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35); /* taste-skill-ignore: aviso flotante */
+  opacity: 0; transform: translate(-50%, 16px); pointer-events: none;
+  transition: opacity var(--t-ui) ease, transform var(--t-ui) var(--ease-out);
+}
+.toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+@media (max-width: 800px) {
+  .grid > * { grid-column: 1 / -1 !important; }
+  .chapter { padding-block: 88px; }
+
+  .gate__inner { grid-template-columns: 1fr; align-content: start; row-gap: 28px; padding-top: max(44px, env(safe-area-inset-top)); }
+  .gate__mark, .gate__panel { grid-column: 1; }
+  .gate__mark .vmark { width: 38vw; max-width: 200px; }
+
+  .bar__links { display: none; }
+  .bar .button { margin-left: auto; }
+
+  .hero__title { margin-top: 72px; }
+  .hero__lede { margin-top: 18px; max-width: 32ch; }
+  .folders { top: max(50svh, 420px); }
+  .folder { left: 0; right: 0; top: calc(var(--i) * 52px); }
+  .folder__tab { left: var(--xm); height: 32px; padding: 0 20px; font-size: var(--step-small); clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%); }
+  .folder__strip { height: 52px; padding: 0 20px; }
+  .folder__strip span { display: none; }
+  .folder--front .folder__band { padding: 20px; gap: 14px; }
+  .folder--front .button { width: 100%; }
+
+  .intro__photos { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 48px; }
+  .stair > span { padding-left: calc(var(--s) * 5vw); }
+
+  .letter { padding-block: 120px; }
+  .avatar { width: 40px; height: 40px; }
+
+  .sheet { top: calc(var(--bar) + var(--k) * 52px); min-height: calc(76svh - var(--k) * 52px); grid-template-columns: 1fr; grid-template-rows: 52px auto auto; padding-left: 0; }
+  .sheet__name { grid-column: 1; grid-row: 1; padding-inline: 20px; }
+  .sheet__media { grid-column: 1; grid-row: 2; aspect-ratio: 4 / 3; }
+  .sheet__text { grid-column: 1; grid-row: 3; padding: 24px 20px 36px; }
+  .calc { grid-column: 1; grid-row: 2; padding: 12px 20px 8px; }
+  .sheet--calc .sheet__text { grid-row: 3; padding-top: 8px; }
+
+  .library__head p { margin-top: 18px; }
+  .library__frame { display: none; }
+  .res__cover { display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 2.4 / 1; margin-bottom: 16px; padding: 18px 20px; background: var(--c); color: var(--ci); }
+  .res__cover span { font-size: var(--step-small); }
+  .res__cover strong { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; margin-top: 4px; }
+  .res__name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* taste-skill-ignore: el título sigue para lectores de pantalla */
+  .res__row { grid-template-columns: 1fr; row-gap: 14px; }
+  .res__desc { margin-top: 0; }
+  .res__side { padding-top: 0; }
+  .res__soon { text-align: left; max-width: none; }
+
+  .how__intro p { margin-top: 18px; }
+  .acc { flex-direction: column; height: auto; margin-top: 44px; }
+  .acc__panel { flex: none; min-height: 64px; }
+  .acc__hit { position: relative; display: flex; align-items: center; min-height: 64px; padding: 0 20px; }
+  .acc__label { position: static; writing-mode: horizontal-tb; transform: none; }
+  .acc__panel.is-open .acc__hit { display: none; }
+  .acc__content { position: static; width: auto; padding: 22px 20px 26px; display: none; gap: 14px; }
+  .acc__panel.is-open .acc__content { display: flex; }
+
+  .code__top p { margin-top: 18px; }
+  .rules { grid-template-columns: 1fr; }
+
+  .cta { padding-block: 72px; }
+  .tiles { grid-template-columns: 1fr 1fr; row-gap: 12px; }
+  .tile--main { grid-column: 1 / -1; grid-row: 1; height: auto; min-height: 300px; padding: 28px 22px; }
+  .tile--main .button { width: 100%; }
+  .tile--left { grid-column: 1; grid-row: 2; height: 120px; margin-left: 0; }
+  .tile--right { grid-column: 2; grid-row: 2; height: 120px; margin-right: 0; }
+
+  .faq__head { position: static; }
+  .faq__list { margin-top: 36px; gap: 6px; }
+  .q summary { min-height: 64px; padding: 16px 20px; }
+  .q__a { padding: 0 20px 20px; }
+
+  .foot__top { flex-direction: column; }
+  .foot__meta { grid-template-columns: 1fr; }
+  .foot__credits { text-align: left; }
+  .foot__place { justify-self: start; text-align: left; }
+
+  .viewer { width: calc(100vw - 16px); height: calc(100svh - 16px); }
+}
+
+/* =========================================================
+   MOVIMIENTO (solo si la persona no pidió reducirlo)
+   ========================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  /* entrada */
+  .js .gate__mark .vmark { clip-path: inset(100% 0 0 0); animation: v-in 1100ms var(--ease-in-out) 150ms forwards; }
+  .js .gate [data-rise] { opacity: 0; transform: translateY(18px); animation: rise 800ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 500ms); }
+
+  /* inicio */
+  .js .hero [data-rise] { opacity: 0; transform: translateY(18px); }
+  .js .hero .lines [data-line] { transform: translateY(105%); }
+  .js .folder { transform: translateY(140px); }
+  .entered .hero [data-rise] { animation: rise var(--t-reveal) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 200ms); }
+  .entered .hero .lines [data-line] { animation: line-up 900ms var(--ease-out) 120ms forwards; }
+  .entered .folder { animation: folder-up 1000ms var(--ease-out) forwards; animation-delay: calc(var(--i) * 70ms + 420ms); }
+
+  /* secciones */
+  .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: calc(var(--d, 0) * 80ms); }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+  /* el recorte va en la imagen, no en el marco: así el marco sigue siendo visible para el observador */
+  .js .shutter[data-reveal] { opacity: 1; transform: none; }
+  .js .shutter[data-reveal] img { clip-path: inset(0 0 100% 0); transform: scale(1.12); transition: clip-path 1100ms var(--ease-in-out), transform 1500ms var(--ease-soft); transition-delay: calc(var(--d, 0) * 80ms); }
+  .js .shutter[data-reveal].is-in img { clip-path: inset(0); transform: none; }
+
+  /* una imagen que se mueve con el scroll */
+  @supports (animation-timeline: view()) {
+    .drift { animation: drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gate.is-leaving { transform: none; opacity: 0; transition: opacity 300ms ease; }
+  .acc__panel, .folder__in, .bar { transition: none; }
+}
+@keyframes rise { to { opacity: 1; transform: none; } }
+@keyframes line-up { to { transform: none; } }
+@keyframes folder-up { to { transform: none; } }
+@keyframes v-in { to { clip-path: inset(0 0 0 0); } }
+@keyframes drift { from { transform: scale(1.1) translateY(-3%); } to { transform: scale(1.1) translateY(3%); } }
+</style>
+</head>
+<body>
+
+<!-- Símbolo V (se reutiliza en toda la página) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="v" viewBox="0 0 100 100"><polygon points="0,18 21,18 50,80 79,0 100,0 61,100 39,100"/></symbol>
+</svg>
+
+<!-- =========================================================
+     LA ENTRADA: pide nombre y correo antes de ver la comunidad
+     ========================================================= -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate__inner">
+    <div class="gate__mark" aria-hidden="true"><svg class="vmark"><use href="#v"/></svg></div>
+    <div class="gate__panel">
+      <h2 class="gate__title" id="gate-title" data-rise style="--i:0">Entra a la V.</h2>
+      <p class="gate__lede" data-rise style="--i:1">La comunidad de la serie N250. Deja tu nombre y tu correo para abrir la biblioteca, el grupo de WhatsApp y todo lo que viene.</p>
+
+      <form class="gate__form" id="gate-form" novalidate data-rise style="--i:2">
+        <div class="field">
+          <label for="g-nombre">Tu nombre</label>
+          <input class="input" id="g-nombre" name="nombre" type="text" autocomplete="given-name" maxlength="60" placeholder="¿Cómo te decimos?" required enterkeyhint="next">
+        </div>
+        <div class="field">
+          <label for="g-correo">Tu correo</label>
+          <input class="input" id="g-correo" name="correo" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="120" placeholder="tu@correo.com" required enterkeyhint="go">
+        </div>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check">
+          <input type="checkbox" id="g-acepto" required>
+          <span>Acepto el <button type="button" class="link" data-privacy>aviso de privacidad</button> y recibir avisos de la comunidad.</span>
+        </label>
+        <button class="button button--yellow" type="submit" id="g-enviar" data-arrow="right" data-magnet>Entrar a la comunidad</button>
+        <p class="gate__msg" id="g-msg" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="gate__done" id="gate-done">
+        <p id="gate-done-text">Listo. Hoy es tu día 1 en la V.</p>
+        <button class="button button--yellow" type="button" id="gate-enter" data-arrow="right">Ver la comunidad</button>
+      </div>
+
+      <p class="gate__note" data-rise style="--i:3">Gratis. Sin spam. <span data-five>Faltan pocas horas para las 5:00 en CDMX.</span></p>
+    </div>
+  </div>
+</div>
+
+<div id="site">
+
+<!-- Barra fija -->
+<header class="bar" id="bar" aria-label="Navegación">
+  <a class="mark" href="#inicio"><svg class="vmark" aria-hidden="true"><use href="#v"/></svg>Comunidad V</a>
+  <nav class="bar__links" aria-label="Secciones">
+    <a href="#serie">La serie</a>
+    <a href="#biblioteca">Biblioteca</a>
+    <a href="#codigo">Código V</a>
+    <a href="#preguntas">Preguntas</a>
+  </nav>
+  <a class="button button--yellow" data-wa href="#unete">WhatsApp</a>
+</header>
+
+<main>
+
+<!-- =========================================================
+     INICIO
+     ========================================================= -->
+<section class="hero" id="inicio" aria-labelledby="titulo">
+  <header class="hero__top">
+    <span aria-hidden="true"></span>
+    <a class="mark" href="#inicio" aria-label="Comunidad V, inicio"><svg class="vmark" aria-hidden="true"><use href="#v"/></svg>5AM Corporation</a>
+    <a class="hero__toplink link" href="#biblioteca">Biblioteca</a>
+  </header>
+
+  <h1 class="hero__title lines" id="titulo"><span class="line"><span data-line>Comunidad V</span></span></h1>
+  <p class="hero__lede" data-rise style="--i:1">La comunidad de la serie N250. Para quien trabaja de día y construye lo suyo a las 5AM.</p>
+
+  <nav class="folders" aria-label="Capítulos">
+    <div class="folder" style="--i:0; --c:var(--graphite-2); --ci:var(--white); --x:3%; --xm:4%">
+      <a class="folder__in" href="#preguntas">
+        <span class="folder__tab">Preguntas</span>
+        <span class="folder__strip"><span>Gratis, tu correo, cómo salir</span></span>
+      </a>
+    </div>
+    <div class="folder" style="--i:1; --c:var(--graphite-3); --ci:var(--white); --x:26%; --xm:36%">
+      <a class="folder__in" href="#codigo">
+        <span class="folder__tab">Código V</span>
+        <span class="folder__strip"><span>Seis reglas del grupo</span></span>
+      </a>
+    </div>
+    <div class="folder" style="--i:2; --c:var(--graphite-4); --ci:var(--white); --x:44%; --xm:62%">
+      <a class="folder__in" href="#biblioteca">
+        <span class="folder__tab">Biblioteca</span>
+        <span class="folder__strip"><span>Guías y plantillas en PDF</span></span>
+      </a>
+    </div>
+    <div class="folder folder--light" style="--i:3; --c:var(--paper); --ci:var(--black); --x:62%; --xm:4%">
+      <a class="folder__in" href="#serie">
+        <span class="folder__tab">La serie N250</span>
+        <span class="folder__strip"><span>Carta de Growth</span></span>
+      </a>
+    </div>
+    <div class="folder folder--front folder--light" style="--i:4; --c:var(--yellow); --ci:var(--black); --x:80%; --xm:44%">
+      <div class="folder__in">
+        <span class="folder__tab">Comunidad</span>
+        <div class="folder__band">
+          <a class="button button--black" data-wa href="#unete" data-arrow="out" data-magnet>Unirme al grupo de WhatsApp</a>
+          <p class="five"><span data-day></span> <span data-five>Faltan pocas horas para las 5:00 en CDMX.</span></p>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<!-- =========================================================
+     V ES CINCO
+     ========================================================= -->
+<section class="chapter f-yellow intro wrap" id="cinco" aria-labelledby="v-titulo">
+  <div class="grid">
+    <div class="intro__text">
+      <h2 class="display" id="v-titulo" data-reveal>V es cinco.</h2>
+      <p class="stair" data-reveal style="--d:1">
+        <span style="--s:0">Las 5 de la mañana:</span>
+        <span style="--s:1">la hora de construir lo tuyo</span>
+        <span style="--s:2">antes de trabajar para otros.</span>
+      </p>
+    </div>
+    <div class="intro__photos">
+      <figure class="shutter" data-reveal style="--d:2">
+        <img class="ph" data-foto="intro1" src="https://picsum.photos/id/685/1200/800?grayscale" width="1200" height="800" alt="Una persona sentada sobre una roca mira un mar de nubes al amanecer." loading="lazy" decoding="async">
+      </figure>
+      <figure class="shutter" data-reveal style="--d:3">
+        <img class="ph" data-foto="intro2" src="https://picsum.photos/id/177/1200/800?grayscale" width="1200" height="800" alt="Un excursionista con mochila mira un valle con neblina." loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </div>
+  <p class="intro__note" data-reveal style="--d:2">V es el número cinco en romano. Por eso es nuestro símbolo: cinco, como las 5AM, la hora en que empieza el día de quien construye algo propio.</p>
+</section>
+
+<!-- =========================================================
+     LA SERIE N250: carta de Growth
+     ========================================================= -->
+<section class="chapter f-white letter wrap" id="serie" aria-label="Carta de Growth sobre la serie N250">
+  <article class="letter__col">
+    <div class="letter__from" data-reveal>
+      <span class="avatar" aria-hidden="true"><svg class="vmark"><use href="#v"/></svg></span>
+      <span>Una carta de Growth</span>
+    </div>
+    <p data-reveal style="--d:1">Hola, soy Growth. Trabajo de tiempo completo como empleado y, junto con mi socio, construyo negocios en las horas que me quedan: temprano, antes de salir, y de noche, cuando regreso cansado.</p>
+    <p data-reveal style="--d:2">Así nació la serie N250. Cada episodio es un día real: levantarme temprano, ir al trabajo, abrir la laptop al regresar, vender, registrar ingresos y gastos, aprender algo nuevo y ponerlo a prueba.</p>
+    <p data-reveal style="--d:3">La meta visible es una Pulsar N250. La meta de fondo es <span class="marker">tener libertad de tiempo y no depender de un jefe.</span></p>
+    <p data-reveal style="--d:4">La V es la comunidad que acompaña la serie. Aquí comparto lo que me sirve —guías, plantillas y herramientas— y aquí puedes mostrar tu propio proceso. No prometo dinero fácil ni atajos: prometo enseñar el proceso como es, con errores incluidos.</p>
+    <p data-reveal style="--d:5">Si tú también construyes algo en tus horas libres, este es tu lugar.</p>
+    <p class="sign" data-reveal>Growth</p>
+    <p class="role" data-reveal>Fundador de 5AM Corporation</p>
+  </article>
+</section>
+
+<!-- =========================================================
+     LO QUE HAY DENTRO
+     ========================================================= -->
+<section class="chapter f-black features" id="dentro" aria-labelledby="dentro-titulo">
+  <div class="features__head wrap">
+    <h2 class="head" id="dentro-titulo" data-reveal>Lo que hay dentro</h2>
+    <p data-reveal style="--d:1">Cuatro cosas, todas gratis. Desliza: cada hoja se apila sobre la anterior.</p>
+  </div>
+
+  <div class="sheets">
+    <article class="sheet sheet--light" style="--k:0; --c:var(--paper); --ci:var(--black)">
+      <h3 class="sheet__name">Biblioteca de PDFs</h3>
+      <div class="sheet__text">
+        <p>Guías y plantillas para ordenar tu tiempo, tu dinero y tu primer negocio. Las abres aquí mismo y las descargas gratis.</p>
+        <a class="button button--black" href="#biblioteca" data-arrow="down">Abrir la biblioteca</a>
+      </div>
+      <figure class="sheet__media"><img class="ph drift" data-foto="hoja1" src="https://picsum.photos/id/669/1200/1200?grayscale" width="1200" height="1200" alt="Una persona con chamarra y gorro camina entre la neblina, de espaldas." loading="lazy" decoding="async"></figure>
+    </article>
+
+    <article class="sheet" style="--k:1; --c:var(--graphite); --ci:var(--white)">
+      <h3 class="sheet__name">Grupo de WhatsApp</h3>
+      <div class="sheet__text">
+        <p>Avisos de recursos nuevos y de cada episodio, retos para todos y gente que está en lo mismo que tú. Preguntas sin pena, respuestas sin rollo.</p>
+        <a class="button button--yellow" data-wa href="#unete" data-arrow="out">Unirme al grupo</a>
+      </div>
+      <figure class="sheet__media"><img class="ph drift" data-foto="hoja2" src="https://picsum.photos/id/550/1200/1200?grayscale" width="1200" height="1200" alt="Una mujer de espaldas mira una ciudad desenfocada al atardecer." loading="lazy" decoding="async"></figure>
+    </article>
+
+    <article class="sheet sheet--light" style="--k:2; --c:var(--white); --ci:var(--black)">
+      <h3 class="sheet__name">La serie N250</h3>
+      <div class="sheet__text">
+        <p>Cada día N, documentado en TikTok, Reels y Shorts: el trabajo, el cansancio, las ventas y los errores. En el grupo puedes proponer qué probar en un episodio.</p>
+        <a class="button button--black" data-tiktok href="#" target="_blank" rel="noopener" data-arrow="out">Ver la serie en TikTok</a>
+      </div>
+      <figure class="sheet__media"><img class="ph drift" data-foto="hoja3" src="https://picsum.photos/id/338/1200/1200?grayscale" width="1200" height="1200" alt="Una persona con abrigo y capucha mira el mar con neblina." loading="lazy" decoding="async"></figure>
+    </article>
+
+    <article class="sheet sheet--calc" style="--k:3; --c:var(--graphite); --ci:var(--white)">
+      <h3 class="sheet__name">Tus horas</h3>
+      <div class="sheet__text">
+        <p>Growth le dedica entre 15 y 30 horas a la semana a sus negocios, además de su trabajo. Mueve la barra y mira lo que suman tus horas en un año.</p>
+      </div>
+      <div class="calc">
+        <label class="calc__label" for="horas">Horas a la semana para lo tuyo: <output id="horas-out" class="nums" for="horas">15</output></label>
+        <input id="horas" type="range" min="1" max="40" step="1" value="15" aria-describedby="calc-total calc-sub">
+        <output class="calc__big nums" id="calc-total" for="horas">780 horas</output>
+        <p class="calc__sub" id="calc-sub">En un año. Son 98 jornadas completas de 8 horas: unas 2 h 9 min al día.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========================================================
+     BIBLIOTECA (los PDFs se configuran en RECURSOS, abajo en el script)
+     ========================================================= -->
+<section class="chapter f-black library wrap" id="biblioteca" aria-labelledby="bib-titulo">
+  <div class="grid library__head">
+    <h2 class="head" id="bib-titulo" data-reveal>Biblioteca V</h2>
+    <p data-reveal style="--d:1">Guías y plantillas en PDF, hechas para aplicarse. Ábrelas aquí o descárgalas gratis.</p>
+  </div>
+  <div class="grid library__body">
+    <div class="library__list" id="lista"></div>
+    <div class="library__frame" id="portadas" aria-hidden="true"></div>
+  </div>
+  <noscript><p>Activa JavaScript para ver la biblioteca.</p></noscript>
+</section>
+
+<!-- =========================================================
+     CÓMO FUNCIONA
+     ========================================================= -->
+<section class="chapter f-white how wrap" id="como" aria-labelledby="como-titulo">
+  <div class="grid how__intro">
+    <h2 class="head" id="como-titulo" data-reveal>Cómo funciona</h2>
+    <p data-reveal style="--d:1">Como el amanecer: de lo oscuro a lo claro, un paso a la vez. Toca cada franja para abrirla.</p>
+  </div>
+  <div class="acc" id="pasos" data-reveal style="--d:2">
+    <div class="acc__panel is-open" style="--bg:var(--dawn-1); --ink:var(--white)">
+      <button class="acc__hit" type="button" aria-expanded="true" aria-controls="paso-1"><span class="acc__label">Regístrate</span></button>
+      <div class="acc__content" id="paso-1"><h3>Regístrate</h3><p>Dejas tu nombre y tu correo en la entrada. Con eso ya eres parte de la V y te enteras de cada recurso nuevo.</p></div>
+    </div>
+    <div class="acc__panel" style="--bg:var(--dawn-2); --ink:var(--white)">
+      <button class="acc__hit" type="button" aria-expanded="false" aria-controls="paso-2"><span class="acc__label">Entra al grupo</span></button>
+      <div class="acc__content" id="paso-2"><h3>Entra al grupo</h3><p>Únete a la comunidad de WhatsApp: avisos, retos y un lugar para preguntar sin pena.</p></div>
+    </div>
+    <div class="acc__panel" style="--bg:var(--dawn-3); --ink:var(--black)">
+      <button class="acc__hit" type="button" aria-expanded="false" aria-controls="paso-3"><span class="acc__label">Descarga y aplica</span></button>
+      <div class="acc__content" id="paso-3"><h3>Descarga y aplica</h3><p>Elige un PDF de la biblioteca y ponlo en práctica esta semana. Uno a la vez, y completo.</p></div>
+    </div>
+    <div class="acc__panel" style="--bg:var(--dawn-4); --ink:var(--black)">
+      <button class="acc__hit" type="button" aria-expanded="false" aria-controls="paso-4"><span class="acc__label">Publica tu día 1</span></button>
+      <div class="acc__content" id="paso-4"><h3>Publica tu día 1</h3><p>Graba o escribe tu primer día y compártelo en el grupo. No tiene que salir perfecto; tiene que salir.</p></div>
+    </div>
+    <div class="acc__panel" style="--bg:var(--dawn-5); --ink:var(--black)">
+      <button class="acc__hit" type="button" aria-expanded="false" aria-controls="paso-5"><span class="acc__label">Repite</span></button>
+      <div class="acc__content" id="paso-5"><h3>Repite</h3><p>Día 2, día 3, día 30. Lo que se acumula no es la motivación: es el registro de lo que hiciste.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CÓDIGO V
+     ========================================================= -->
+<section class="chapter f-graphite code wrap" id="codigo" aria-labelledby="codigo-titulo">
+  <div class="grid code__top">
+    <h2 class="head" id="codigo-titulo" data-reveal>Código V</h2>
+    <p data-reveal style="--d:1">Seis reglas para que el grupo siga valiendo la pena. Al entrar, aceptas cumplirlas.</p>
+  </div>
+  <ul class="rules">
+    <li class="rule" data-reveal><h3>Proceso real.</h3><p>Comparte lo que de verdad hiciste, también lo que salió mal. Aquí no se presume: se muestra.</p></li>
+    <li class="rule" data-reveal style="--d:1"><h3>Respeto siempre.</h3><p>Cero burlas, ataques o discriminación. Se critica la idea, nunca a la persona.</p></li>
+    <li class="rule" data-reveal><h3>Cero spam.</h3><p>Nada de cadenas, links de afiliado ni ventas sin permiso de los administradores.</p></li>
+    <li class="rule" data-reveal style="--d:1"><h3>Nada de dinero fácil.</h3><p>Nadie aquí promete ganancias, ni en negocios ni en inversiones. Si alguien lo hace, avisa.</p></li>
+    <li class="rule" data-reveal><h3>Aporta antes de pedir.</h3><p>Un dato, una herramienta, una pregunta bien hecha. Todo suma para todos.</p></li>
+    <li class="rule" data-reveal style="--d:1"><h3>Lo del grupo, se queda ahí.</h3><p>No compartas capturas ni datos de otros miembros sin su permiso.</p></li>
+  </ul>
+</section>
+
+<!-- =========================================================
+     ÚNETE
+     ========================================================= -->
+<section class="chapter f-yellow cta wrap" id="unete" aria-labelledby="unete-titulo">
+  <div class="tiles">
+    <figure class="tile tile--left" data-reveal><img class="ph drift" data-foto="cta" src="https://picsum.photos/id/1014/800/1000?grayscale" width="800" height="1000" alt="Una mujer de espaldas mira un mar con neblina." loading="lazy" decoding="async"></figure>
+    <div class="tile tile--main" data-reveal style="--d:1">
+      <h2 id="unete-titulo">Entra al grupo.</h2>
+      <p>Ahí avisamos de cada recurso y episodio nuevo, y ahí se hacen los retos. Gratis y sin spam.</p>
+      <div class="cta__actions">
+        <a class="button button--yellow" data-wa href="#unete" data-arrow="out" data-magnet>Unirme por WhatsApp</a>
+        <button class="link" type="button" data-share>Invitar a alguien</button>
+      </div>
+    </div>
+    <div class="tile tile--right" data-reveal style="--d:2" aria-hidden="true"><svg class="vmark"><use href="#v"/></svg></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     PREGUNTAS
+     ========================================================= -->
+<section class="chapter f-paper faq wrap" id="preguntas" aria-labelledby="faq-titulo">
+  <div class="grid">
+    <div class="faq__head">
+      <h2 class="head" id="faq-titulo" data-reveal>Preguntas</h2>
+      <p data-reveal style="--d:1">Si la tuya no está, pregúntala en el grupo.</p>
+    </div>
+    <div class="faq__list">
+      <details class="q" name="faq" data-reveal><summary>¿Cuesta algo entrar?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Nada. Registrarte, entrar al grupo de WhatsApp y descargar los PDFs es gratis.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:1"><summary>¿Qué hacen con mi correo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Lo usamos solo para avisarte de recursos nuevos, episodios de la serie y novedades de la comunidad. No lo vendemos ni lo compartimos. Si quieres que lo borremos, lo pides y listo.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:2"><summary>¿Necesito tener un negocio?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>No. La V es para quien apenas empieza y para quien ya vende algo. Lo único que se pide es avanzar y compartir el proceso.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:3"><summary>¿Qué es la serie N250?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Una serie en TikTok, Reels y Shorts que muestra días reales construyendo negocios mientras se trabaja de tiempo completo. La meta visible es una moto Pulsar N250.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:4"><summary>¿Por qué la letra V?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Porque V es el cinco en números romanos. Cinco, como las 5AM: la hora en que se construye lo propio antes de trabajar para otros.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:5"><summary>¿Aquí dan consejos de inversión o trading?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>No damos asesoría financiera ni prometemos ganancias. Compartimos lo que aprendemos y cómo cuidamos el riesgo; cada quien decide qué hace con su dinero.</p></div></details>
+      <details class="q" name="faq" data-reveal style="--d:6"><summary>¿Cómo me salgo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Sales del grupo de WhatsApp cuando quieras. Para borrar tu correo de la lista, pídelo en el grupo o responde a cualquier correo de la comunidad.</p></div></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================================
+     CIERRE
+     ========================================================= -->
+<footer class="f-black foot wrap">
+  <div class="foot__top">
+    <div class="foot__notes">
+      <a class="mark" href="#inicio"><svg class="vmark" aria-hidden="true"><use href="#v"/></svg>Comunidad V</a>
+      <p>La comunidad de la serie N250, parte de 5AM Corporation.</p>
+      <p>Hecha en la Ciudad de México, para quien construye a las 5.</p>
+    </div>
+    <a class="link" href="#inicio">Volver arriba</a>
+  </div>
+
+  <a class="foot__line" data-wa href="#unete" data-reveal>Nos vemos a las 5.</a>
+
+  <div class="foot__meta">
+    <nav aria-label="Enlaces">
+      <a data-wa href="#unete">WhatsApp</a>
+      <a data-tiktok href="#" target="_blank" rel="noopener">TikTok</a>
+      <button type="button" data-privacy>Aviso de privacidad</button>
+      <button type="button" data-share>Invitar a alguien</button>
+    </nav>
+    <p class="foot__credits">Fotos: Joshua Earle, Danka &amp; Peter, Luke Pamer, Christopher Sardegna, Patryk Sobczak y Oscar Keys en Unsplash, vía Lorem Picsum.</p>
+    <p class="foot__place">CDMX · <span data-year>2026</span></p>
+  </div>
+</footer>
+
+</div><!-- /#site -->
+
+<!-- Visor de PDF -->
+<dialog class="viewer" id="visor" aria-labelledby="visor-titulo">
+  <div class="viewer__bar">
+    <h2 id="visor-titulo">Documento</h2>
+    <a class="button button--yellow button--sm" id="visor-descargar" href="#" download data-arrow="down">Descargar</a>
+    <button class="button button--quiet button--sm" type="button" data-close>Cerrar</button>
+  </div>
+  <iframe id="visor-frame" title="Vista del PDF" src="about:blank"></iframe>
+</dialog>
+
+<!-- Aviso de privacidad -->
+<dialog id="privacidad" aria-labelledby="priv-titulo">
+  <div class="privacy__body">
+    <h2 id="priv-titulo">Aviso de privacidad simplificado</h2>
+    <p>5AM Corporation, responsable de la Comunidad V, recaba tu nombre y tu correo electrónico con una sola finalidad: registrarte en la comunidad y enviarte avisos sobre recursos, episodios de la serie N250 y novedades.</p>
+    <p>No vendemos ni compartimos tus datos con terceros para fines comerciales. Para recibir y guardar tu registro usamos dos servicios: FormSubmit (envía el registro por correo) y Google Sheets (guarda la lista de miembros).</p>
+    <p>En cualquier momento puedes pedir acceder, corregir o eliminar tus datos, u oponerte a su uso (derechos ARCO), en el grupo de WhatsApp o respondiendo a cualquier correo de la comunidad.</p>
+    <p>Última actualización: octubre de 2026.</p>
+    <button class="button button--black" type="button" data-close>Entendido</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =========================================================
+   CONFIGURACIÓN: lo único que necesitas editar
+   ========================================================= */
+const CONFIG = {
+  // Enlace de invitación de tu comunidad de WhatsApp (WhatsApp > Comunidad > Invitar).
+  whatsapp: 'https://chat.whatsapp.com/TU-ENLACE-AQUI',
+
+  // Tu perfil de TikTok de la serie (confirma tu usuario).
+  tiktok: 'https://www.tiktok.com/@5am.growth',
+
+  // FormSubmit: cada registro te llega a este correo.
+  // Después de activarlo, cámbialo por el código que te da FormSubmit para no dejar tu correo visible.
+  formsubmit: '5amcorporation.hq@gmail.com',
+
+  // Google Sheets: pega aquí la URL que termina en /exec de tu Apps Script (ver la guía).
+  sheets: '',
+
+  // Opcional: un clip tuyo de la serie (MP4 corto, sin audio, menos de 8 MB) en la carpeta "videos".
+  // Si existe, reemplaza la foto de la hoja "La serie N250" por tu video en loop.
+  videoSerie: 'videos/serie-n250.mp4'
+};
+
+/* Biblioteca: para agregar un PDF, súbelo a la carpeta "pdfs" del repositorio y copia una línea.
+   Si el archivo todavía no existe, la página lo muestra como "Próximamente". */
+const RECURSOS = [
+  { categoria: 'Guías', tipo: 'Guía', titulo: 'Rutina 5AM', archivo: 'pdfs/rutina-5am.pdf',
+    descripcion: 'Cómo armar una mañana de trabajo propio antes del empleo: horario, bloques y qué hacer el día que fallas.' },
+  { categoria: 'Guías', tipo: 'Guía', titulo: 'Tu primer negocio con poco', archivo: 'pdfs/primer-negocio.pdf',
+    descripcion: 'Lista para validar una idea, ponerle precio y hacer tu primera venta sin invertir de más.' },
+  { categoria: 'Guías', tipo: 'Guía', titulo: 'Graba tu proceso', archivo: 'pdfs/graba-tu-proceso.pdf',
+    descripcion: 'Cómo documentar tus días en TikTok, Reels y Shorts: tomas, voz en off y constancia.' },
+  { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Bitácora día N', archivo: 'pdfs/bitacora-dia-n.pdf',
+    descripcion: 'Una hoja por día: qué hiciste, cuánto avanzaste y qué sigue. La misma lógica de la serie N250.' },
+  { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Ingreso, egreso y ahorro', archivo: 'pdfs/ingreso-egreso-ahorro.pdf',
+    descripcion: 'Registra cada peso del mes y mira cuánto queda para tu meta.' },
+  { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Meta grande, pasos chicos', archivo: 'pdfs/meta-grande.pdf',
+    descripcion: 'Divide una meta grande, como una moto, en montos semanales y marca tu avance.' }
+];
+
+/* =========================================================
+   A partir de aquí no necesitas tocar nada
+   ========================================================= */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const html = document.documentElement;
+  const store = {
+    get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = new Intl.NumberFormat('es-MX');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- botones animados ----------
+     Convierte <a class="button">Texto</a> en: texto que rueda + flecha que cambia. */
+  const FLECHAS = {
+    right: '<path d="M3 8h10M9 4l4 4-4 4"/>',
+    down: '<path d="M8 3v10M4 9l4 4 4-4"/>',
+    out: '<path d="M5 11l6-6M6.5 5H11v4.5"/>'
+  };
+  function armar(btn) {
+    if (btn.dataset.armado) return;
+    btn.dataset.armado = '1';
+    const texto = btn.textContent.trim();
+    btn.innerHTML = `<span class="btn__roll"><span>${esc(texto)}</span><span aria-hidden="true">${esc(texto)}</span></span>`;
+    const dir = btn.dataset.arrow;
+    if (dir) {
+      const svg = `<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">${FLECHAS[dir] || FLECHAS.right}</svg>`;
+      btn.insertAdjacentHTML('beforeend', `<span class="btn__dot" aria-hidden="true">${svg}${svg}</span>`);
+      btn.classList.add('has-arrow');
+    }
+    // Efecto magnético: solo con mouse y si la persona no pidió reducir el movimiento.
+    if (btn.hasAttribute('data-magnet') && finePointer && !reduceMotion) {
+      btn.addEventListener('pointermove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.16;
+        const y = (e.clientY - r.top - r.height / 2) * 0.3;
+        btn.style.setProperty('--mx', Math.max(-10, Math.min(10, x)).toFixed(1) + 'px');
+        btn.style.setProperty('--my', Math.max(-8, Math.min(8, y)).toFixed(1) + 'px');
+      });
+      btn.addEventListener('pointerleave', () => { btn.style.setProperty('--mx', '0px'); btn.style.setProperty('--my', '0px'); });
+    }
+  }
+  function setLabel(btn, texto) {
+    $$('.btn__roll > span', btn).forEach((s) => { s.textContent = texto; });
+  }
+  $$('.button').forEach(armar);
+
+  /* ---------- aviso flotante ---------- */
+  let toastTimer;
+  function toast(msg) {
+    const t = $('#toast');
+    t.textContent = msg;
+    t.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('is-on'), 3200);
+  }
+
+  /* ---------- hora de la Ciudad de México ---------- */
+  function cdmx() {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Mexico_City', hourCycle: 'h23',
+      year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'
+    }).formatToParts(new Date());
+    const o = {};
+    parts.forEach((p) => { o[p.type] = p.value; });
+    return { fecha: `${o.year}-${o.month}-${o.day}`, h: +o.hour % 24, m: +o.minute, s: +o.second };
+  }
+  function updateFive() {
+    const t = cdmx();
+    let text;
+    if (t.h === 5) {
+      text = 'Son las 5 en CDMX. Hora de construir.';
+    } else {
+      let diff = 5 * 3600 - (t.h * 3600 + t.m * 60 + t.s);
+      if (diff <= 0) diff += 86400;
+      const h = Math.floor(diff / 3600);
+      const m = Math.floor((diff % 3600) / 60);
+      const partes = h > 0 ? `${h} h ${m} min` : `${m} min`;
+      text = `Faltan ${partes} para las 5:00 en CDMX.`;
+    }
+    $$('[data-five]').forEach((el) => { el.textContent = text; });
+  }
+  updateFive();
+  setInterval(updateFive, 30000);
+
+  /* ---------- tu día N en la V ---------- */
+  function dayNumber(desde) {
+    const a = Date.parse(desde + 'T00:00:00Z');
+    const b = Date.parse(cdmx().fecha + 'T00:00:00Z');
+    if (isNaN(a) || isNaN(b)) return 1;
+    return Math.max(1, Math.round((b - a) / 86400000) + 1);
+  }
+  function paintDay() {
+    const m = store.get('v_miembro');
+    if (!m) return;
+    const n = dayNumber(m.desde);
+    $$('[data-day]').forEach((el) => { el.textContent = `Tu día ${fmt.format(n)} en la V.`; });
+  }
+  paintDay();
+
+  /* ---------- enlaces de WhatsApp, TikTok y año ---------- */
+  const waReady = CONFIG.whatsapp && !/TU-ENLACE/i.test(CONFIG.whatsapp);
+  $$('[data-wa]').forEach((a) => {
+    if (waReady) { a.href = CONFIG.whatsapp; a.target = '_blank'; a.rel = 'noopener'; }
+    else a.addEventListener('click', (e) => { e.preventDefault(); toast('El enlace del grupo se activa muy pronto.'); });
+  });
+  $$('[data-tiktok]').forEach((a) => { if (CONFIG.tiktok) a.href = CONFIG.tiktok; });
+  $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  /* ---------- invitar a alguien ---------- */
+  $$('[data-share]').forEach((b) => b.addEventListener('click', async () => {
+    const url = location.href.split('#')[0].split('?')[0];
+    const text = 'Me uní a la Comunidad V, la comunidad de la serie N250. Entra gratis:';
+    if (navigator.share) {
+      try { await navigator.share({ title: 'Comunidad V', text, url }); } catch (e) {}
+    } else {
+      window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+    }
+  }));
+
+  /* ---------- ventanas ---------- */
+  const privacy = $('#privacidad');
+  const viewer = $('#visor');
+  $$('[data-privacy]').forEach((b) => b.addEventListener('click', () => privacy.showModal()));
+  $$('dialog [data-close]').forEach((b) => b.addEventListener('click', () => b.closest('dialog').close()));
+  $$('dialog').forEach((d) => d.addEventListener('click', (e) => { if (e.target === d) d.close(); }));
+  viewer.addEventListener('close', () => { $('#visor-frame').src = 'about:blank'; });
+
+  /* =========================================================
+     LA ENTRADA
+     ========================================================= */
+  const gate = $('#gate');
+  const site = $('#site');
+  const form = $('#gate-form');
+  const msg = $('#g-msg');
+  const btn = $('#g-enviar');
+
+  function lockSite(on) {
+    if ('inert' in HTMLElement.prototype) site.inert = on;
+    else site.setAttribute('aria-hidden', on ? 'true' : 'false');
+  }
+  if (!html.classList.contains('is-member')) lockSite(true);
+
+  function leaveGate() {
+    html.classList.remove('gate-open');
+    html.classList.add('entered');
+    lockSite(false);
+    gate.classList.add('is-leaving');
+    let done = false;
+    const finish = () => { if (done) return; done = true; html.classList.add('is-member'); gate.classList.remove('is-leaving'); };
+    gate.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, 1300);
+    paintDay();
+  }
+
+  function setError(input, text) {
+    msg.textContent = text;
+    msg.classList.add('is-error');
+    if (input) { input.setAttribute('aria-invalid', 'true'); input.focus(); }
+  }
+  $$('.input', form).forEach((i) => i.addEventListener('input', () => { i.removeAttribute('aria-invalid'); msg.textContent = ''; msg.classList.remove('is-error'); }));
+  $('#g-acepto').addEventListener('change', () => { msg.textContent = ''; msg.classList.remove('is-error'); });
+
+  function withTimeout(promise, ms) {
+    return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej(new Error('tiempo agotado')), ms))]);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nombreEl = $('#g-nombre');
+    const correoEl = $('#g-correo');
+    const nombre = nombreEl.value.trim().replace(/\s+/g, ' ');
+    const correo = correoEl.value.trim().toLowerCase();
+
+    if (nombre.length < 2) return setError(nombreEl, 'Escribe tu nombre.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo)) return setError(correoEl, 'Revisa tu correo: parece incompleto.');
+    if (!$('#g-acepto').checked) return setError(null, 'Acepta el aviso de privacidad para continuar.');
+
+    btn.disabled = true;
+    btn.classList.add('is-loading');
+    setLabel(btn, 'Entrando…');
+    msg.textContent = '';
+    msg.classList.remove('is-error');
+
+    const t = cdmx();
+    const registro = {
+      nombre, correo,
+      fecha: `${t.fecha} ${String(t.h).padStart(2, '0')}:${String(t.m).padStart(2, '0')} (CDMX)`,
+      origen: location.href.split('#')[0]
+    };
+
+    // Trampa para bots: si este campo invisible viene lleno, no se envía nada.
+    const esBot = form.querySelector('[name="_honey"]').value !== '';
+    const envios = [];
+    if (!esBot && CONFIG.formsubmit) {
+      envios.push(withTimeout(fetch('https://formsubmit.co/ajax/' + CONFIG.formsubmit, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: registro.nombre,
+          email: registro.correo,
+          fecha: registro.fecha,
+          origen: registro.origen,
+          _subject: 'Nuevo miembro en la Comunidad V: ' + registro.nombre,
+          _template: 'table'
+        })
+      }).then((r) => r.json()), 9000));
+    }
+    if (!esBot && CONFIG.sheets) {
+      envios.push(withTimeout(fetch(CONFIG.sheets, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams({ nombre: registro.nombre, correo: registro.correo, fecha: registro.fecha, origen: registro.origen })
+      }), 9000));
+    }
+    if (!envios.length) console.warn('[Comunidad V] No hay FormSubmit ni Google Sheets configurado: el registro no se guardó.');
+
+    const resultados = await Promise.allSettled(envios);
+    resultados.forEach((r) => { if (r.status === 'rejected') console.warn('[Comunidad V] Un envío falló:', r.reason); });
+
+    // En este navegador solo guardamos tu nombre y la fecha de entrada (para contar tu día N), nunca tu correo.
+    store.set('v_miembro', { nombre: registro.nombre, desde: t.fecha });
+
+    // La barra de progreso termina y el botón confirma antes de cambiar de vista.
+    btn.classList.add('is-done');
+    setLabel(btn, 'Listo');
+    await new Promise((res) => setTimeout(res, reduceMotion ? 0 : 450));
+
+    $('#gate-done-text').textContent = `Listo, ${registro.nombre.split(' ')[0]}. Hoy es tu día 1 en la V.`;
+    gate.classList.add('is-done');
+    $('#gate-enter').focus();
+    setTimeout(leaveGate, 2200);
+  });
+  $('#gate-enter').addEventListener('click', leaveGate);
+
+  /* =========================================================
+     BARRA FIJA
+     ========================================================= */
+  const bar = $('#bar');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => bar.classList.toggle('is-on', !e.isIntersecting), { threshold: 0, rootMargin: '-60px 0px 0px 0px' })
+      .observe($('#inicio'));
+  } else bar.classList.add('is-on');
+
+  /* =========================================================
+     CALCULADORA DE HORAS
+     ========================================================= */
+  const range = $('#horas');
+  function calc() {
+    const h = +range.value;
+    const anual = h * 52;
+    const jornadas = Math.round(anual / 8);
+    const diario = h / 7;
+    let hh = Math.floor(diario);
+    let mm = Math.round((diario - hh) * 60);
+    if (mm === 60) { hh += 1; mm = 0; }
+    const dia = hh > 0 ? `${hh} h${mm ? ' ' + mm + ' min' : ''}` : `${mm} min`;
+    $('#horas-out').textContent = h;
+    $('#calc-total').textContent = `${fmt.format(anual)} horas`;
+    $('#calc-sub').textContent = `En un año. Son ${fmt.format(jornadas)} jornadas completas de 8 horas: unas ${dia} al día.`;
+  }
+  range.addEventListener('input', calc);
+  calc();
+
+  /* =========================================================
+     BIBLIOTECA
+     ========================================================= */
+  const TONOS = [
+    { c: 'var(--yellow)', ci: 'var(--black)', vc: 'var(--black)' },
+    { c: 'var(--white)', ci: 'var(--black)', vc: 'var(--yellow)' },
+    { c: 'var(--graphite-2)', ci: 'var(--white)', vc: 'var(--yellow)' }
+  ];
+  const list = $('#lista');
+  const frame = $('#portadas');
+  const categorias = [...new Set(RECURSOS.map((r) => r.categoria))];
+  let n = 0;
+  categorias.forEach((cat) => {
+    const items = RECURSOS.filter((r) => r.categoria === cat);
+    const head = document.createElement('div');
+    head.className = 'cat';
+    head.setAttribute('data-reveal', '');
+    head.innerHTML = `<h3>${esc(cat)}</h3><span>${items.length} ${items.length === 1 ? 'recurso' : 'recursos'}</span>`;
+    list.appendChild(head);
+    const ul = document.createElement('ul');
+    ul.className = 'res-list';
+    items.forEach((r) => {
+      const i = n++;
+      const tono = TONOS[i % TONOS.length];
+      const vars = `--c:${tono.c};--ci:${tono.ci};--vc:${tono.vc}`;
+      const li = document.createElement('li');
+      li.className = 'res';
+      li.dataset.i = i;
+      li.setAttribute('data-reveal', '');
+      li.style.cssText = vars + `;--d:${i % 3}`;
+      li.innerHTML = `
+        <div class="res__cover" aria-hidden="true"><span>${esc(r.tipo || 'PDF')} en PDF</span><strong>${esc(r.titulo)}</strong></div>
+        <div class="res__row">
+          <div class="res__main">
+            <h4 class="res__name">${esc(r.titulo)}</h4>
+            <p class="res__desc">${esc(r.tipo || 'PDF')} en PDF. ${esc(r.descripcion || '')}</p>
+          </div>
+          <div class="res__side">
+            <div class="res__actions">
+              <button class="button button--white button--sm" type="button" data-ver aria-label="Ver ${esc(r.titulo)}">Ver</button>
+              <a class="button button--yellow button--sm" href="${esc(r.archivo)}" download data-arrow="down" aria-label="Descargar ${esc(r.titulo)}">Descargar</a>
+            </div>
+            <p class="res__soon" hidden>Llega pronto. Te avisamos en el grupo.</p>
+          </div>
+        </div>`;
+      $$('.button', li).forEach(armar);
+      li.querySelector('[data-ver]').addEventListener('click', () => openPdf(r));
+      li.addEventListener('pointerenter', () => showCover(i));
+      li.addEventListener('focusin', () => showCover(i));
+      ul.appendChild(li);
+
+      const cover = document.createElement('div');
+      cover.className = 'cover' + (i === 0 ? ' is-on' : '');
+      cover.style.cssText = vars;
+      cover.dataset.vc = tono.vc;
+      cover.innerHTML = `<span class="cover__kind">${esc(r.tipo || 'PDF')}</span><strong class="cover__title">${esc(r.titulo)}</strong><span class="cover__foot"><span>Comunidad V</span><span>PDF</span></span>`;
+      frame.appendChild(cover);
+      if (i === 0) frame.style.setProperty('--vc', tono.vc);
+    });
+    list.appendChild(ul);
+  });
+
+  // Una sola V encima de las portadas: cambia de color con la portada activa.
+  frame.insertAdjacentHTML('beforeend', '<svg class="vmark frame__v" aria-hidden="true"><use href="#v"/></svg>');
+  function showCover(i) {
+    $$('.cover', frame).forEach((c, k) => {
+      c.classList.toggle('is-on', k === i);
+      if (k === i) frame.style.setProperty('--vc', c.dataset.vc);
+    });
+  }
+
+  function openPdf(r) {
+    const touch = matchMedia('(pointer: coarse)').matches || innerWidth < 800;
+    if (touch) { window.open(r.archivo, '_blank', 'noopener'); return; }
+    $('#visor-titulo').textContent = r.titulo;
+    $('#visor-descargar').href = r.archivo;
+    $('#visor-frame').src = r.archivo + '#view=FitH';
+    viewer.showModal();
+  }
+
+  // Marca como "Próximamente" los PDFs que todavía no subiste.
+  if (location.protocol !== 'file:') {
+    RECURSOS.forEach((r, i) => {
+      fetch(r.archivo, { method: 'HEAD', cache: 'no-store' })
+        .then((res) => {
+          if (res.ok) return;
+          const li = list.querySelector(`.res[data-i="${i}"]`);
+          if (!li) return;
+          li.classList.add('is-soon');
+          li.querySelector('.res__soon').hidden = false;
+        })
+        .catch(() => {});
+    });
+  }
+
+  /* =========================================================
+     VIDEO DE LA SERIE (si lo subiste)
+     ========================================================= */
+  if (CONFIG.videoSerie && location.protocol !== 'file:') {
+    fetch(CONFIG.videoSerie, { method: 'HEAD', cache: 'no-store' }).then((res) => {
+      if (!res.ok) return;
+      const img = $('[data-foto="hoja3"]');
+      if (!img) return;
+      const v = document.createElement('video');
+      v.className = img.className;
+      v.muted = true; v.loop = true; v.playsInline = true;
+      v.setAttribute('playsinline', '');
+      v.preload = 'metadata';
+      v.poster = img.currentSrc || img.src;
+      v.src = CONFIG.videoSerie;
+      v.setAttribute('aria-label', 'Fragmento de un episodio de la serie N250');
+      img.replaceWith(v);
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      new IntersectionObserver(([en]) => { if (en.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: 0.25 }).observe(v);
+    }).catch(() => {});
+  }
+
+  /* =========================================================
+     CÓMO FUNCIONA: acordeón
+     ========================================================= */
+  const panels = $$('#pasos .acc__panel');
+  panels.forEach((p) => p.querySelector('.acc__hit').addEventListener('click', () => {
+    panels.forEach((x) => {
+      const on = x === p;
+      x.classList.toggle('is-open', on);
+      x.querySelector('.acc__hit').setAttribute('aria-expanded', String(on));
+    });
+  }));
+
+  /* =========================================================
+     APARICIÓN AL HACER SCROLL (una sola vez)
+     ========================================================= */
+  const targets = $$('[data-reveal]');
+  if (!('IntersectionObserver' in window)) targets.forEach((el) => el.classList.add('is-in'));
+  else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    targets.forEach((el) => io.observe(el));
+    window.addEventListener('load', () => setTimeout(() => {
+      targets.forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('is-in'); });
+    }, 2500));
+  }
+})();
+</script>
+</body>
+</html>
