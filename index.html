@@ -4,25 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Comunidad V · Serie N250</title>
-<meta name="description" content="La comunidad de la serie N250. La V es disciplina: lo que haces cuando nadie te ve. Grupo de WhatsApp, biblioteca de PDFs gratis y tu registro de días.">
-<meta name="theme-color" content="#F7F9F7">
+<meta name="description" content="Disciplina, un día a la vez. La comunidad de la serie N250: grupo de WhatsApp y biblioteca de PDFs gratis.">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
 <meta property="og:title" content="Comunidad V · Serie N250">
-<meta property="og:description" content="Disciplina sin público. Entra gratis a la comunidad de la serie N250.">
+<meta property="og:description" content="Disciplina, un día a la vez. Entra gratis a la comunidad de la serie N250.">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23F7F9F7'/%3E%3Cpolygon points='20,20 36.2,20 50,58.4 63.8,20 80,20 57.2,80 42.8,80' fill='%23FFD60A'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23006341'/%3E%3Cpolygon points='24,26 38.6,26 50,57.7 61.4,26 76,26 59.8,76 40.2,76' fill='%23FFFFFF'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
   // Antes de pintar: marca que hay JavaScript y si esta persona ya se registró.
   (function () {
     var d = document.documentElement;
     d.classList.add('js');
     try {
-      if (/[?&]reset\b/.test(location.search)) { localStorage.removeItem('v_miembro'); localStorage.removeItem('v_racha'); }
-      if (localStorage.getItem('v_miembro')) d.classList.add('is-member', 'entered');
+      if (/[?&]reset\b/.test(location.search)) localStorage.removeItem('v_miembro');
+      if (localStorage.getItem('v_miembro')) d.classList.add('is-member');
       else d.classList.add('gate-open');
     } catch (e) { d.classList.add('gate-open'); }
   })();
@@ -30,1208 +30,488 @@
 <style>
 /* =========================================================
    COMUNIDAD V · SERIE N250
-   La V es disciplina: lo que haces cuando nadie te ve.
-   Noche (negro) como fondo, el amarillo es la luz.
-   Letra: Archivo. Títulos comprimidos y en mayúsculas, texto a ancho normal.
+   Blanco y verde Pantone 3425 C (#006341). Estilo limpio, tipo Apple.
+   Letra: Inter. Movimiento mínimo: aparición suave y respuesta al tocar.
    ========================================================= */
 :root {
-  --night: #050506;
-  --ink-1: #0C0C0E;
-  --ink-2: #141417;
-  --ink-3: #1D1D21;
-  --ink-4: #2A2A2F;
+  --green: #006341;        /* Pantone 3425 C */
+  --green-dark: #004B31;   /* para pasar el cursor y presionar */
+  --green-soft: #E7F1EC;   /* fondo verde muy claro */
   --white: #FFFFFF;
-  --mute: #A1A1A6;
-  --mute-2: #6E6E73;
-  --yellow: #006B54;
-  --yellow-hi: #16856B;
-  --gold: #006B54;
-  --amber: #005744;
-  --glow: 255 214 10;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-2: rgba(255, 255, 255, 0.16);
-  --error: #FF8A80;
+  --gray: #F5F5F7;         /* fondo de secciones alternas */
+  --ink: #1D1D1F;          /* texto principal */
+  --mute: #6E6E73;         /* texto secundario */
+  --line: #D2D2D7;         /* líneas finas */
+  --error: #C2361F;
 
-  --font: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  --fs-small: 0.875rem;
+  --fs-body: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  --fs-lead: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem);
+  --fs-h2: clamp(2.25rem, 1.3rem + 3vw, 4rem);
+  --fs-h1: clamp(3.25rem, 1.4rem + 6.2vw, 6.75rem);
 
-  --step-small: clamp(0.875rem, 0.84rem + 0.12vw, 0.9375rem);
-  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-  --step-lead: clamp(1.375rem, 1.05rem + 1.05vw, 2.25rem);
-  --step-sub: clamp(2.25rem, 1rem + 2.6vw, 3.5rem);
-  --step-head: clamp(3rem, 1rem + 7vw, 8rem);
-  --step-display: clamp(3.25rem, 0.75rem + 10vw, 11.5rem);
-
-  --margin: clamp(1rem, 3vw, 3rem);
-  --gutter: clamp(1rem, 2vw, 2rem);
-  --radius: 28px;
-  --radius-s: 18px;
-  --bar: 64px;
-
-  --shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 30px 60px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px var(--line);
-  --shadow-lift: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 40px 80px -30px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(var(--glow) / 0.35), 0 0 60px -10px rgba(var(--glow) / 0.25);
-  --gold-grad: linear-gradient(180deg, var(--yellow-hi) 0%, var(--yellow) 48%, var(--gold) 100%);
-  --steel-grad: linear-gradient(180deg, #FFFFFF 0%, #E6E6EA 45%, #8E8E93 100%);
-
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
-  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
-
-  interpolate-size: allow-keywords;
+  --margin: clamp(1.25rem, 4vw, 3rem);
+  --max: 1120px;
+  --radius: 24px;
+  --bar: 56px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; background: var(--night); overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; background: var(--white); scroll-behavior: smooth; }
 html.gate-open { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
-  margin: 0; background: var(--night); color: var(--white);
-  font-family: var(--font); font-size: var(--step-body); line-height: 1.55;
-  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip;
-}
-/* grano de película sobre toda la página */
-body::after {
-  content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  margin: 0; background: var(--white); color: var(--ink);
+  font-family: var(--font); font-size: var(--fs-body); line-height: 1.5; letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
 h1, h2, h3, h4, p, figure, ul, ol, blockquote { margin: 0; }
 ul[class], ol[class] { padding: 0; list-style: none; }
 img, svg, video, iframe { display: block; max-width: 100%; }
 img { height: auto; }
-button, input, select, textarea { font: inherit; color: inherit; }
+button, input { font: inherit; color: inherit; }
 button { background: none; border: 0; padding: 0; cursor: pointer; }
 a { color: inherit; }
-input, textarea, select { font-size: max(16px, 1rem); }
-button, a, summary, [role="button"] { touch-action: manipulation; }
-button, .button, summary { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-h1, h2, h3, h4 { font-weight: 700; text-wrap: balance; }
+input { font-size: max(16px, 1rem); }
+button, a, summary { touch-action: manipulation; }
+button, .btn, summary { -webkit-user-select: none; user-select: none; }
+h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
-:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
-.on-light :focus-visible { outline-color: var(--night); }
-::selection { background: var(--yellow); color: var(--night); }
-:target { scroll-margin-top: calc(var(--bar) + 16px); }
+:focus-visible { outline: 3px solid rgba(0, 99, 65, 0.45); outline-offset: 3px; border-radius: 6px; }
+::selection { background: var(--green-soft); color: var(--ink); }
+:target { scroll-margin-top: calc(var(--bar) + 20px); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.nums { font-variant-numeric: tabular-nums; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
-/* ---------- tipo ---------- */
-.display { font-size: var(--step-display); }
-.head { font-size: var(--step-head); }
-.display, .head, .cap {
-  font-weight: 800; font-stretch: 62%; text-transform: uppercase;
-  line-height: 0.86; letter-spacing: -0.005em;
-}
-/* títulos con brillo metálico */
-.steel { background: var(--steel-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.gold { background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-/* el degradado solo pinta dentro de la caja: se le da aire arriba para que los acentos (Ñ, Ú, Ó) no se pierdan */
-.steel, .gold { padding-top: 0.22em; margin-top: -0.22em; }
-.lead { font-size: var(--step-lead); line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; }
-.lines .line { display: block; overflow: hidden; padding-top: 0.28em; margin-top: -0.28em; padding-bottom: 0.06em; margin-bottom: -0.06em; }
-.lines [data-line] { display: block; }
-.small { font-size: var(--step-small); line-height: 1.45; }
-.mute { color: var(--mute); }
-
 /* ---------- estructura ---------- */
-.wrap { padding-left: max(var(--margin), env(safe-area-inset-left)); padding-right: max(var(--margin), env(safe-area-inset-right)); }
-.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
-.chapter { position: relative; padding-block: clamp(96px, 12vw, 180px); isolation: isolate; }
-.chapter > .glow-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.container { width: min(100% - 2 * var(--margin), var(--max)); margin-inline: auto; }
+.section { padding-block: clamp(80px, 10vw, 140px); }
+.section--gray { background: var(--gray); }
+.section__head { max-width: 640px; }
+.section__head.center { margin-inline: auto; text-align: center; }
+.h1 { font-size: var(--fs-h1); font-weight: 700; line-height: 1.02; letter-spacing: -0.045em; }
+.h2 { font-size: var(--fs-h2); font-weight: 600; line-height: 1.06; letter-spacing: -0.035em; }
+.lead { font-size: var(--fs-lead); line-height: 1.35; letter-spacing: -0.02em; color: #515154; }
+.section__head .lead { margin-top: 16px; }
 
-/* ---------- la V ---------- */
-.vmark { width: 1em; height: 1em; fill: currentColor; }
-.vgold { fill: url(#vFill); }
-.mark { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; font-stretch: 62%; text-transform: uppercase; font-size: var(--step-lead); line-height: 1; letter-spacing: 0.01em; text-decoration: none; }
-.mark .vmark { width: 26px; height: 26px; filter: drop-shadow(0 0 10px rgba(var(--glow) / 0.6)); }
+/* ---------- ícono V (estilo ícono de app) ---------- */
+.icon { display: inline-grid; place-items: center; flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--green); color: var(--white); }
+.icon svg { width: 52%; height: 52%; fill: currentColor; }
+.icon--lg { width: 72px; height: 72px; border-radius: 18px; }
+.icon--soft { background: var(--green-soft); color: var(--green); }
 
-/* =========================================================
-   BOTONES: brillo que cruza, texto que rueda, flecha que cambia,
-   resplandor dorado y efecto magnético (solo con mouse)
-   ========================================================= */
-.button {
-  --mx: 0px; --my: 0px; --press: 1;
-  position: relative; isolation: isolate; overflow: hidden;
-  display: inline-flex; align-items: center; justify-content: center; gap: 14px;
-  min-height: 58px; padding: 0 1.8rem;
-  border-radius: 999px;
-  font-size: var(--step-body); font-weight: 700; line-height: 1; letter-spacing: 0.005em;
+/* ---------- botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 50px; padding: 0 24px; border-radius: 999px;
+  font-size: var(--fs-body); font-weight: 500; letter-spacing: -0.01em; line-height: 1;
   text-decoration: none; white-space: nowrap;
-  transform: translate3d(var(--mx), var(--my), 0) scale(var(--press));
-  transition: transform 340ms var(--ease-out), box-shadow 400ms var(--ease-out), color 260ms ease, background-color 260ms ease;
+  background: var(--green); color: var(--white);
+  transition: background-color 180ms ease, color 180ms ease, transform 120ms ease;
 }
-.button.has-arrow { padding-right: 9px; }
-.button:active { --press: 0.96; transition-duration: 110ms, 400ms, 260ms, 260ms; }
-.button[disabled] { cursor: progress; }
-.button::before {
-  content: ""; position: absolute; top: -20%; bottom: -20%; left: 0; width: 40%; z-index: 1; pointer-events: none;
-  background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
-  transform: translateX(-160%) skewX(-20deg);
-}
-.button::after { /* barra de progreso del registro */
-  content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(0, 0, 0, 0.16);
-  transform: scaleX(0); transform-origin: left;
-}
-.button.is-loading::after { transform: scaleX(0.85); transition: transform 2400ms var(--ease-out); }
-.button.is-done::after { transform: scaleX(1); transition: transform 300ms var(--ease-out); }
-.btn__roll { position: relative; z-index: 2; display: block; height: 1.25em; line-height: 1.25; overflow: hidden; }
-.btn__roll > span { display: block; transition: transform 480ms var(--ease-out); }
-.btn__dot {
-  position: relative; z-index: 2; display: grid; place-items: center; flex: none;
-  width: 42px; height: 42px; border-radius: 50%; overflow: hidden;
-  background: var(--night); color: var(--yellow);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition: transform 420ms var(--ease-out), background-color 300ms ease, color 300ms ease;
-}
-.btn__dot svg { grid-area: 1 / 1; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform 480ms var(--ease-out); }
-.btn__dot svg:last-child { transform: translateX(-190%); }
-.button[data-arrow="down"] .btn__dot svg:last-child { transform: translateY(-190%); }
-.button[data-arrow="out"] .btn__dot svg:last-child { transform: translate(-190%, 190%); }
-.button:active .btn__dot { transform: scale(0.88); }
-
-.button--gold {
-  background: var(--gold-grad); color: var(--night);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(var(--glow) / 0.7), 0 10px 30px -8px rgba(255, 190, 0, 0.6);
-}
-.button--ghost {
-  background: rgba(255, 255, 255, 0.04); color: var(--white);
-  box-shadow: inset 0 0 0 1px var(--line-2), 0 10px 30px -12px rgba(0, 0, 0, 0.8);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-}
-.button--ghost .btn__dot { background: rgba(255, 255, 255, 0.08); color: var(--white); }
-.button--night {
-  background: linear-gradient(180deg, #2A2A2E 0%, #0A0A0B 100%); color: var(--white);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 14px 34px -10px rgba(0, 0, 0, 0.7);
-}
-.button--night .btn__dot { background: var(--gold-grad); color: var(--night); }
-.button--sm { min-height: 44px; padding: 0 1.2rem; gap: 8px; font-size: var(--step-small); }
-.button--sm.has-arrow { padding-right: 1rem; }
-.button--sm .btn__dot { width: 16px; height: 16px; background: transparent; color: currentColor; box-shadow: none; }
-.button--sm .btn__dot svg { width: 14px; height: 14px; }
-
-.link { text-decoration: underline; text-decoration-thickness: 0.07em; text-underline-offset: 0.22em; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); transition: text-decoration-color 180ms ease, text-underline-offset 180ms ease, color 180ms ease; }
-.link:active { opacity: 0.7; }
-
+.btn:active { transform: scale(0.98); background: var(--green-dark); }
+.btn[disabled] { opacity: 0.7; cursor: progress; }
+.btn--white { background: var(--white); color: var(--green); }
+.btn--white:active { background: var(--green-soft); }
+.btn--soft { background: var(--green-soft); color: var(--green); }
+.btn--soft:active { background: #D6E8DF; }
+.btn--sm { min-height: 36px; padding: 0 16px; font-size: var(--fs-small); }
+.more { display: inline-flex; align-items: center; gap: 4px; color: var(--green); font-weight: 500; text-decoration: none; }
+.more::after { content: "›"; font-size: 1.2em; line-height: 1; transition: transform 180ms ease; }
+.more--white { color: var(--white); }
 @media (hover: hover) and (pointer: fine) {
-  .button:hover::before { transform: translateX(360%) skewX(-20deg); transition: transform 950ms var(--ease-out); }
-  .button--gold:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(var(--glow) / 0.9), 0 16px 44px -8px rgba(255, 190, 0, 0.85), 0 0 80px -10px rgba(var(--glow) / 0.55); }
-  .button--ghost:hover { color: var(--yellow); box-shadow: inset 0 0 0 1px rgba(var(--glow) / 0.65), 0 0 40px -6px rgba(var(--glow) / 0.3); }
-  .button--ghost:hover .btn__dot { background: var(--gold-grad); color: var(--night); }
-  .button--night:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 18px 44px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6); }
-  .link:hover { text-decoration-color: currentColor; text-underline-offset: 0.3em; }
-}
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .button:hover .btn__roll > span { transform: translateY(-100%); }
-  .button:hover .btn__dot svg:first-child { transform: translateX(190%); }
-  .button[data-arrow="down"]:hover .btn__dot svg:first-child { transform: translateY(190%); }
-  .button[data-arrow="out"]:hover .btn__dot svg:first-child { transform: translate(190%, -190%); }
-  .button:hover .btn__dot svg:last-child { transform: none; }
-}
-
-/* ---------- tarjetas de vidrio con luz que sigue al cursor ---------- */
-.glass {
-  position: relative; isolation: isolate; overflow: hidden;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.015) 100%);
-  box-shadow: var(--shadow-card);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-}
-.spot::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: radial-gradient(420px circle at var(--sx, 50%) var(--sy, 0%), rgba(var(--glow) / 0.16), transparent 60%);
-  opacity: 0; transition: opacity 400ms ease;
-}
-.spot { transition: translate 500ms var(--ease-out), box-shadow 500ms var(--ease-out); }
-@media (hover: hover) and (pointer: fine) {
-  .spot:hover { translate: 0 -6px; box-shadow: var(--shadow-lift); }
-  .spot:hover::before { opacity: 1; }
+  .btn:hover { background: var(--green-dark); }
+  .btn--white:hover { background: var(--green-soft); color: var(--green-dark); }
+  .btn--soft:hover { background: #D6E8DF; }
+  .more:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+  .more:hover::after { transform: translateX(2px); }
 }
 
 /* =========================================================
-   LA ENTRADA (registro)
+   ENTRADA (registro)
    ========================================================= */
 .gate { display: none; }
-.js .gate {
-  display: block; position: fixed; inset: 0; z-index: 100; overflow-y: auto; overscroll-behavior: contain;
-  background:
-    radial-gradient(900px 600px at 25% 40%, rgba(var(--glow) / 0.18), transparent 60%),
-    radial-gradient(700px 500px at 90% 110%, rgba(255, 159, 10, 0.1), transparent 60%),
-    var(--night);
-}
+.js .gate { display: grid; position: fixed; inset: 0; z-index: 100; overflow-y: auto; overscroll-behavior: contain; background: var(--gray); place-items: center; padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom)); }
 .js.is-member .gate { display: none; }
-.gate__inner {
-  min-height: 100svh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: center;
-  padding: max(32px, env(safe-area-inset-top)) max(var(--margin), env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(var(--margin), env(safe-area-inset-left));
-}
-.gate__mark { grid-column: 1 / 7; position: relative; display: grid; place-items: center; }
-.gate__mark svg { width: min(100%, 62svh); height: auto; aspect-ratio: 1; overflow: visible; filter: drop-shadow(0 0 40px rgba(var(--glow) / 0.45)); }
-.gate__mark .v-line { fill: none; stroke: var(--yellow); stroke-width: 0.8; stroke-linejoin: miter; }
-.gate__panel { grid-column: 8 / 13; max-width: 480px; }
-.gate__title { font-size: var(--step-head); }
-.gate__lede { margin-top: 20px; max-width: 40ch; color: #D1D1D6; }
-.gate__form { margin-top: 32px; display: grid; gap: 14px; }
-.field { display: grid; gap: 8px; }
-.field label { font-size: var(--step-small); color: var(--mute); }
+.gate__card { width: 100%; max-width: 440px; padding: clamp(28px, 5vw, 44px); border-radius: 28px; background: var(--white); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.06); text-align: center; }
+.gate__card .icon { margin-inline: auto; }
+.gate__title { margin-top: 24px; font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.25rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
+.gate__lede { margin-top: 10px; color: var(--mute); }
+.gate__form { margin-top: 28px; display: grid; gap: 12px; text-align: left; }
 .input {
-  width: 100%; min-height: 58px; padding: 0 22px; border: 0; border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06); color: var(--white); font-size: max(16px, var(--step-body));
-  box-shadow: inset 0 0 0 1px var(--line-2), inset 0 2px 6px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 220ms ease, background-color 220ms ease;
+  width: 100%; min-height: 52px; padding: 0 16px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: max(16px, 1.0625rem);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 .input::placeholder { color: #8E8E93; }
-.input:focus-visible { outline: none; background: rgba(255, 255, 255, 0.09); box-shadow: inset 0 0 0 1px rgba(var(--glow) / 0.8), 0 0 0 4px rgba(var(--glow) / 0.15), 0 0 30px -6px rgba(var(--glow) / 0.4); }
-.input[aria-invalid="true"] { box-shadow: inset 0 0 0 1px var(--error), 0 0 0 4px rgba(255, 138, 128, 0.15); }
-.check { display: flex; gap: 12px; align-items: flex-start; font-size: var(--step-small); line-height: 1.4; margin-top: 4px; color: #D1D1D6; }
-.check input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--yellow); }
-.gate__form .button { width: 100%; margin-top: 6px; }
-.gate__msg { min-height: 1.4em; font-size: var(--step-small); }
+.input:focus-visible { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(0, 99, 65, 0.15); }
+.input[aria-invalid="true"] { border-color: var(--error); box-shadow: 0 0 0 4px rgba(194, 54, 31, 0.12); }
+.check { display: flex; gap: 10px; align-items: flex-start; margin-top: 4px; font-size: var(--fs-small); line-height: 1.45; color: var(--mute); }
+.check input { width: 20px; height: 20px; margin: 1px 0 0; flex: none; accent-color: var(--green); }
+.check button { color: var(--green); text-decoration: underline; text-underline-offset: 0.15em; font-size: inherit; }
+.gate__form .btn { width: 100%; margin-top: 8px; }
+.gate__msg { min-height: 1.4em; font-size: var(--fs-small); color: var(--mute); text-align: center; }
 .gate__msg.is-error { color: var(--error); }
-.gate__note { margin-top: 26px; font-size: var(--step-small); color: var(--mute); }
+.gate__note { margin-top: 18px; font-size: var(--fs-small); color: var(--mute); }
 .gate__done { display: none; }
 .gate.is-done .gate__form, .gate.is-done .gate__lede { display: none; }
-.gate.is-done .gate__done { display: block; margin-top: 24px; }
-.gate__done p { font-size: var(--step-lead); line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; max-width: 18ch; }
-.gate__done .button { margin-top: 28px; }
-.gate.is-leaving { transform: translateY(-100%); transition: transform 900ms var(--ease-in-out); }
+.gate.is-done .gate__done { display: block; margin-top: 12px; }
+.gate__done p { color: var(--mute); }
+.gate__done .btn { margin-top: 24px; width: 100%; }
+.gate.is-leaving { opacity: 0; transition: opacity 400ms ease; }
 
 /* =========================================================
-   BARRA SUPERIOR (vidrio al hacer scroll)
+   BARRA SUPERIOR
    ========================================================= */
 .bar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-  height: calc(var(--bar) + env(safe-area-inset-top));
-  padding: env(safe-area-inset-top) max(var(--margin), env(safe-area-inset-right)) 0 max(var(--margin), env(safe-area-inset-left));
-  display: flex; align-items: center; gap: 28px;
-  transition: background-color 400ms ease, box-shadow 400ms ease, -webkit-backdrop-filter 400ms ease, backdrop-filter 400ms ease;
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 255, 255, 0.82);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: env(safe-area-inset-top);
 }
-.bar.is-scrolled {
-  background: rgba(8, 8, 10, 0.62);
-  -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%);
-  box-shadow: 0 1px 0 var(--line), 0 20px 40px -30px rgba(0, 0, 0, 0.9);
-}
-.bar__links { display: flex; gap: 28px; margin-left: auto; font-size: var(--step-small); }
-.bar__links a { position: relative; text-decoration: none; color: var(--mute); transition: color 200ms ease; }
-.bar__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: var(--gold-grad); box-shadow: 0 0 10px rgba(var(--glow) / 0.8); transform: scaleX(0); transition: transform 300ms var(--ease-out); }
-.bar__links a.is-active { color: var(--white); }
-.bar__links a.is-active::after { transform: scaleX(1); }
-.bar .button { min-height: 42px; padding: 0 1.1rem; font-size: var(--step-small); }
-@media (hover: hover) and (pointer: fine) { .bar__links a:hover { color: var(--white); } .bar__links a:hover::after { transform: scaleX(1); } }
+.bar__in { display: flex; align-items: center; gap: 28px; height: var(--bar); }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.02em; text-decoration: none; }
+.brand .icon { width: 30px; height: 30px; border-radius: 8px; }
+.bar__links { display: flex; gap: 28px; margin-left: auto; font-size: var(--fs-small); }
+.bar__links a { text-decoration: none; color: rgba(29, 29, 31, 0.8); transition: color 150ms ease; }
+.bar__links a:hover { color: var(--green); }
+.bar .btn { margin-left: 4px; }
 
 /* =========================================================
    INICIO
    ========================================================= */
-.hero {
-  position: relative; isolation: isolate; overflow: hidden;
-  min-height: 100svh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: center;
-  padding-top: calc(var(--bar) + 40px); padding-bottom: 96px;
-  background:
-    radial-gradient(1100px 700px at 78% -5%, rgba(var(--glow) / 0.20), transparent 62%),
-    radial-gradient(900px 600px at 0% 100%, rgba(255, 159, 10, 0.08), transparent 60%),
-    linear-gradient(180deg, var(--night) 0%, var(--ink-1) 100%);
-}
-.hero__beams { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.hero__beams span {
-  position: absolute; top: -20%; left: 72%; width: 34vw; height: 140%;
-  background: linear-gradient(180deg, rgba(var(--glow) / 0.28) 0%, rgba(var(--glow) / 0.08) 45%, transparent 75%);
-  clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%);
-  transform-origin: 50% 0; transform: translateX(-50%) rotate(14deg);
-  mix-blend-mode: screen; opacity: 0.8;
-}
-.hero__beams span:nth-child(2) { left: 80%; transform: translateX(-50%) rotate(-10deg); opacity: 0.55; }
-.hero__cursor {
-  position: absolute; top: 0; left: 0; z-index: -1; width: 700px; height: 700px; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, rgba(var(--glow) / 0.13) 0%, rgba(var(--glow) / 0.04) 35%, transparent 65%);
-  opacity: 0; transition: opacity 500ms ease; will-change: transform;
-}
-.hero.is-lit .hero__cursor { opacity: 1; }
-.hero__text { grid-column: 1 / 9; grid-row: 1; position: relative; z-index: 2; }
-.hero__title { font-size: var(--step-display); }
-.hero__lede { margin-top: 28px; max-width: 46ch; color: #D1D1D6; font-size: var(--step-body); }
-.hero__actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
-.hero__day { margin-top: 22px; min-height: 1.4em; font-size: var(--step-small); color: var(--mute); }
-.hero__day strong { color: var(--yellow); font-weight: 600; }
-.hero__emblem { grid-column: 8 / 13; grid-row: 1; position: relative; z-index: 1; display: grid; place-items: center; }
-.hero__emblem svg { width: 100%; max-width: 620px; height: auto; overflow: visible; filter: drop-shadow(0 0 32px rgba(var(--glow) / 0.45)) drop-shadow(0 30px 40px rgba(0, 0, 0, 0.7)); }
-.hero__halo { position: absolute; width: 90%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(var(--glow) / 0.35) 0%, rgba(var(--glow) / 0.08) 40%, transparent 68%); z-index: -1; }
-.v-solid { fill: url(#vFill); }
-.v-edge { fill: none; stroke: url(#vEdge); stroke-width: 0.6; }
-.v-shine-rect { fill: url(#vShine); }
-.hero__scroll { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); display: grid; justify-items: center; gap: 10px; font-size: var(--step-small); color: var(--mute); text-decoration: none; }
-.hero__scroll i { display: block; width: 2px; height: 44px; border-radius: 2px; background: linear-gradient(180deg, rgba(var(--glow) / 0.9), transparent); }
-
-/* ---------- banda en movimiento ---------- */
-.marquee {
-  position: relative; overflow: hidden; padding-block: 26px;
-  background: linear-gradient(90deg, var(--ink-1), var(--ink-2), var(--ink-1));
-  box-shadow: inset 0 1px 0 var(--line), inset 0 -1px 0 var(--line);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-.marquee__track { display: flex; width: max-content; align-items: center; }
-.marquee__track > * { margin-right: 40px; }
-.marquee__track span { font-weight: 800; font-stretch: 62%; text-transform: uppercase; font-size: var(--step-sub); line-height: 1; white-space: nowrap; }
-.marquee__track span:nth-child(odd) { color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55); }
-.marquee__track .vmark { width: 34px; height: 34px; flex: none; }
+.hero { padding-top: clamp(72px, 10vw, 128px); padding-bottom: clamp(56px, 8vw, 96px); text-align: center; }
+.hero .icon--lg { margin: 0 auto 28px; }
+.hero__lead { margin: 20px auto 0; max-width: 30ch; }
+.hero__actions { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 28px; }
+.hero__day { margin-top: 24px; min-height: 1.4em; font-size: var(--fs-small); color: var(--mute); }
+.hero__day strong { color: var(--green); font-weight: 600; }
+.hero__media { margin-top: clamp(48px, 7vw, 80px); border-radius: 28px; overflow: hidden; aspect-ratio: 2 / 1; background: var(--green-soft); }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; }
 
 /* =========================================================
-   LA V ES DISCIPLINA
+   LA V
    ========================================================= */
-.lav { background: radial-gradient(900px 700px at 15% 20%, rgba(var(--glow) / 0.09), transparent 60%), var(--ink-1); }
-.lav__head { grid-column: 1 / 6; align-self: start; position: sticky; top: calc(var(--bar) + 48px); }
-.lav__statement { margin-top: 32px; max-width: 34ch; font-size: var(--step-lead); line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; color: #E5E5EA; }
-.lav__body { margin-top: 20px; max-width: 42ch; color: #C7C7CC; }
-.pillars { grid-column: 7 / 13; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.pillar { padding: clamp(24px, 2.4vw, 36px); min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; }
-.pillar:nth-child(even) { margin-top: 48px; margin-bottom: -48px; }
-.pillar .vmark { width: 34px; height: 34px; filter: drop-shadow(0 0 12px rgba(var(--glow) / 0.6)); }
-.pillar h3 { margin-top: 40px; font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; }
-.pillar p { margin-top: 14px; color: #C7C7CC; }
+.pillars { margin-top: clamp(40px, 6vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.pillar { padding: 32px; border-radius: var(--radius); background: var(--white); }
+.pillar h3 { margin-top: 28px; font-size: var(--fs-lead); font-weight: 600; letter-spacing: -0.025em; line-height: 1.2; }
+.pillar p { margin-top: 8px; color: var(--mute); }
 
 /* =========================================================
-   LA SERIE N250
+   LA SERIE
    ========================================================= */
-.serie { background: linear-gradient(180deg, var(--ink-1) 0%, var(--night) 100%); }
-.serie__media { grid-column: 1 / 7; position: relative; border-radius: var(--radius); overflow: hidden; min-height: 640px; box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 1), 0 0 0 1px var(--line); }
-.serie__media img, .serie__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(0.72); }
-.serie__media::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(5, 5, 6, 0) 35%, rgba(5, 5, 6, 0.92) 100%), radial-gradient(600px 400px at 85% 0%, rgba(var(--glow) / 0.35), transparent 60%); }
-.serie__goal { position: absolute; left: clamp(24px, 3vw, 40px); right: clamp(24px, 3vw, 40px); bottom: clamp(24px, 3vw, 40px); z-index: 2; }
-.serie__goal span { display: block; margin-top: 10px; font-size: var(--step-small); color: #D1D1D6; }
-.serie__goal strong { display: block; font-size: var(--step-head); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.88; }
-.serie__body { grid-column: 8 / 13; align-self: center; }
-.serie__body > p { margin-top: 28px; color: #D1D1D6; max-width: 44ch; }
-.serie__redes { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
-.letter { margin-top: 40px; padding: clamp(24px, 2.6vw, 36px); }
-.letter__from { display: flex; align-items: center; gap: 14px; font-size: var(--step-small); color: var(--mute); }
-.avatar { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; flex: none; background: radial-gradient(circle at 50% 30%, #2A2A2E, #050506); box-shadow: inset 0 0 0 1px rgba(var(--glow) / 0.5), 0 0 24px -4px rgba(var(--glow) / 0.5); }
-.avatar .vmark { width: 20px; height: 20px; }
-.letter blockquote { margin-top: 20px; font-size: var(--step-body); line-height: 1.6; color: #E5E5EA; }
-.letter blockquote p + p { margin-top: 0.9em; }
-.letter__sign { margin-top: 22px; font-weight: 700; }
-.letter__sign span { display: block; font-weight: 400; font-size: var(--step-small); color: var(--mute); }
-
-/* ---------- banda de foto ---------- */
-.band { position: relative; min-height: 78svh; display: grid; place-items: center; overflow: hidden; isolation: isolate; text-align: center; }
-.band img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; z-index: -2; filter: grayscale(1) contrast(1.2) brightness(0.55); }
-.band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(700px 500px at 50% 40%, rgba(var(--glow) / 0.22), transparent 65%), linear-gradient(180deg, var(--night) 0%, rgba(5, 5, 6, 0.2) 30%, rgba(5, 5, 6, 0.2) 70%, var(--night) 100%); }
-.band h2 { font-size: var(--step-head); filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8)); }
-
-/* =========================================================
-   CÓMO SE VIVE LA V: línea de luz
-   ========================================================= */
-.como { background: var(--night); }
-.como__aside { grid-column: 1 / 6; align-self: start; }
-.como__aside p { margin-top: 24px; max-width: 36ch; color: #D1D1D6; }
-.como__photo { margin-top: 36px; position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; box-shadow: 0 40px 80px -40px #000, 0 0 0 1px var(--line); }
-.como__photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(0.7); }
-.como__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(5, 5, 6, 0.85)), radial-gradient(400px 300px at 50% 0%, rgba(var(--glow) / 0.25), transparent 70%); }
-.timeline { grid-column: 7 / 13; position: relative; padding-left: 64px; }
-.timeline__rail { position: absolute; left: 22px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; background: rgba(255, 255, 255, 0.1); }
-.timeline__fill { position: absolute; inset: 0; border-radius: 2px; background: linear-gradient(180deg, var(--yellow-hi), var(--gold)); box-shadow: 0 0 16px rgba(var(--glow) / 0.8), 0 0 40px rgba(var(--glow) / 0.4); transform-origin: top; transform: scaleY(0); }
-.step { position: relative; padding-block: 36px; }
-.step__node { position: absolute; left: -51px; top: 44px; width: 20px; height: 20px; border-radius: 50%; background: var(--ink-3); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.18); transition: background 400ms ease, box-shadow 400ms ease, transform 400ms var(--ease-out); }
-.step.is-lit .step__node { background: var(--gold-grad); box-shadow: 0 0 0 6px rgba(var(--glow) / 0.15), 0 0 24px rgba(var(--glow) / 0.9); transform: scale(1.1); }
-.step h3 { font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; color: var(--mute-2); transition: color 500ms ease; }
-.step.is-lit h3 { color: var(--white); }
-.step p { margin-top: 12px; max-width: 40ch; color: #C7C7CC; }
-
-/* =========================================================
-   TU RACHA
-   ========================================================= */
-.racha { background: radial-gradient(1000px 600px at 80% 30%, rgba(var(--glow) / 0.1), transparent 60%), var(--ink-1); }
-.racha__head { grid-column: 1 / 7; }
-.racha__head p { margin-top: 24px; max-width: 42ch; color: #D1D1D6; }
-.racha__panel { grid-column: 1 / 13; margin-top: clamp(48px, 6vw, 80px); padding: clamp(24px, 3vw, 48px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 36px; align-items: start; }
-.racha__left { grid-column: 1 / 6; }
-.racha__right { grid-column: 7 / 13; }
-.compromiso label { display: block; font-size: var(--step-small); color: var(--mute); margin-bottom: 10px; }
-.compromiso__row { display: flex; gap: 10px; }
-.compromiso__row .input { flex: 1; min-width: 0; }
-.compromiso__show { margin-top: 14px; min-height: 1.5em; color: #E5E5EA; }
-.compromiso__show strong { color: var(--yellow); font-weight: 600; }
-.racha__count { margin-top: 36px; display: flex; align-items: flex-end; gap: 16px; }
-.racha__count output { font-size: var(--step-display); font-weight: 800; font-stretch: 62%; line-height: 0.8; }
-.racha__count span { padding-bottom: 10px; font-size: var(--step-lead); font-weight: 600; line-height: 1.1; }
-.racha__stats { margin-top: 18px; display: flex; gap: 28px; color: var(--mute); font-size: var(--step-small); }
-.racha__stats strong { color: var(--white); font-weight: 600; }
-.racha__actions { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
-.cells { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 8px; }
-.cell { aspect-ratio: 1; border-radius: 10px; display: grid; place-items: center; font-size: var(--step-small); color: var(--mute-2); background: rgba(255, 255, 255, 0.04); box-shadow: inset 0 0 0 1px var(--line); transition: background 400ms ease, box-shadow 400ms ease, color 400ms ease, transform 400ms var(--ease-out); }
-.cell.is-on { background: var(--gold-grad); color: var(--night); font-weight: 700; box-shadow: 0 0 18px -2px rgba(var(--glow) / 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6); }
-.cell.is-today { box-shadow: inset 0 0 0 2px rgba(var(--glow) / 0.8); color: var(--white); }
-.cell.is-today.is-on { box-shadow: 0 0 0 3px rgba(var(--glow) / 0.25), 0 0 26px rgba(var(--glow) / 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.6); color: var(--night); }
-.cell.pop { animation: pop 600ms var(--ease-out); }
-@keyframes pop { 0% { transform: scale(0.7); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
-.cells__legend { margin-top: 14px; display: flex; justify-content: space-between; font-size: var(--step-small); color: var(--mute); }
-.racha__note { margin-top: 18px; font-size: var(--step-small); color: var(--mute); }
+.serie { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.serie__media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--green-soft); }
+.serie__media img, .serie__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.serie__body .lead { margin-top: 16px; }
+.quote { margin-top: 36px; padding-left: 20px; border-left: 3px solid var(--green); }
+.quote p { font-size: var(--fs-lead); font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; }
+.quote cite { display: block; margin-top: 10px; font-style: normal; font-size: var(--fs-small); color: var(--mute); }
+.redes { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* =========================================================
    BIBLIOTECA
    ========================================================= */
-.library { background: var(--night); }
-.library__head { align-items: end; }
-.library__head h2 { grid-column: 1 / 8; }
-.library__head p { grid-column: 8 / 12; color: #D1D1D6; }
-.library__body { margin-top: clamp(56px, 7vw, 112px); }
-.library__list { grid-column: 1 / 8; }
-.library__frame { grid-column: 9 / 13; position: sticky; top: calc(var(--bar) + 40px); align-self: start; aspect-ratio: 3 / 4; }
-.cat { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: clamp(56px, 7vw, 96px) 0 18px; }
-.cat:first-child { margin-top: 0; }
-.cat h3 { font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; }
-.cat span { font-size: var(--step-small); color: var(--mute); }
-.res { position: relative; padding: 22px 22px; margin-inline: -22px; border-radius: var(--radius-s); transition: opacity 200ms ease, background-color 300ms ease, box-shadow 300ms ease; }
-.res__cover { display: none; }
-.res__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 28px; align-items: start; }
-.res__name { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
-.res__desc { margin-top: 8px; font-size: var(--step-small); line-height: 1.45; color: #C7C7CC; max-width: 48ch; }
-.res__side { padding-top: 4px; }
-.res__actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.res__soon { max-width: 20ch; font-size: var(--step-small); color: var(--mute); text-align: right; }
-.res.is-soon .res__actions { display: none; }
-.res.is-soon .res__name { color: var(--mute); }
-@media (hover: hover) and (pointer: fine) {
-  .library__list:hover .res:not(:hover) { opacity: 0.4; }
-  .res:hover { background: rgba(255, 255, 255, 0.035); box-shadow: inset 0 0 0 1px var(--line); }
-}
-.library__list:has(.res :focus-visible) .res:not(:has(:focus-visible)) { opacity: 0.4; }
-.cover {
-  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
-  padding: clamp(24px, 2.6vw, 44px); border-radius: var(--radius); overflow: hidden;
-  background: var(--c); color: var(--ci);
-  box-shadow: 0 50px 90px -40px #000, 0 0 0 1px var(--line), 0 0 80px -30px rgba(var(--glow) / 0.35);
-  opacity: 0; transform: translateY(10px) scale(0.98); transition: opacity 260ms ease, transform 420ms var(--ease-out);
-}
-.cover.is-on { opacity: 1; transform: none; }
-.cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 35%); pointer-events: none; }
-.cover__kind { font-size: var(--step-small); margin-bottom: 14px; }
-.cover__title { display: block; font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; }
-.cover__foot { display: flex; justify-content: space-between; font-size: var(--step-small); margin-top: 28px; opacity: 0.75; }
-.frame__v { position: absolute; z-index: 2; top: clamp(24px, 2.6vw, 44px); left: clamp(24px, 2.6vw, 44px); width: 64px; height: 64px; color: var(--vc, var(--night)); transition: color 260ms ease; }
+.library { margin-top: clamp(40px, 6vw, 64px); border-radius: var(--radius); background: var(--white); padding: 8px 28px; }
+.res { display: flex; align-items: center; gap: 20px; padding: 22px 0; }
+.res + .res { border-top: 1px solid #E8E8ED; }
+.res__icon { width: 44px; height: 44px; border-radius: 12px; }
+.res__text { flex: 1; min-width: 0; }
+.res__text h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
+.res__text p { margin-top: 2px; font-size: var(--fs-small); color: var(--mute); line-height: 1.45; }
+.res__actions { display: flex; gap: 8px; flex: none; }
+.res__soon { flex: none; padding: 6px 12px; border-radius: 999px; background: var(--gray); font-size: 0.8125rem; color: var(--mute); }
+.res.is-soon .res__icon { background: var(--gray); color: #A1A1A6; }
 
 /* =========================================================
-   CÓDIGO V
+   REGLAS
    ========================================================= */
-.codigo { background: linear-gradient(180deg, var(--night), var(--ink-1)); overflow: hidden; }
-.codigo__watermark { position: absolute; right: -6vw; top: 50%; width: 60vw; max-width: 900px; transform: translateY(-50%); z-index: -1; opacity: 0.5; pointer-events: none; }
-.codigo__watermark svg { width: 100%; height: auto; }
-.codigo__top { align-items: end; }
-.codigo__top h2 { grid-column: 1 / 7; }
-.codigo__top p { grid-column: 7 / 12; color: #D1D1D6; }
-.rules { margin-top: clamp(64px, 8vw, 120px); display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gutter); }
-.rule { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 18px; padding-block: 32px; }
-.rule::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(var(--glow) / 0.6), rgba(255, 255, 255, 0.08) 40%, transparent); }
-.rule .vmark { width: 28px; height: 28px; margin-top: 4px; filter: drop-shadow(0 0 10px rgba(var(--glow) / 0.6)); }
-.rule h3 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; }
-.rule p { margin-top: 10px; max-width: 42ch; color: #C7C7CC; }
+.rules { margin-top: clamp(40px, 6vw, 64px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.rule { display: flex; gap: 16px; padding: 24px 0; border-top: 1px solid #E8E8ED; }
+.rule .icon { width: 28px; height: 28px; border-radius: 8px; margin-top: 2px; }
+.rule h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.015em; }
+.rule p { margin-top: 2px; color: var(--mute); }
 
 /* =========================================================
-   ENTRA AL GRUPO (la luz)
+   ÚNETE
    ========================================================= */
-.cta { color: var(--night); text-align: center; overflow: hidden; background: radial-gradient(120% 130% at 50% 0%, #FFF3A6 0%, var(--yellow) 30%, var(--gold) 70%, var(--amber) 100%); }
-.cta::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(600px 400px at 50% 30%, rgba(255, 255, 255, 0.55), transparent 70%); animation: breathe 7s ease-in-out infinite; }
-.cta__v { width: clamp(80px, 10vw, 140px); height: auto; margin: 0 auto; filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.35)); }
-.cta h2 { margin-top: 28px; text-shadow: 0 2px 0 rgba(255, 255, 255, 0.35); }
-.cta p { margin: 24px auto 0; max-width: 46ch; font-size: var(--step-body); }
-.cta__actions { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 28px; }
-.cta .link { font-weight: 600; }
-@keyframes breathe { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+.cta { border-radius: 32px; background: var(--green); color: var(--white); text-align: center; padding: clamp(56px, 8vw, 96px) clamp(24px, 5vw, 64px); }
+.cta .icon { margin: 0 auto 28px; background: rgba(255, 255, 255, 0.14); }
+.cta p { margin: 16px auto 0; max-width: 36ch; color: rgba(255, 255, 255, 0.82); }
+.cta__actions { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 28px; }
+.cta :focus-visible { outline-color: rgba(255, 255, 255, 0.7); }
 
 /* =========================================================
    PREGUNTAS
    ========================================================= */
-.faq { background: var(--night); }
-.faq__head { grid-column: 1 / 6; position: sticky; top: calc(var(--bar) + 48px); align-self: start; }
-.faq__head p { margin-top: 20px; max-width: 30ch; color: #D1D1D6; }
-.faq__photo { margin-top: 36px; position: relative; aspect-ratio: 3 / 2; border-radius: var(--radius); overflow: hidden; box-shadow: 0 40px 80px -40px #000, 0 0 0 1px var(--line); }
-.faq__photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(0.7); }
-.faq__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 6, 0.8)), radial-gradient(400px 260px at 80% 0%, rgba(var(--glow) / 0.28), transparent 70%); }
-.faq__list { grid-column: 7 / 13; display: grid; gap: 10px; }
-.q { border-radius: var(--radius-s); background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); box-shadow: inset 0 0 0 1px var(--line); transition: background-color 300ms ease, box-shadow 300ms ease; }
-.q[open] { background: linear-gradient(180deg, rgba(var(--glow) / 0.1), rgba(255, 255, 255, 0.02)); box-shadow: inset 0 0 0 1px rgba(var(--glow) / 0.45), 0 0 40px -12px rgba(var(--glow) / 0.35); }
-.q summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 74px; padding: 18px 26px; cursor: pointer; font-weight: 600; font-size: var(--step-body); line-height: 1.3; }
+.faq { margin-top: clamp(40px, 6vw, 56px); max-width: 760px; margin-inline: auto; }
+.q { border-bottom: 1px solid var(--line); }
+.q:first-child { border-top: 1px solid var(--line); }
+.q summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 0; cursor: pointer; font-weight: 500; font-size: var(--fs-body); letter-spacing: -0.015em; }
 .q summary::-webkit-details-marker { display: none; }
-.q summary:active { opacity: 0.75; }
-@media (hover: hover) and (pointer: fine) { .q:not([open]):hover { box-shadow: inset 0 0 0 1px var(--line-2); } }
-.plus { position: relative; width: 16px; height: 16px; flex: none; color: var(--yellow); }
-.plus::before, .plus::after { content: ""; position: absolute; left: 0; top: 6.5px; width: 16px; height: 3px; background: currentColor; border-radius: 2px; transition: transform 260ms var(--ease-out); }
-.plus::after { transform: rotate(90deg); }
-.q[open] .plus::after { transform: rotate(0deg); }
-.q__a { padding: 0 26px 26px; }
-.q__a p { max-width: 52ch; color: #D1D1D6; }
-.q::details-content { block-size: 0; overflow: hidden; transition: block-size 320ms var(--ease-out), content-visibility 320ms allow-discrete; }
-.q[open]::details-content { block-size: auto; }
+.q summary::after { content: ""; width: 9px; height: 9px; flex: none; margin-right: 4px; border-right: 2px solid var(--mute); border-bottom: 2px solid var(--mute); transform: translateY(-3px) rotate(45deg); transition: transform 200ms ease; }
+.q[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.q__a { padding: 0 0 24px; max-width: 60ch; color: var(--mute); }
 
 /* =========================================================
-   CIERRE
+   PIE
    ========================================================= */
-.foot { position: relative; isolation: isolate; overflow: hidden; min-height: 62svh; display: flex; flex-direction: column; justify-content: space-between; gap: 64px; padding-top: 48px; padding-bottom: max(28px, env(safe-area-inset-bottom)); background: radial-gradient(1000px 500px at 50% 120%, rgba(var(--glow) / 0.22), transparent 60%), var(--night); box-shadow: inset 0 1px 0 var(--line); }
-.foot__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; font-size: var(--step-small); color: var(--mute); }
-.foot__line { display: block; margin-top: auto; text-decoration: none; font-size: var(--step-display); }
-.foot__meta { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: end; font-size: var(--step-small); color: var(--mute); }
-.foot__meta nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
-.foot__meta nav a, .foot__meta nav button { color: var(--white); text-decoration: none; font-size: var(--step-small); }
-.foot__credits { max-width: 52ch; text-align: center; }
-.foot__place { justify-self: end; text-align: right; }
+.foot { padding-block: 40px max(32px, env(safe-area-inset-bottom)); background: var(--gray); font-size: var(--fs-small); color: var(--mute); }
+.foot__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.foot__links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.foot__links a, .foot__links button { color: var(--ink); text-decoration: none; font-size: var(--fs-small); }
+.foot__links a:hover, .foot__links button:hover { color: var(--green); }
+.foot .brand { color: var(--ink); }
+.foot__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 20px; }
 
 /* =========================================================
    VENTANAS Y AVISO
    ========================================================= */
-dialog {
-  border: 0; padding: 0; border-radius: var(--radius); background: var(--ink-2); color: var(--white);
-  box-shadow: 0 50px 120px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--line-2);
-  max-width: min(720px, calc(100vw - 32px)); max-height: calc(100svh - 48px);
-  transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), display 240ms allow-discrete, overlay 240ms allow-discrete;
-}
-@starting-style { dialog[open] { opacity: 0; transform: scale(0.97); } }
-dialog::backdrop { background: rgba(0, 0, 0, 0.75); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.privacy__body { padding: clamp(28px, 4vw, 48px); overflow-y: auto; max-height: calc(100svh - 48px); }
-.privacy__body h2 { font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.02em; }
-.privacy__body p { margin-top: 16px; color: #D1D1D6; }
-.privacy__body .button { margin-top: 28px; }
-.viewer { width: min(1100px, calc(100vw - 32px)); height: calc(100svh - 48px); max-width: none; overflow: hidden; }
+dialog { border: 0; padding: 0; border-radius: 22px; background: var(--white); color: var(--ink); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18); max-width: min(640px, calc(100vw - 32px)); max-height: calc(100svh - 48px); }
+dialog::backdrop { background: rgba(0, 0, 0, 0.35); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.privacy__body { padding: clamp(28px, 4vw, 40px); overflow-y: auto; max-height: calc(100svh - 48px); }
+.privacy__body h2 { font-size: var(--fs-lead); font-weight: 600; letter-spacing: -0.02em; }
+.privacy__body p { margin-top: 14px; color: var(--mute); }
+.privacy__body .btn { margin-top: 24px; }
+.viewer { width: min(1080px, calc(100vw - 32px)); height: calc(100svh - 48px); max-width: none; overflow: hidden; }
 .viewer[open] { display: flex; flex-direction: column; }
-.viewer__bar { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 26px; }
-.viewer__bar h2 { margin-right: auto; font-size: var(--step-body); font-weight: 600; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.viewer iframe { flex: 1; width: 100%; border: 0; background: #2A2A2F; }
-.toast {
-  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 200; max-width: calc(100vw - 32px);
-  padding: 14px 22px; border-radius: 999px; background: var(--white); color: var(--night); font-size: var(--step-small); line-height: 1.35;
-  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6), 0 0 40px -10px rgba(var(--glow) / 0.5);
-  opacity: 0; transform: translate(-50%, 16px); pointer-events: none; transition: opacity 240ms ease, transform 240ms var(--ease-out);
-}
+.viewer__bar { display: flex; align-items: center; gap: 8px; padding: 10px 10px 10px 22px; border-bottom: 1px solid #E8E8ED; }
+.viewer__bar h2 { margin-right: auto; font-size: var(--fs-body); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.viewer iframe { flex: 1; width: 100%; border: 0; background: var(--gray); }
+.toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 200; max-width: calc(100vw - 32px); padding: 12px 20px; border-radius: 999px; background: var(--ink); color: var(--white); font-size: var(--fs-small); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); opacity: 0; transform: translate(-50%, 8px); pointer-events: none; transition: opacity 200ms ease, transform 200ms ease; }
 .toast.is-on { opacity: 1; transform: translate(-50%, 0); }
 
 /* =========================================================
    TELÉFONO
    ========================================================= */
-@media (max-width: 860px) {
-  .grid > *, .racha__panel > * { grid-column: 1 / -1 !important; }
-  .chapter { padding-block: 96px; }
-  :root { --bar: 58px; }
-
-  .gate__inner { grid-template-columns: 1fr; align-content: start; row-gap: 20px; padding-top: max(36px, env(safe-area-inset-top)); }
-  .gate__mark, .gate__panel { grid-column: 1; }
-  .gate__mark { justify-items: start; }
-  .gate__mark svg { width: 40vw; max-width: 200px; }
-
+@media (max-width: 820px) {
   .bar__links { display: none; }
-  .bar .button { margin-left: auto; }
-
-  .hero { grid-template-columns: 1fr; align-content: start; padding-top: calc(var(--bar) + 24px); padding-bottom: 110px; }
-  .hero__emblem { grid-column: 1; grid-row: 1; justify-self: center; width: 70vw; max-width: 340px; margin-bottom: 8px; }
-  .hero__text { grid-column: 1; grid-row: 2; }
-  .hero__title { font-size: clamp(3rem, 13.5vw, 5.5rem); }
-  .hero__actions .button { width: 100%; }
-  .hero__beams span { left: 50%; width: 90vw; }
-  .hero__beams span:nth-child(2) { left: 62%; }
-
-  .lav__head, .como__aside, .faq__head { position: static; }
-  .pillars { margin-top: 48px; grid-template-columns: 1fr; gap: 12px; }
-  .pillar { min-height: 0; }
-  .pillar:nth-child(even) { margin-top: 0; margin-bottom: 0; }
-  .pillar h3 { margin-top: 28px; }
-
-  .serie__media { min-height: 480px; }
-  .serie__body { margin-top: 48px; }
-
-  .band { min-height: 60svh; }
-
-  .timeline { margin-top: 56px; padding-left: 52px; }
-  .timeline__rail { left: 14px; }
-  .step__node { left: -47px; }
-
-  .racha__panel { row-gap: 40px; }
-  .compromiso__row { flex-direction: column; }
-  .cells { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 7px; }
-  .racha__actions .button { width: 100%; }
-
-  .library__head p { margin-top: 18px; }
-  .library__frame { display: none; }
-  .res { margin-inline: 0; padding: 18px 0; }
-  .res__cover { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 2.3 / 1; margin-bottom: 16px; padding: 18px 20px; border-radius: var(--radius-s); background: var(--c); color: var(--ci); box-shadow: 0 20px 40px -24px #000; }
-  .res__cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent 40%); }
-  .res__cover span { font-size: var(--step-small); }
-  .res__cover strong { font-size: var(--step-sub); font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: 0.9; }
-  .res__cover span { margin-top: 8px; }
-  .res__name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-  .res__row { grid-template-columns: 1fr; row-gap: 14px; }
-  .res__desc { margin-top: 0; }
-  .res__side { padding-top: 0; }
-  .res__soon { text-align: left; max-width: none; }
-  .res.is-soon .res__cover { opacity: 0.4; }
-
-  .codigo__top p { margin-top: 18px; }
+  .bar .btn { margin-left: auto; }
+  .hero__media { aspect-ratio: 4 / 3; border-radius: 22px; }
+  .hero__actions .btn { width: 100%; }
+  .pillars { grid-template-columns: 1fr; gap: 12px; }
+  .pillar { padding: 26px; }
+  .pillar h3 { margin-top: 20px; }
+  .serie { grid-template-columns: 1fr; }
+  .serie__media { aspect-ratio: 4 / 3; }
+  .library { padding: 4px 20px; }
+  .res { flex-wrap: wrap; gap: 14px; }
+  .res__text { flex-basis: calc(100% - 60px); }
+  .res__actions, .res__soon { margin-left: 58px; }
   .rules { grid-template-columns: 1fr; }
-  .codigo__watermark { width: 120vw; right: -40vw; opacity: 0.35; }
-
-  .cta__actions .button { width: 100%; }
-  .faq__list { margin-top: 36px; }
-  .q summary { min-height: 64px; padding: 16px 20px; }
-  .q__a { padding: 0 20px 20px; }
-
-  .foot__top { flex-direction: column; }
-  .foot__meta { grid-template-columns: 1fr; }
-  .foot__credits { text-align: left; }
-  .foot__place { justify-self: start; text-align: left; }
+  .cta { border-radius: 26px; }
+  .cta__actions .btn { width: 100%; }
+  .foot__top, .foot__bottom { flex-direction: column; align-items: flex-start; }
   .viewer { width: calc(100vw - 16px); height: calc(100svh - 16px); }
-
-  body::after { display: none; }
-  /* en teléfono el vidrio pesa mucho: fondo sólido */
-  .glass { -webkit-backdrop-filter: none; backdrop-filter: none; background: linear-gradient(180deg, #17171A, #101012); }
 }
 
 /* =========================================================
-   MOVIMIENTO (solo si la persona no pidió reducirlo)
+   MOVIMIENTO: solo una aparición suave al bajar
    ========================================================= */
 @media (prefers-reduced-motion: no-preference) {
-  /* entrada */
-  .js .gate__mark .v-line { stroke-dasharray: 460; stroke-dashoffset: 460; animation: draw 1600ms var(--ease-in-out) 150ms forwards; }
-  .js .gate__mark .v-solid { opacity: 0; animation: fade-in 900ms ease 1200ms forwards; }
-  .js .gate [data-rise] { opacity: 0; transform: translateY(18px); animation: rise 800ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 500ms); }
-
-  /* inicio */
-  .js .hero [data-rise] { opacity: 0; transform: translateY(22px); }
-  .js .hero .lines [data-line] { transform: translateY(105%); }
-  .js .hero__emblem { opacity: 0; transform: scale(0.92); }
-  .entered .hero [data-rise] { animation: rise 900ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 100ms + 250ms); }
-  .entered .hero .lines [data-line] { animation: line-up 1000ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 110ms + 100ms); }
-  .entered .hero__emblem { animation: emblem-in 1400ms var(--ease-out) 200ms forwards; }
-  .hero__beams span { animation: sway 11s ease-in-out infinite alternate; }
-  .hero__beams span:nth-child(2) { animation-duration: 14s; animation-direction: alternate-reverse; }
-  .hero__halo { animation: breathe 6s ease-in-out infinite; }
-  .v-shine-rect { animation: shine 5.5s var(--ease-in-out) 1.6s infinite; }
-  .hero__scroll i { transform-origin: top; animation: drip 2.2s var(--ease-in-out) infinite; }
-  .marquee__track { animation: marquee 38s linear infinite; }
-
-  /* secciones */
-  .js [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 800ms var(--ease-out), transform 1000ms var(--ease-out); transition-delay: calc(var(--d, 0) * 90ms); }
+  .js [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); transition-delay: calc(var(--d, 0) * 70ms); }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
-  .js .spot[data-reveal] { transition: opacity 800ms var(--ease-out), transform 1000ms var(--ease-out), translate 500ms var(--ease-out), box-shadow 500ms var(--ease-out); transition-delay: calc(var(--d, 0) * 90ms), calc(var(--d, 0) * 90ms), 0s, 0s; }
-  .js .clip[data-reveal] { opacity: 1; transform: none; }
-  .js .clip[data-reveal] > img { clip-path: inset(100% 0 0 0); transform: scale(1.15); transition: clip-path 1300ms var(--ease-in-out), transform 1800ms var(--ease-soft); }
-  .js .clip[data-reveal].is-in > img { clip-path: inset(0); transform: none; }
-  @supports (animation-timeline: view()) {
-    .band img { animation: parallax linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
-  }
 }
-@media (prefers-reduced-motion: reduce) {
-  .gate.is-leaving { transform: none; opacity: 0; transition: opacity 300ms ease; }
-  .button, .spot, .cover, .step__node, .cell { transition: none; }
-  .cta::before { animation: none; }
-}
-@keyframes rise { to { opacity: 1; transform: none; } }
-@keyframes line-up { to { transform: none; } }
-@keyframes fade-in { to { opacity: 1; } }
-@keyframes draw { to { stroke-dashoffset: 0; } }
-@keyframes emblem-in { to { opacity: 1; transform: none; } }
-@keyframes sway { from { rotate: -3deg; } to { rotate: 3deg; } }
-@keyframes shine { 0% { transform: translateX(-60px) skewX(-18deg); } 45%, 100% { transform: translateX(170px) skewX(-18deg); } }
-@keyframes drip { 0% { transform: scaleY(0); opacity: 1; } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
-@keyframes marquee { to { transform: translateX(-50%); } }
-@keyframes parallax { from { transform: translateY(-6%); } to { transform: translateY(6%); } }
-
-/* =========================================================
-   REDISEÑO COMUNIDAD V · blanco + verde Pantone 3425 C
-   Movimiento discreto, jerarquía limpia y contraste accesible.
-   ========================================================= */
-:root {
-  --night:#F7F9F7;
-  --ink-1:#FFFFFF;
-  --ink-2:#F2F6F3;
-  --ink-3:#E7EEE9;
-  --ink-4:#D7E2DB;
-  --white:#173B30;
-  --mute:#667970;
-  --mute-2:#819087;
-  --yellow:#006B54;
-  --yellow-hi:#16856B;
-  --gold:#006B54;
-  --amber:#005744;
-  --glow:0 107 84;
-  --line:rgba(20,65,50,.10);
-  --line-2:rgba(20,65,50,.18);
-  --error:#B42318;
-  --shadow-card:0 8px 28px rgba(20,65,50,.06),0 0 0 1px rgba(20,65,50,.08);
-  --shadow-lift:0 14px 34px rgba(20,65,50,.10),0 0 0 1px rgba(0,107,84,.18);
-  --gold-grad:linear-gradient(180deg,#08765E 0%,#006B54 100%);
-  --steel-grad:linear-gradient(180deg,#174A3A 0%,#006B54 100%);
-}
-html,body { background:#F7F9F7; color:#173B30; }
-body::after { display:none; }
-::selection { background:#D7EDE4; color:#173B30; }
-:focus-visible { outline-color:#006B54; }
-.steel,.gold { color:#006B54; background:none; -webkit-text-fill-color:currentColor; }
-.mark .vmark,.pillar .vmark,.rule .vmark,.avatar .vmark { filter:none; }
-.button { min-height:52px; border-radius:14px; box-shadow:none; transition:background-color .18s ease,border-color .18s ease,color .18s ease,transform .18s ease; }
-.button::before { display:none; }
-.button::after { background:rgba(0,0,0,.08); }
-.button--gold { color:#fff; background:#006B54; box-shadow:none; }
-.button--gold .btn__dot { background:#fff; color:#006B54; }
-.button--ghost { color:#174A3A; background:#fff; border:1px solid #DCE6DF; box-shadow:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
-.button--ghost .btn__dot { background:#EAF3EE; color:#006B54; }
-.button--night { color:#fff; background:#174A3A; box-shadow:none; }
-.button--night .btn__dot { color:#006B54; background:#fff; }
-.button--gold:hover,.button--ghost:hover,.button--night:hover { box-shadow:none; }
-.button--ghost:hover { color:#006B54; background:#F2F7F4; }
-.button:active { --press:.985; }
-.button .btn__roll>span,.button .btn__dot svg { transition-duration:180ms; }
-.glass { background:#fff; border:1px solid #E3EBE5; box-shadow:var(--shadow-card); -webkit-backdrop-filter:none; backdrop-filter:none; }
-.spot::before { display:none; }
-@media (hover:hover) and (pointer:fine) {
- .spot:hover { translate:0 -2px; box-shadow:var(--shadow-lift); }
- .library__list:hover .res:not(:hover) { opacity:1; }
- .button:hover .btn__roll>span { transform:none; }
- .button:hover .btn__dot svg:first-child { transform:none; }
- .button:hover .btn__dot svg:last-child { transform:translateX(-190%); }
- .button[data-arrow="down"]:hover .btn__dot svg:last-child { transform:translateY(-190%); }
- .button[data-arrow="out"]:hover .btn__dot svg:last-child { transform:translate(-190%,190%); }
-}
-.gate { background:#F7F9F7; color:#173B30; }
-.js .gate { background:linear-gradient(135deg,#F7F9F7 0%,#fff 60%,#EAF3EE 100%); }
-.gate__mark svg { filter:none; }
-.gate__mark .v-line { stroke:#006B54; }
-.gate__lede,.gate__note,.check { color:#667970; }
-.input { color:#173B30; background:#fff; box-shadow:inset 0 0 0 1px #D8E3DC; }
-.input::placeholder { color:#89978F; }
-.input:focus-visible { background:#fff; box-shadow:inset 0 0 0 1px #006B54,0 0 0 3px rgba(0,107,84,.10); }
-.check input { accent-color:#006B54; }
-.gate__msg.is-error { color:#B42318; }
-.gate__done p { color:#173B30; }
-.bar { background:rgba(255,255,255,.94); border-bottom:1px solid rgba(20,65,50,.08); }
-.bar.is-scrolled { background:rgba(255,255,255,.92); box-shadow:0 1px 0 rgba(20,65,50,.08); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); }
-.bar__links a { color:#667970; }
-.bar__links a.is-active,.bar__links a:hover { color:#006B54; }
-.bar__links a::after { background:#006B54; box-shadow:none; }
-.hero { background:radial-gradient(ellipse at 82% 12%,rgba(0,107,84,.08),transparent 38%),linear-gradient(180deg,#fff 0%,#F7F9F7 100%); }
-.hero__beams,.hero__cursor,.hero__halo { display:none; }
-.hero__emblem svg { filter:none; }
-.v-solid { fill:#006B54; }
-.v-edge { stroke:#B6D7C9; }
-.v-shine-rect { display:none; }
-.hero__lede,.hero__day { color:#667970; }
-.hero__day strong { color:#006B54; }
-.hero__scroll { color:#667970; }
-.hero__scroll i { background:linear-gradient(180deg,#006B54,transparent); }
-.marquee { background:#EAF3EE; box-shadow:inset 0 1px 0 #DCE8E0,inset 0 -1px 0 #DCE8E0; mask-image:none; -webkit-mask-image:none; }
-.marquee__track span:nth-child(odd) { color:#66877A; -webkit-text-stroke:0; }
-.marquee__track .vmark { color:#006B54; }
-.lav,.serie,.como,.library,.faq { background:#fff; }
-.lav__statement,.lav__body,.pillar p,.serie__body>p,.letter blockquote,.como__aside p,.step p,.racha__head p,.res__desc,.codigo__top p,.rule p,.faq__head p,.q__a p { color:#667970; }
-.pillar { background:#F7F9F7; border:1px solid #E5ECE7; border-radius:22px; box-shadow:none; }
-.pillar:nth-child(even) { margin-bottom:0; }
-.pillar .vmark { color:#006B54; }
-.pillar h3 { color:#174A3A; }
-.serie { background:linear-gradient(180deg,#F7F9F7,#fff); }
-.serie__media,.como__photo,.faq__photo { box-shadow:0 12px 32px rgba(20,65,50,.10); }
-.serie__media::before { background:linear-gradient(180deg,rgba(5,5,6,0) 25%,rgba(5,5,6,.72) 100%); }
-.serie__goal strong { color:#fff; }
-.letter { background:#F7F9F7; border:1px solid #E5ECE7; }
-.avatar { background:#EAF3EE; color:#006B54; box-shadow:none; }
-.avatar .vmark { filter:none; }
-.band { min-height:58svh; }
-.band::before { background:linear-gradient(180deg,rgba(5,5,6,.25),rgba(5,5,6,.45)); }
-.band h2 { color:#fff; }
-.timeline__rail { background:#DCE6DF; }
-.timeline__fill { background:#006B54; box-shadow:none; }
-.step__node { background:#EAF3EE; box-shadow:inset 0 0 0 2px #C8D9CF; }
-.step.is-lit .step__node { background:#006B54; box-shadow:0 0 0 4px rgba(0,107,84,.10); transform:none; }
-.step h3,.step.is-lit h3 { color:#174A3A; }
-.racha { background:#F7F9F7; }
-.racha__panel { background:#fff; border:1px solid #E1E9E3; border-radius:24px; box-shadow:0 8px 28px rgba(20,65,50,.05); }
-.compromiso label,.racha__stats,.cells__legend,.racha__note { color:#667970; }
-.compromiso__show { color:#174A3A; }
-.compromiso__show strong { color:#006B54; }
-.racha__count output { color:#006B54; }
-.racha__count span { color:#174A3A; }
-.cell { color:#75877D; background:#F2F6F3; box-shadow:inset 0 0 0 1px #E1E9E3; border-radius:8px; transition:background-color .18s ease,color .18s ease; }
-.cell.is-on { background:#006B54; color:#fff; box-shadow:none; }
-.cell.is-today { box-shadow:inset 0 0 0 2px #006B54; color:#174A3A; }
-.cell.is-today.is-on { box-shadow:inset 0 0 0 2px #fff,0 0 0 2px #006B54; color:#fff; }
-.cell.pop { animation:none; }
-.library__head p { color:#667970; }
-.res { border-radius:14px; }
-.res:hover { background:#F7F9F7; box-shadow:inset 0 0 0 1px #E1E9E3; }
-.res__name { color:#173B30; }
-.res__soon { color:#667970; }
-.cover { box-shadow:0 12px 32px rgba(20,65,50,.10); }
-.cover::after { background:linear-gradient(135deg,rgba(255,255,255,.16),transparent 35%); }
-.codigo { background:#F7F9F7; }
-.codigo__watermark { opacity:.07; }
-.rule::before { background:linear-gradient(90deg,#006B54,rgba(20,65,50,.12) 40%,transparent); }
-.rule .vmark { color:#006B54; filter:none; }
-.cta { color:#fff; background:#006B54; }
-.cta::before { display:none; animation:none; }
-.cta__v { filter:none; }
-.cta .button--night { color:#006B54; background:#fff; }
-.cta .link { color:#fff; }
-.q { background:#F7F9F7; box-shadow:inset 0 0 0 1px #E1E9E3; }
-.q[open] { background:#F0F6F2; box-shadow:inset 0 0 0 1px #BBD8C9; }
-.plus { color:#006B54; }
-.q__a p { color:#667970; }
-.foot { background:#fff; box-shadow:inset 0 1px 0 #E1E9E3; }
-.foot__top,.foot__meta { color:#667970; }
-.foot__meta nav a,.foot__meta nav button { color:#006B54; }
-dialog { background:#fff; color:#173B30; box-shadow:0 24px 80px rgba(20,65,50,.20),0 0 0 1px #DCE6DF; }
-dialog::backdrop { background:rgba(18,45,35,.42); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
-.privacy__body p { color:#667970; }
-.viewer iframe { background:#F2F6F3; }
-.toast { color:#fff; background:#174A3A; box-shadow:0 8px 28px rgba(20,65,50,.18); }
-[data-reveal] { transition:opacity .35s ease,transform .35s ease; }
-[data-rise] { animation:none !important; opacity:1; transform:none; }
-.hero__beams span,.hero__cursor,.cta::before { animation:none !important; }
-@media (prefers-reduced-motion:reduce) {
- *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
-}
-@media (max-width:860px) {
- .hero__emblem { opacity:.12; }
- .hero__text { grid-column:1 / 13; }
- .gate__mark { opacity:.12; }
- .pillar:nth-child(even) { margin-top:0; }
- .racha__panel { border-radius:18px; }
-}
-
 </style>
 </head>
 <body>
 
-<!-- Símbolo V y sus degradados (se reutilizan en toda la página) -->
+<!-- La V (se reutiliza en toda la página) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="vFill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#16856B"/><stop offset="0.5" stop-color="#006B54"/><stop offset="1" stop-color="#005744"/>
-    </linearGradient>
-    <linearGradient id="vEdge" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"/><stop offset="0.5" stop-color="#006B54" stop-opacity="0.2"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.6"/>
-    </linearGradient>
-    <linearGradient id="vShine" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.85"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="vGhost" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#006B54" stop-opacity="0.35"/><stop offset="1" stop-color="#006B54" stop-opacity="0"/>
-    </linearGradient>
-    <clipPath id="vClip"><polygon points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/></clipPath>
-  </defs>
-  <symbol id="v" viewBox="0 0 100 100"><polygon points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/></symbol>
+  <symbol id="v" viewBox="0 0 100 100"><polygon points="0,0 29,0 50,63 71,0 100,0 67.5,100 32.5,100"/></symbol>
 </svg>
 
 <!-- =========================================================
-     LA ENTRADA: pide nombre y correo antes de ver la comunidad
+     ENTRADA: pide nombre y correo antes de ver la comunidad
      ========================================================= -->
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
-  <div class="gate__inner">
-    <div class="gate__mark" aria-hidden="true">
-      <svg viewBox="-4 -4 108 108">
-        <polygon class="v-solid" points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/>
-        <polygon class="v-line" points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/>
-      </svg>
+  <div class="gate__card">
+    <span class="icon icon--lg" aria-hidden="true"><svg><use href="#v"/></svg></span>
+    <h2 class="gate__title" id="gate-title">Únete a la Comunidad V</h2>
+    <p class="gate__lede">La comunidad de la serie N250. Regístrate para entrar.</p>
+
+    <form class="gate__form" id="gate-form" novalidate>
+      <label class="sr-only" for="g-nombre">Tu nombre</label>
+      <input class="input" id="g-nombre" name="nombre" type="text" autocomplete="given-name" maxlength="60" placeholder="Tu nombre" required enterkeyhint="next">
+      <label class="sr-only" for="g-correo">Tu correo</label>
+      <input class="input" id="g-correo" name="correo" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="120" placeholder="Tu correo" required enterkeyhint="go">
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="check">
+        <input type="checkbox" id="g-acepto" required>
+        <span>Acepto el <button type="button" data-privacy>aviso de privacidad</button> y recibir avisos de la comunidad.</span>
+      </label>
+      <button class="btn" type="submit" id="g-enviar">Entrar</button>
+      <p class="gate__msg" id="g-msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="gate__done">
+      <p id="gate-done-text">Listo. Hoy es tu día 1 en la V.</p>
+      <button class="btn" type="button" id="gate-enter">Ver la comunidad</button>
     </div>
-    <div class="gate__panel">
-      <h2 class="gate__title head steel" id="gate-title" data-rise style="--i:0">Entra a la V.</h2>
-      <p class="gate__lede" data-rise style="--i:1">La comunidad de la serie N250. Deja tu nombre y tu correo para abrir la biblioteca, el grupo de WhatsApp y tu registro de días.</p>
 
-      <form class="gate__form" id="gate-form" novalidate data-rise style="--i:2">
-        <div class="field">
-          <label for="g-nombre">Tu nombre</label>
-          <input class="input" id="g-nombre" name="nombre" type="text" autocomplete="given-name" maxlength="60" placeholder="¿Cómo te decimos?" required enterkeyhint="next">
-        </div>
-        <div class="field">
-          <label for="g-correo">Tu correo</label>
-          <input class="input" id="g-correo" name="correo" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="120" placeholder="tu@correo.com" required enterkeyhint="go">
-        </div>
-        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="check">
-          <input type="checkbox" id="g-acepto" required>
-          <span>Acepto el <button type="button" class="link" data-privacy>aviso de privacidad</button> y recibir avisos de la comunidad.</span>
-        </label>
-        <button class="button button--gold" type="submit" id="g-enviar" data-arrow="right" data-magnet>Entrar a la comunidad</button>
-        <p class="gate__msg" id="g-msg" role="status" aria-live="polite"></p>
-      </form>
-
-      <div class="gate__done" id="gate-done">
-        <p id="gate-done-text">Listo. Hoy es tu día 1 en la V.</p>
-        <button class="button button--gold" type="button" id="gate-enter" data-arrow="right">Ver la comunidad</button>
-      </div>
-
-      <p class="gate__note" data-rise style="--i:3">Gratis. Sin spam. Solo disciplina.</p>
-    </div>
+    <p class="gate__note">Es gratis.</p>
   </div>
 </div>
 
 <div id="site">
 
 <!-- Barra superior -->
-<header class="bar" id="bar" aria-label="Navegación">
-  <a class="mark" href="#inicio"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>Comunidad V</a>
-  <nav class="bar__links" aria-label="Secciones">
-    <a href="#la-v">La V</a>
-    <a href="#serie">La serie</a>
-    <a href="#racha">Tu racha</a>
-    <a href="#biblioteca">Biblioteca</a>
-    <a href="#codigo">Código</a>
-  </nav>
-  <a class="button button--gold" data-wa href="#unete">WhatsApp</a>
+<header class="bar">
+  <div class="container bar__in">
+    <a class="brand" href="#inicio"><span class="icon" aria-hidden="true"><svg><use href="#v"/></svg></span>Comunidad V</a>
+    <nav class="bar__links" aria-label="Secciones">
+      <a href="#la-v">La V</a>
+      <a href="#serie">La serie</a>
+      <a href="#biblioteca">Biblioteca</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn btn--sm" data-wa href="#unete">Unirme</a>
+  </div>
 </header>
 
 <main>
 
-<!-- =========================================================
-     INICIO
-     ========================================================= -->
-<section class="hero wrap" id="inicio" aria-labelledby="titulo">
-  <div class="hero__beams" aria-hidden="true"><span></span><span></span></div>
-  <div class="hero__cursor" aria-hidden="true"></div>
-
-  <div class="hero__emblem" aria-hidden="true">
-    <div class="hero__halo"></div>
-    <svg viewBox="-6 -6 112 112">
-      <polygon class="v-solid" points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/>
-      <g clip-path="url(#vClip)"><rect class="v-shine-rect" x="-30" y="-10" width="22" height="130" transform="skewX(-18)"/></g>
-      <polygon class="v-edge" points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/>
-    </svg>
-  </div>
-
-  <div class="hero__text">
-    <h1 class="hero__title display lines" id="titulo">
-      <span class="line"><span data-line class="steel" style="--i:0">Disciplina</span></span>
-      <span class="line"><span data-line class="gold" style="--i:1">sin público.</span></span>
-    </h1>
-    <p class="hero__lede" data-rise style="--i:2">Lo que haces cuando nadie te ve. La comunidad de la serie N250: un lugar para entrenar constancia, enfoque y palabra, un día a la vez.</p>
-    <div class="hero__actions" data-rise style="--i:3">
-      <a class="button button--gold" data-wa href="#unete" data-arrow="out" data-magnet>Unirme al grupo</a>
-      <a class="button button--ghost" href="#la-v" data-arrow="down">Qué es la V</a>
+<!-- INICIO -->
+<section class="hero" id="inicio" aria-labelledby="titulo">
+  <div class="container">
+    <span class="icon icon--lg" aria-hidden="true"><svg><use href="#v"/></svg></span>
+    <h1 class="h1" id="titulo">Comunidad V</h1>
+    <p class="lead hero__lead">Disciplina, un día a la vez. La comunidad de la serie N250.</p>
+    <div class="hero__actions">
+      <a class="btn" data-wa href="#unete">Unirme al grupo</a>
+      <a class="more" href="#biblioteca">Ver la biblioteca</a>
     </div>
-    <p class="hero__day" data-day data-rise style="--i:4"></p>
+    <p class="hero__day" data-day></p>
+    <figure class="hero__media" data-reveal>
+      <img src="https://picsum.photos/id/1014/2000/1000" width="2000" height="1000" alt="Una persona de espaldas mira el mar entre la neblina." fetchpriority="high" decoding="async">
+    </figure>
   </div>
-
-  <a class="hero__scroll" href="#la-v" aria-label="Bajar a la siguiente sección"><span>Desliza</span><i aria-hidden="true"></i></a>
 </section>
 
-<!-- Banda en movimiento -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <span>Disciplina</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Constancia</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Silencio</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Enfoque</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Palabra</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Disciplina</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Constancia</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Silencio</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Enfoque</span><svg class="vmark vgold"><use href="#v"/></svg>
-    <span>Palabra</span><svg class="vmark vgold"><use href="#v"/></svg>
-  </div>
-</div>
-
-<!-- =========================================================
-     LA V ES DISCIPLINA
-     ========================================================= -->
-<section class="chapter lav wrap" id="la-v" aria-labelledby="lav-titulo">
-  <div class="grid">
-    <div class="lav__head">
-      <h2 class="head steel" id="lav-titulo" data-reveal>La V es disciplina.</h2>
-      <p class="lav__statement" data-reveal style="--d:1">No es motivación. La motivación se va. La V es lo que haces cuando ya se fue.</p>
-      <p class="lav__body" data-reveal style="--d:2">Cumplir aunque estés cansado, aunque nadie te vea y aunque nadie aplauda. Eso se entrena, y aquí lo entrenamos juntos.</p>
+<!-- LA V -->
+<section class="section section--gray" id="la-v" aria-labelledby="lav-titulo">
+  <div class="container">
+    <div class="section__head center">
+      <h2 class="h2" id="lav-titulo" data-reveal>La V es disciplina.</h2>
+      <p class="lead" data-reveal style="--d:1">Hacer lo que dijiste que harías, aunque nadie te vea.</p>
     </div>
     <div class="pillars">
-      <article class="pillar glass spot" data-reveal>
-        <svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>
-        <div><h3>Constancia</h3><p>Un día a la vez. El día 100 vale más que el día 1.</p></div>
+      <article class="pillar" data-reveal>
+        <span class="icon icon--soft" aria-hidden="true"><svg><use href="#v"/></svg></span>
+        <h3>Constancia</h3>
+        <p>Un día a la vez. Lo que cuenta es volver mañana.</p>
       </article>
-      <article class="pillar glass spot" data-reveal style="--d:1">
-        <svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>
-        <div><h3>Silencio</h3><p>Entrena callado. Que hablen tus días, no tus promesas.</p></div>
+      <article class="pillar" data-reveal style="--d:1">
+        <span class="icon icon--soft" aria-hidden="true"><svg><use href="#v"/></svg></span>
+        <h3>Enfoque</h3>
+        <p>Menos ruido, más avance.</p>
       </article>
-      <article class="pillar glass spot" data-reveal style="--d:2">
-        <svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>
-        <div><h3>Enfoque</h3><p>Decirle que no a lo que te distrae también es avanzar.</p></div>
-      </article>
-      <article class="pillar glass spot" data-reveal style="--d:3">
-        <svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>
-        <div><h3>Palabra</h3><p>Cumplirte a ti mismo es la promesa más difícil. Y la que más pesa.</p></div>
+      <article class="pillar" data-reveal style="--d:2">
+        <span class="icon icon--soft" aria-hidden="true"><svg><use href="#v"/></svg></span>
+        <h3>Palabra</h3>
+        <p>Cumplirte a ti mismo es la promesa que más pesa.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     LA SERIE N250
-     ========================================================= -->
-<section class="chapter serie wrap" id="serie" aria-labelledby="serie-titulo">
-  <div class="grid">
-    <figure class="serie__media clip" data-reveal>
-      <img data-foto="serie" src="https://picsum.photos/id/338/1000/1300?grayscale" width="1000" height="1300" alt="Una persona con abrigo y capucha, de espaldas, mira el mar entre la neblina." loading="lazy" decoding="async">
-      <figcaption class="serie__goal"><strong class="gold">Pulsar N250</strong><span>La meta de la serie. Se gana día por día.</span></figcaption>
+<!-- LA SERIE -->
+<section class="section" id="serie" aria-labelledby="serie-titulo">
+  <div class="container serie">
+    <figure class="serie__media" data-reveal>
+      <img data-foto="serie" src="https://picsum.photos/id/447/1000/1250" width="1000" height="1250" alt="Una persona de pie sobre un muro mira un lago y las montañas." loading="lazy" decoding="async">
     </figure>
     <div class="serie__body">
-      <h2 class="head steel" id="serie-titulo" data-reveal>La serie N250</h2>
-      <p data-reveal style="--d:1">Una serie de días reales en TikTok, Reels y Shorts. Despertar temprano, ir a trabajar, regresar cansado y, aun así, avanzar. La meta se puede tocar: una Pulsar N250. Lo que se cuenta es el camino, día por día y sin filtros.</p>
-      <div class="serie__redes" data-redes data-reveal style="--d:2"></div>
-      <article class="letter glass spot" data-reveal style="--d:3">
-        <div class="letter__from"><span class="avatar" aria-hidden="true"><svg class="vmark vgold"><use href="#v"/></svg></span><span>Una carta de Growth</span></div>
-        <blockquote>
-          <p>Hola, soy Growth. Esta serie no va de motivación, va de disciplina. Documento mis días reales rumbo a una meta concreta, y la V es la comunidad que me acompaña en ese camino.</p>
-          <p>Aquí no hay atajos ni promesas: hay días. Si tú también estás construyendo algo en silencio, este es tu lugar.</p>
-        </blockquote>
-        <p class="letter__sign">Growth <span>Creador de la serie N250</span></p>
-      </article>
+      <h2 class="h2" id="serie-titulo" data-reveal>La serie N250</h2>
+      <p class="lead" data-reveal style="--d:1">Días reales en TikTok, Reels y Shorts rumbo a una meta: una Pulsar N250. Sin filtros, día por día.</p>
+      <blockquote class="quote" data-reveal style="--d:2">
+        <p>Aquí no hay atajos. Hay días.</p>
+        <cite>Growth, creador de la serie</cite>
+      </blockquote>
+      <div class="redes" data-redes></div>
     </div>
   </div>
 </section>
 
-<!-- Banda de foto -->
-<section class="band" aria-label="Frase de la comunidad">
-  <img data-foto="banda" src="https://picsum.photos/id/685/1800/1100?grayscale" width="1800" height="1100" alt="Una persona sentada sobre una roca mira un mar de nubes." loading="lazy" decoding="async">
-  <h2 class="head steel" data-reveal>Nadie te ve.<br>Hazlo igual.</h2>
-</section>
-
-<!-- =========================================================
-     CÓMO SE VIVE LA V
-     ========================================================= -->
-<section class="chapter como wrap" id="como" aria-labelledby="como-titulo">
-  <div class="grid">
-    <div class="como__aside">
-      <h2 class="head steel" id="como-titulo" data-reveal>Cómo se vive la V</h2>
-      <p data-reveal style="--d:1">Cinco pasos. La línea se enciende mientras bajas, igual que la disciplina: un tramo a la vez.</p>
-      <figure class="como__photo clip" data-reveal style="--d:2">
-        <img data-foto="como" src="https://picsum.photos/id/669/900/1125?grayscale" width="900" height="1125" alt="Una persona camina de espaldas entre la neblina." loading="lazy" decoding="async">
-      </figure>
+<!-- BIBLIOTECA (los PDFs se configuran en RECURSOS, abajo en el script) -->
+<section class="section section--gray" id="biblioteca" aria-labelledby="bib-titulo">
+  <div class="container">
+    <div class="section__head center">
+      <h2 class="h2" id="bib-titulo" data-reveal>Biblioteca</h2>
+      <p class="lead" data-reveal style="--d:1">Guías y plantillas gratis en PDF.</p>
     </div>
-    <div class="timeline" id="timeline">
-      <div class="timeline__rail" aria-hidden="true"><span class="timeline__fill" id="tl-fill"></span></div>
-      <ol class="steps">
-      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Regístrate</h3><p>Tu nombre y tu correo en la entrada. Con eso ya eres parte de la V.</p></li>
-      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Entra al grupo</h3><p>La comunidad de WhatsApp: avisos de cada episodio, recursos nuevos y retos.</p></li>
-      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Haz tu compromiso</h3><p>Escribe qué vas a cumplir cada día. Uno solo, claro y medible.</p></li>
-      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Marca tu día</h3><p>Cada día que cumples, lo marcas en tu racha. Sin trampas: solo tú lo sabes.</p></li>
-      <li class="step"><span class="step__node" aria-hidden="true"></span><h3>Repite</h3><p>Día 2, día 30, día 100. La disciplina no se siente: se acumula.</p></li>
-      </ol>
-    </div>
+    <ul class="library" id="lista" data-reveal style="--d:2"></ul>
+    <noscript><p>Activa JavaScript para ver la biblioteca.</p></noscript>
   </div>
 </section>
 
-<!-- =========================================================
-     TU RACHA (se guarda solo en este navegador)
-     ========================================================= -->
-<section class="chapter racha wrap" id="racha" aria-labelledby="racha-titulo">
-  <div class="grid">
-    <div class="racha__head">
-      <h2 class="head steel" id="racha-titulo" data-reveal>Tu racha</h2>
-      <p data-reveal style="--d:1">La disciplina se mide en días. Escribe tu compromiso y marca cada día que lo cumplas. Sin público, sin pretextos.</p>
+<!-- REGLAS -->
+<section class="section" id="reglas" aria-labelledby="reglas-titulo">
+  <div class="container">
+    <div class="section__head center">
+      <h2 class="h2" id="reglas-titulo" data-reveal>Cómo nos cuidamos</h2>
+      <p class="lead" data-reveal style="--d:1">Cuatro reglas para que el grupo siga valiendo la pena.</p>
     </div>
-    <div class="racha__panel glass" data-reveal style="--d:2">
-      <div class="racha__left">
-        <form class="compromiso" id="compromiso-form">
-          <label for="compromiso">Mi compromiso diario</label>
-          <div class="compromiso__row">
-            <input class="input" id="compromiso" type="text" maxlength="80" placeholder="Ej. entrenar 30 minutos" enterkeyhint="done">
-            <button class="button button--ghost button--sm" type="submit">Guardar</button>
-          </div>
-          <p class="compromiso__show" id="compromiso-show" aria-live="polite"></p>
-        </form>
-        <div class="racha__count"><output class="gold nums" id="racha-num">0</output><span id="racha-label">días seguidos</span></div>
-        <p class="racha__stats"><span>Total: <strong class="nums" id="racha-total">0</strong> <span id="racha-total-label">días</span></span><span>Mejor racha: <strong class="nums" id="racha-best">0</strong></span></p>
-        <div class="racha__actions">
-          <button class="button button--gold" type="button" id="racha-btn" data-arrow="right" data-magnet>Cumplí hoy</button>
-          <button class="link" type="button" id="racha-undo" hidden>Desmarcar hoy</button>
-        </div>
-      </div>
-      <div class="racha__right">
-        <ol class="cells" id="cells" aria-label="Tus últimos 30 días"></ol>
-        <p class="cells__legend"><span>Hace 30 días</span><span>Hoy</span></p>
-        <p class="racha__note">Tu racha se guarda solo en este dispositivo. Nadie más la ve.</p>
+    <ul class="rules">
+      <li class="rule" data-reveal><span class="icon" aria-hidden="true"><svg><use href="#v"/></svg></span><div><h3>Respeto siempre</h3><p>Se critica la idea, nunca a la persona.</p></div></li>
+      <li class="rule" data-reveal style="--d:1"><span class="icon" aria-hidden="true"><svg><use href="#v"/></svg></span><div><h3>Proceso real</h3><p>Comparte lo que de verdad hiciste.</p></div></li>
+      <li class="rule" data-reveal><span class="icon" aria-hidden="true"><svg><use href="#v"/></svg></span><div><h3>Cero spam</h3><p>Nada de ventas ni cadenas.</p></div></li>
+      <li class="rule" data-reveal style="--d:1"><span class="icon" aria-hidden="true"><svg><use href="#v"/></svg></span><div><h3>Lo del grupo, se queda ahí</h3><p>Sin capturas de otros miembros sin su permiso.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ÚNETE -->
+<section class="section" id="unete" aria-labelledby="unete-titulo" style="padding-top: 0">
+  <div class="container">
+    <div class="cta" data-reveal>
+      <span class="icon icon--lg" aria-hidden="true"><svg><use href="#v"/></svg></span>
+      <h2 class="h2" id="unete-titulo">Entra al grupo.</h2>
+      <p>Avisos de cada episodio, recursos nuevos y retos. Gratis.</p>
+      <div class="cta__actions">
+        <a class="btn btn--white" data-wa href="#unete">Unirme por WhatsApp</a>
+        <button class="more more--white" type="button" data-share>Invitar a alguien</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     BIBLIOTECA (los PDFs se configuran en RECURSOS, abajo en el script)
-     ========================================================= -->
-<section class="chapter library wrap" id="biblioteca" aria-labelledby="bib-titulo">
-  <div class="grid library__head">
-    <h2 class="head steel" id="bib-titulo" data-reveal>Biblioteca V</h2>
-    <p data-reveal style="--d:1">Guías y plantillas en PDF para entrenar la disciplina. Ábrelas aquí o descárgalas gratis.</p>
-  </div>
-  <div class="grid library__body">
-    <div class="library__list" id="lista"></div>
-    <div class="library__frame" id="portadas" aria-hidden="true"></div>
-  </div>
-  <noscript><p>Activa JavaScript para ver la biblioteca.</p></noscript>
-</section>
-
-<!-- =========================================================
-     CÓDIGO V
-     ========================================================= -->
-<section class="chapter codigo wrap" id="codigo" aria-labelledby="codigo-titulo">
-  <div class="codigo__watermark" aria-hidden="true"><svg viewBox="0 0 100 100"><polygon points="0,0 27,0 50,64 73,0 100,0 62,100 38,100" fill="url(#vGhost)"/></svg></div>
-  <div class="grid codigo__top">
-    <h2 class="head steel" id="codigo-titulo" data-reveal>Código V</h2>
-    <p data-reveal style="--d:1">Seis reglas para que el grupo siga valiendo la pena. Al entrar, aceptas cumplirlas.</p>
-  </div>
-  <ul class="rules">
-    <li class="rule" data-reveal><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Proceso real.</h3><p>Comparte lo que de verdad hiciste, también lo que salió mal. Aquí no se presume: se muestra.</p></div></li>
-    <li class="rule" data-reveal style="--d:1"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Respeto siempre.</h3><p>Se critica la idea, nunca a la persona. Cero burlas y cero ataques.</p></div></li>
-    <li class="rule" data-reveal><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Cero spam.</h3><p>Nada de cadenas, links ni ventas sin permiso de los administradores.</p></div></li>
-    <li class="rule" data-reveal style="--d:1"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Sin atajos.</h3><p>Nadie vende fórmulas mágicas ni promete resultados rápidos. Si alguien lo hace, avisa.</p></div></li>
-    <li class="rule" data-reveal><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Aporta antes de pedir.</h3><p>Un dato, una herramienta, una pregunta bien hecha. Todo suma para todos.</p></div></li>
-    <li class="rule" data-reveal style="--d:1"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg><div><h3>Lo del grupo, se queda ahí.</h3><p>No compartas capturas ni datos de otros miembros sin su permiso.</p></div></li>
-  </ul>
-</section>
-
-<!-- =========================================================
-     ENTRA AL GRUPO
-     ========================================================= -->
-<section class="chapter cta wrap on-light" id="unete" aria-labelledby="unete-titulo">
-  <svg class="cta__v" viewBox="0 0 100 100" aria-hidden="true"><use href="#v" fill="#0A0A0B"/></svg>
-  <h2 class="head" id="unete-titulo" data-reveal>Entra al grupo.</h2>
-  <p data-reveal style="--d:1">Avisos de cada episodio, recursos nuevos y retos de disciplina. Gratis y sin spam.</p>
-  <div class="cta__actions" data-reveal style="--d:2">
-    <a class="button button--night" data-wa href="#unete" data-arrow="out" data-magnet>Unirme por WhatsApp</a>
-    <button class="link" type="button" data-share>Invitar a alguien</button>
-  </div>
-</section>
-
-<!-- =========================================================
-     PREGUNTAS
-     ========================================================= -->
-<section class="chapter faq wrap" id="preguntas" aria-labelledby="faq-titulo">
-  <div class="grid">
-    <div class="faq__head">
-      <h2 class="head steel" id="faq-titulo" data-reveal>Preguntas</h2>
-      <p data-reveal style="--d:1">Si la tuya no está, pregúntala en el grupo.</p>
-      <figure class="faq__photo clip" data-reveal style="--d:2"><img data-foto="preguntas" src="https://picsum.photos/id/550/1200/800?grayscale" width="1200" height="800" alt="Una persona de espaldas mira una ciudad desenfocada al anochecer." loading="lazy" decoding="async"></figure>
+<!-- PREGUNTAS -->
+<section class="section section--gray" id="preguntas" aria-labelledby="faq-titulo">
+  <div class="container">
+    <div class="section__head center">
+      <h2 class="h2" id="faq-titulo" data-reveal>Preguntas</h2>
     </div>
-    <div class="faq__list">
-      <details class="q" name="faq" data-reveal><summary>¿Cuesta algo entrar?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Nada. Registrarte, entrar al grupo de WhatsApp y descargar los PDFs es gratis.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:1"><summary>¿Qué significa la V?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Disciplina. Hacer lo que dijiste que harías aunque estés cansado, aunque nadie te vea y aunque nadie aplauda.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:2"><summary>¿Qué es la serie N250?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Una serie de días reales en TikTok, Reels y Shorts rumbo a una meta concreta: una Pulsar N250. Cada episodio es un día; la disciplina es el hilo.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:3"><summary>¿Necesito tener una meta como la moto?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>No. Cada quien trae la suya: entrenar, estudiar, ahorrar, crear. Lo que compartimos es la forma de llegar: un día a la vez.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:4"><summary>¿Qué hacen con mi correo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Lo usamos solo para avisarte de episodios, recursos nuevos y novedades de la comunidad. No lo vendemos ni lo compartimos. Si quieres que lo borremos, lo pides y listo.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:5"><summary>¿Mi racha se guarda en algún lado?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Solo en tu navegador. Nosotros no la vemos y no se sube a ningún servidor. Si cambias de teléfono o borras los datos del navegador, empieza de cero.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:6"><summary>¿Aquí se vende algo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>No. Entrar, el grupo y los PDFs son gratis, y en el grupo no se permite vender sin permiso.</p></div></details>
-      <details class="q" name="faq" data-reveal style="--d:7"><summary>¿Cómo me salgo?<span class="plus" aria-hidden="true"></span></summary><div class="q__a"><p>Sales del grupo de WhatsApp cuando quieras. Para borrar tu correo de la lista, pídelo en el grupo o responde a cualquier correo de la comunidad.</p></div></details>
+    <div class="faq" data-reveal style="--d:1">
+      <details class="q" name="faq"><summary>¿Cuesta algo?</summary><p class="q__a">No. Entrar, el grupo y los PDFs son gratis.</p></details>
+      <details class="q" name="faq"><summary>¿Qué es la serie N250?</summary><p class="q__a">Una serie de días reales en TikTok, Reels y Shorts rumbo a una Pulsar N250. La disciplina es el hilo.</p></details>
+      <details class="q" name="faq"><summary>¿Qué hacen con mi correo?</summary><p class="q__a">Solo lo usamos para avisarte de episodios y recursos nuevos. No lo vendemos ni lo compartimos.</p></details>
+      <details class="q" name="faq"><summary>¿Cómo me salgo?</summary><p class="q__a">Sales del grupo cuando quieras. Para borrar tu correo, pídelo en el grupo o responde a cualquier correo de la comunidad.</p></details>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- =========================================================
-     CIERRE
-     ========================================================= -->
-<footer class="foot wrap">
-  <div class="foot__top">
-    <a class="mark" href="#inicio"><svg class="vmark vgold" aria-hidden="true"><use href="#v"/></svg>Comunidad V</a>
-    <p>La comunidad de la serie N250.</p>
-    <a class="link" href="#inicio">Volver arriba</a>
-  </div>
-
-  <a class="foot__line display gold" data-wa href="#unete" data-reveal>Mañana, otra vez.</a>
-
-  <div class="foot__meta">
-    <nav aria-label="Enlaces" data-redes-foot>
-      <a data-wa href="#unete">WhatsApp</a>
-      <button type="button" data-privacy>Aviso de privacidad</button>
-      <button type="button" data-share>Invitar a alguien</button>
-    </nav>
-    <p class="foot__credits">Fotos: Patryk Sobczak, Joshua Earle, Luke Pamer y Christopher Sardegna en Unsplash, vía Lorem Picsum.</p>
-    <p class="foot__place">Serie N250 · <span data-year>2026</span></p>
+<!-- PIE -->
+<footer class="foot">
+  <div class="container">
+    <div class="foot__top">
+      <a class="brand" href="#inicio"><span class="icon" aria-hidden="true"><svg><use href="#v"/></svg></span>Comunidad V</a>
+      <nav class="foot__links" aria-label="Enlaces" data-redes-foot>
+        <a data-wa href="#unete">WhatsApp</a>
+        <button type="button" data-privacy>Aviso de privacidad</button>
+        <button type="button" data-share>Invitar a alguien</button>
+      </nav>
+    </div>
+    <div class="foot__bottom">
+      <p>Serie N250 · <span data-year>2026</span></p>
+      <p>Fotos: Oscar Keys y Joshua Earle en Unsplash, vía Lorem Picsum.</p>
+    </div>
   </div>
 </footer>
 
@@ -1241,8 +521,8 @@ dialog::backdrop { background:rgba(18,45,35,.42); -webkit-backdrop-filter:blur(4
 <dialog class="viewer" id="visor" aria-labelledby="visor-titulo">
   <div class="viewer__bar">
     <h2 id="visor-titulo">Documento</h2>
-    <a class="button button--gold button--sm" id="visor-descargar" href="#" download data-arrow="down">Descargar</a>
-    <button class="button button--ghost button--sm" type="button" data-close>Cerrar</button>
+    <a class="btn btn--sm" id="visor-descargar" href="#" download>Descargar</a>
+    <button class="btn btn--sm btn--soft" type="button" data-close>Cerrar</button>
   </div>
   <iframe id="visor-frame" title="Vista del PDF" src="about:blank"></iframe>
 </dialog>
@@ -1250,12 +530,12 @@ dialog::backdrop { background:rgba(18,45,35,.42); -webkit-backdrop-filter:blur(4
 <!-- Aviso de privacidad -->
 <dialog id="privacidad" aria-labelledby="priv-titulo">
   <div class="privacy__body">
-    <h2 id="priv-titulo">Aviso de privacidad simplificado</h2>
-    <p>La Comunidad V, de la serie N250, recaba tu nombre y tu correo electrónico con una sola finalidad: registrarte en la comunidad y enviarte avisos sobre episodios, recursos y novedades.</p>
-    <p>No vendemos ni compartimos tus datos con terceros para fines comerciales. Para recibir y guardar tu registro usamos dos servicios: FormSubmit (envía el registro por correo) y Google Sheets (guarda la lista de miembros). Tu racha de días no sale de tu navegador.</p>
-    <p>En cualquier momento puedes pedir acceder, corregir o eliminar tus datos, u oponerte a su uso (derechos ARCO), en el grupo de WhatsApp o respondiendo a cualquier correo de la comunidad.</p>
+    <h2 id="priv-titulo">Aviso de privacidad</h2>
+    <p>La Comunidad V, de la serie N250, recaba tu nombre y tu correo con una sola finalidad: registrarte y enviarte avisos sobre episodios, recursos y novedades.</p>
+    <p>No vendemos ni compartimos tus datos con fines comerciales. Para recibir y guardar el registro usamos FormSubmit (envío por correo) y Google Sheets (lista de miembros).</p>
+    <p>Puedes pedir acceder, corregir o eliminar tus datos, u oponerte a su uso (derechos ARCO), en el grupo de WhatsApp o respondiendo a cualquier correo de la comunidad.</p>
     <p>Última actualización: octubre de 2026.</p>
-    <button class="button button--gold" type="button" data-close>Entendido</button>
+    <button class="btn" type="button" data-close>Entendido</button>
   </div>
 </dialog>
 
@@ -1266,43 +546,31 @@ dialog::backdrop { background:rgba(18,45,35,.42); -webkit-backdrop-filter:blur(4
    CONFIGURACIÓN: lo único que necesitas editar
    ========================================================= */
 const CONFIG = {
-  // Enlace de invitación de tu comunidad de WhatsApp (WhatsApp > Comunidad > Invitar).
+  // Enlace de invitación de tu comunidad de WhatsApp.
   whatsapp: 'https://chat.whatsapp.com/TU-ENLACE-AQUI',
 
-  // Enlaces de la serie N250. Los que dejes vacíos no aparecen en la página.
-  redes: {
-    tiktok: '',
-    instagram: '',
-    youtube: ''
-  },
+  // Enlaces de la serie. Los que dejes vacíos no aparecen.
+  redes: { tiktok: '', instagram: '', youtube: '' },
 
   // FormSubmit: cada registro te llega a este correo.
   // Después de activarlo, cámbialo por el código que te da FormSubmit para que tu correo no quede visible en el código.
   formsubmit: '5amcorporation.hq@gmail.com',
 
-  // Google Sheets: pega aquí la URL que termina en /exec de tu Apps Script (ver la guía).
+  // Google Sheets: pega aquí la URL que termina en /exec de tu Apps Script.
   sheets: '',
 
-  // Opcional: un clip tuyo de la serie (MP4 corto, sin audio, menos de 8 MB) en la carpeta "videos".
-  // Si existe, reemplaza la foto de "La serie N250" por tu video en loop.
+  // Opcional: un clip tuyo de la serie (MP4 corto, sin audio) en la carpeta "videos". Si existe, reemplaza la foto de "La serie N250".
   videoSerie: 'videos/serie-n250.mp4'
 };
 
-/* Biblioteca: para agregar un PDF, súbelo a la carpeta "pdfs" del repositorio y copia una línea.
-   Si el archivo todavía no existe, la página lo muestra como "Llega pronto". */
+/* Biblioteca: sube el PDF a la carpeta "pdfs" y agrega una línea. Si el archivo aún no existe, aparece como "Pronto". */
 const RECURSOS = [
-  { categoria: 'Guías', tipo: 'Guía', titulo: 'El código de la disciplina', archivo: 'pdfs/codigo-disciplina.pdf',
-    descripcion: 'Qué es la disciplina, cómo se entrena y qué hacer los días que no tienes ganas.' },
-  { categoria: 'Guías', tipo: 'Guía', titulo: 'Rutina de la mañana', archivo: 'pdfs/rutina-manana.pdf',
-    descripcion: 'Cómo armar una mañana que te dé ventaja: horario, bloques y qué hacer el día que fallas.' },
-  { categoria: 'Guías', tipo: 'Guía', titulo: 'Graba tu proceso', archivo: 'pdfs/graba-tu-proceso.pdf',
-    descripcion: 'Cómo documentar tus días en TikTok, Reels y Shorts: tomas, voz en off y constancia.' },
-  { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Bitácora día N', archivo: 'pdfs/bitacora-dia-n.pdf',
-    descripcion: 'Una hoja por día: qué hiciste, qué te costó y qué sigue.' },
-  { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Registro de 30 días', archivo: 'pdfs/registro-30-dias.pdf',
-    descripcion: 'Marca tus hábitos un mes completo y mira tu racha también en papel.' },
-  { categoria: 'Plantillas', tipo: 'Plantilla', titulo: 'Meta grande, pasos chicos', archivo: 'pdfs/meta-grande.pdf',
-    descripcion: 'Divide una meta grande, como una moto, en pasos semanales y marca tu avance.' }
+  { tipo: 'Guía', titulo: 'El código de la disciplina', archivo: 'pdfs/codigo-disciplina.pdf', descripcion: 'Qué es, cómo se entrena y qué hacer los días sin ganas.' },
+  { tipo: 'Guía', titulo: 'Rutina de la mañana', archivo: 'pdfs/rutina-manana.pdf', descripcion: 'Horario, bloques y qué hacer el día que fallas.' },
+  { tipo: 'Guía', titulo: 'Graba tu proceso', archivo: 'pdfs/graba-tu-proceso.pdf', descripcion: 'Cómo documentar tus días en video.' },
+  { tipo: 'Plantilla', titulo: 'Bitácora día N', archivo: 'pdfs/bitacora-dia-n.pdf', descripcion: 'Una hoja por día: qué hiciste y qué sigue.' },
+  { tipo: 'Plantilla', titulo: 'Registro de 30 días', archivo: 'pdfs/registro-30-dias.pdf', descripcion: 'Marca tus hábitos un mes completo.' },
+  { tipo: 'Plantilla', titulo: 'Meta grande, pasos chicos', archivo: 'pdfs/meta-grande.pdf', descripcion: 'Divide una meta en pasos semanales.' }
 ];
 
 /* =========================================================
@@ -1318,58 +586,12 @@ const RECURSOS = [
   };
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const fmt = new Intl.NumberFormat('es-MX');
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const vIcon = '<svg><use href="#v"/></svg>';
 
   /* ---------- fechas (hora local de quien visita) ---------- */
   const dos = (n) => String(n).padStart(2, '0');
   const fechaLocal = (d = new Date()) => `${d.getFullYear()}-${dos(d.getMonth() + 1)}-${dos(d.getDate())}`;
-  const sumarDias = (f, n) => { const [y, m, d] = f.split('-').map(Number); return fechaLocal(new Date(y, m - 1, d + n)); };
   const diasEntre = (a, b) => { const [y1, m1, d1] = a.split('-').map(Number); const [y2, m2, d2] = b.split('-').map(Number); return Math.round((new Date(y2, m2 - 1, d2) - new Date(y1, m1 - 1, d1)) / 86400000); };
-
-  /* ---------- botones animados ---------- */
-  const FLECHAS = {
-    right: '<path d="M3 8h10M9 4l4 4-4 4"/>',
-    down: '<path d="M8 3v10M4 9l4 4 4-4"/>',
-    out: '<path d="M5 11l6-6M6.5 5H11v4.5"/>'
-  };
-  function armar(btn) {
-    if (btn.dataset.armado) return;
-    btn.dataset.armado = '1';
-    const texto = btn.textContent.trim();
-    btn.innerHTML = `<span class="btn__roll"><span>${esc(texto)}</span><span aria-hidden="true">${esc(texto)}</span></span>`;
-    const dir = btn.dataset.arrow;
-    if (dir) {
-      const svg = `<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">${FLECHAS[dir] || FLECHAS.right}</svg>`;
-      btn.insertAdjacentHTML('beforeend', `<span class="btn__dot" aria-hidden="true">${svg}${svg}</span>`);
-      btn.classList.add('has-arrow');
-    }
-    if (btn.hasAttribute('data-magnet') && finePointer && !reduceMotion) {
-      btn.addEventListener('pointermove', (e) => {
-        const r = btn.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width / 2) * 0.16;
-        const y = (e.clientY - r.top - r.height / 2) * 0.3;
-        btn.style.setProperty('--mx', Math.max(-10, Math.min(10, x)).toFixed(1) + 'px');
-        btn.style.setProperty('--my', Math.max(-8, Math.min(8, y)).toFixed(1) + 'px');
-      });
-      btn.addEventListener('pointerleave', () => { btn.style.setProperty('--mx', '0px'); btn.style.setProperty('--my', '0px'); });
-    }
-  }
-  function setLabel(btn, texto) { $$('.btn__roll > span', btn).forEach((s) => { s.textContent = texto; }); }
-
-  /* ---------- enlaces de redes (solo los que configuraste) ---------- */
-  const REDES = [['tiktok', 'TikTok'], ['instagram', 'Instagram'], ['youtube', 'YouTube']];
-  const redesActivas = REDES.filter(([k]) => CONFIG.redes && CONFIG.redes[k]);
-  const cajaRedes = $('[data-redes]');
-  if (redesActivas.length) {
-    cajaRedes.innerHTML = redesActivas.map(([k, n]) => `<a class="button button--ghost" href="${esc(CONFIG.redes[k])}" target="_blank" rel="noopener" data-arrow="out">Ver en ${n}</a>`).join('');
-    const pie = $('[data-redes-foot]');
-    redesActivas.slice().reverse().forEach(([k, n]) => pie.insertAdjacentHTML('afterbegin', `<a href="${esc(CONFIG.redes[k])}" target="_blank" rel="noopener">${n}</a>`));
-  } else {
-    cajaRedes.remove();
-  }
-
-  $$('.button').forEach(armar);
 
   /* ---------- aviso flotante ---------- */
   let toastTimer;
@@ -1378,7 +600,7 @@ const RECURSOS = [
     t.textContent = msg;
     t.classList.add('is-on');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove('is-on'), 3200);
+    toastTimer = setTimeout(() => t.classList.remove('is-on'), 3000);
   }
 
   /* ---------- tu día N en la V ---------- */
@@ -1389,6 +611,18 @@ const RECURSOS = [
     $$('[data-day]').forEach((el) => { el.innerHTML = `Hoy es tu <strong>día ${fmt.format(n)}</strong> en la V.`; });
   }
   paintDay();
+
+  /* ---------- redes (solo las configuradas) ---------- */
+  const REDES = [['tiktok', 'TikTok'], ['instagram', 'Instagram'], ['youtube', 'YouTube']];
+  const activas = REDES.filter(([k]) => CONFIG.redes && CONFIG.redes[k]);
+  const caja = $('[data-redes]');
+  if (activas.length) {
+    caja.innerHTML = activas.map(([k, n]) => `<a class="btn btn--soft btn--sm" href="${esc(CONFIG.redes[k])}" target="_blank" rel="noopener">Ver en ${n}</a>`).join('');
+    const pie = $('[data-redes-foot]');
+    activas.slice().reverse().forEach(([k, n]) => pie.insertAdjacentHTML('afterbegin', `<a href="${esc(CONFIG.redes[k])}" target="_blank" rel="noopener">${n}</a>`));
+  } else {
+    caja.remove();
+  }
 
   /* ---------- WhatsApp, invitar y año ---------- */
   const waReady = CONFIG.whatsapp && !/TU-ENLACE/i.test(CONFIG.whatsapp);
@@ -1413,7 +647,7 @@ const RECURSOS = [
   viewer.addEventListener('close', () => { $('#visor-frame').src = 'about:blank'; });
 
   /* =========================================================
-     LA ENTRADA
+     ENTRADA
      ========================================================= */
   const gate = $('#gate');
   const site = $('#site');
@@ -1429,13 +663,9 @@ const RECURSOS = [
 
   function leaveGate() {
     html.classList.remove('gate-open');
-    html.classList.add('entered');
     lockSite(false);
     gate.classList.add('is-leaving');
-    let done = false;
-    const finish = () => { if (done) return; done = true; html.classList.add('is-member'); gate.classList.remove('is-leaving'); };
-    gate.addEventListener('transitionend', finish, { once: true });
-    setTimeout(finish, 1300);
+    setTimeout(() => { html.classList.add('is-member'); gate.classList.remove('is-leaving'); }, 420);
     paintDay();
   }
 
@@ -1457,12 +687,11 @@ const RECURSOS = [
     const correo = correoEl.value.trim().toLowerCase();
 
     if (nombre.length < 2) return setError(nombreEl, 'Escribe tu nombre.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo)) return setError(correoEl, 'Revisa tu correo: parece incompleto.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo)) return setError(correoEl, 'Revisa tu correo.');
     if (!$('#g-acepto').checked) return setError(null, 'Acepta el aviso de privacidad para continuar.');
 
     btn.disabled = true;
-    btn.classList.add('is-loading');
-    setLabel(btn, 'Entrando…');
+    btn.textContent = 'Entrando…';
     msg.textContent = '';
     msg.classList.remove('is-error');
 
@@ -1497,253 +726,43 @@ const RECURSOS = [
     const resultados = await Promise.allSettled(envios);
     resultados.forEach((r) => { if (r.status === 'rejected') console.warn('[Comunidad V] Un envío falló:', r.reason); });
 
-    // En este navegador solo guardamos tu nombre y la fecha de entrada (para contar tu día N), nunca tu correo.
+    // En este navegador solo se guarda tu nombre y la fecha de entrada, nunca tu correo.
     store.set('v_miembro', { nombre: registro.nombre, desde: fechaLocal(ahora) });
-
-    btn.classList.add('is-done');
-    setLabel(btn, 'Listo');
-    await new Promise((res) => setTimeout(res, reduceMotion ? 0 : 450));
 
     $('#gate-done-text').textContent = `Listo, ${registro.nombre.split(' ')[0]}. Hoy es tu día 1 en la V.`;
     gate.classList.add('is-done');
     $('#gate-enter').focus();
-    setTimeout(leaveGate, 2200);
+    setTimeout(leaveGate, 2000);
   });
   $('#gate-enter').addEventListener('click', leaveGate);
 
   /* =========================================================
-     BARRA: vidrio al hacer scroll y sección activa
-     ========================================================= */
-  const bar = $('#bar');
-  const onScrollBar = () => bar.classList.toggle('is-scrolled', scrollY > 24);
-  addEventListener('scroll', onScrollBar, { passive: true });
-  onScrollBar();
-  if ('IntersectionObserver' in window) {
-    const links = $$('.bar__links a');
-    const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (!en.isIntersecting) return;
-        links.forEach((a) => a.classList.remove('is-active'));
-        const a = map.get(en.target.id);
-        if (a) a.classList.add('is-active');
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    $$('main section[id]').forEach((s) => io.observe(s));
-  }
-
-  /* =========================================================
-     LUZ QUE SIGUE AL CURSOR (inicio) Y TARJETAS QUE SE ILUMINAN
-     ========================================================= */
-  const hero = $('#inicio');
-  const luz = $('.hero__cursor');
-  if (finePointer && !reduceMotion) {
-    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
-    const paso = () => {
-      cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
-      luz.style.transform = `translate3d(${(cx - 350).toFixed(1)}px, ${(cy - 350).toFixed(1)}px, 0)`;
-      raf = (Math.abs(tx - cx) > 0.4 || Math.abs(ty - cy) > 0.4) ? requestAnimationFrame(paso) : 0;
-    };
-    hero.addEventListener('pointermove', (e) => {
-      const r = hero.getBoundingClientRect();
-      tx = e.clientX - r.left; ty = e.clientY - r.top;
-      if (!hero.classList.contains('is-lit')) { cx = tx; cy = ty; hero.classList.add('is-lit'); }
-      if (!raf) raf = requestAnimationFrame(paso);
-    });
-    hero.addEventListener('pointerleave', () => hero.classList.remove('is-lit'));
-  }
-  function iluminar(el) {
-    if (!finePointer) return;
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--sx', `${e.clientX - r.left}px`);
-      el.style.setProperty('--sy', `${e.clientY - r.top}px`);
-    });
-  }
-  $$('.spot').forEach(iluminar);
-
-  /* =========================================================
-     LÍNEA DE LUZ (cómo se vive la V)
-     ========================================================= */
-  const tl = $('#timeline');
-  const tlFill = $('#tl-fill');
-  const pasos = $$('.step', tl);
-  let tlRaf = 0;
-  function pintarLinea() {
-    tlRaf = 0;
-    const r = tl.getBoundingClientRect();
-    const centro = innerHeight * 0.6;
-    const p = Math.min(1, Math.max(0, (centro - r.top) / r.height));
-    tlFill.style.transform = `scaleY(${p.toFixed(3)})`;
-    pasos.forEach((s) => {
-      const n = s.querySelector('.step__node').getBoundingClientRect();
-      s.classList.toggle('is-lit', n.top + n.height / 2 < centro);
-    });
-  }
-  addEventListener('scroll', () => { if (!tlRaf) tlRaf = requestAnimationFrame(pintarLinea); }, { passive: true });
-  addEventListener('resize', pintarLinea);
-  pintarLinea();
-
-  /* =========================================================
-     TU RACHA (localStorage, solo en este navegador)
-     ========================================================= */
-  const racha = Object.assign({ compromiso: '', dias: [] }, store.get('v_racha') || {});
-  const cells = $('#cells');
-  const rBtn = $('#racha-btn');
-  const rUndo = $('#racha-undo');
-  const compInput = $('#compromiso');
-  const compShow = $('#compromiso-show');
-  const fechaCorta = new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'short' });
-
-  function calcular() {
-    const set = new Set(racha.dias);
-    const hoy = fechaLocal();
-    let actual = 0;
-    let dia = set.has(hoy) ? hoy : sumarDias(hoy, -1);
-    while (set.has(dia)) { actual++; dia = sumarDias(dia, -1); }
-    const orden = [...set].sort();
-    let mejor = 0, corrida = 0, previo = null;
-    orden.forEach((f) => { corrida = (previo && diasEntre(previo, f) === 1) ? corrida + 1 : 1; mejor = Math.max(mejor, corrida); previo = f; });
-    return { set, hoy, actual, mejor, total: set.size };
-  }
-  function contar(el, hasta) {
-    const desde = +el.dataset.v || 0;
-    el.dataset.v = hasta;
-    if (reduceMotion || desde === hasta) { el.textContent = fmt.format(hasta); return; }
-    const t0 = performance.now();
-    const dur = 700;
-    const tick = (t) => {
-      const k = Math.min(1, (t - t0) / dur);
-      const e = 1 - Math.pow(1 - k, 3);
-      el.textContent = fmt.format(Math.round(desde + (hasta - desde) * e));
-      if (k < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
-  function pintarRacha(nuevo) {
-    const r = calcular();
-    cells.innerHTML = '';
-    for (let i = 29; i >= 0; i--) {
-      const f = sumarDias(r.hoy, -i);
-      const [y, m, d] = f.split('-').map(Number);
-      const li = document.createElement('li');
-      li.className = 'cell' + (r.set.has(f) ? ' is-on' : '') + (i === 0 ? ' is-today' : '') + (nuevo && f === nuevo ? ' pop' : '');
-      li.textContent = d;
-      li.setAttribute('aria-label', `${fechaCorta.format(new Date(y, m - 1, d))}: ${r.set.has(f) ? 'cumplido' : 'sin marcar'}`);
-      cells.appendChild(li);
-    }
-    contar($('#racha-num'), r.actual);
-    $('#racha-label').textContent = r.actual === 1 ? 'día seguido' : 'días seguidos';
-    $('#racha-total').textContent = fmt.format(r.total);
-    $('#racha-total-label').textContent = r.total === 1 ? 'día' : 'días';
-    $('#racha-best').textContent = fmt.format(r.mejor);
-    const hecho = r.set.has(r.hoy);
-    setLabel(rBtn, hecho ? 'Hoy ya cumpliste' : 'Cumplí hoy');
-    rBtn.disabled = hecho;
-    rBtn.style.opacity = hecho ? '0.65' : '';
-    rUndo.hidden = !hecho;
-    compShow.innerHTML = racha.compromiso ? `Tu compromiso: <strong>${esc(racha.compromiso)}</strong>` : '';
-    if (racha.compromiso && !compInput.value) compInput.value = racha.compromiso;
-  }
-  rBtn.addEventListener('click', () => {
-    const hoy = fechaLocal();
-    if (!racha.dias.includes(hoy)) racha.dias.push(hoy);
-    store.set('v_racha', racha);
-    pintarRacha(hoy);
-    toast(calcular().actual > 1 ? `${calcular().actual} días seguidos. Mañana, otra vez.` : 'Día marcado. Mañana, otra vez.');
-  });
-  rUndo.addEventListener('click', () => {
-    const hoy = fechaLocal();
-    racha.dias = racha.dias.filter((f) => f !== hoy);
-    store.set('v_racha', racha);
-    pintarRacha();
-  });
-  $('#compromiso-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    racha.compromiso = compInput.value.trim().slice(0, 80);
-    store.set('v_racha', racha);
-    pintarRacha();
-    if (racha.compromiso) toast('Compromiso guardado.');
-  });
-  pintarRacha();
-
-  /* =========================================================
      BIBLIOTECA
      ========================================================= */
-  const TONOS = [
-    { c: 'linear-gradient(160deg, #16856B 0%, #006B54 45%, #005744 100%)', ci: 'var(--night)', vc: 'var(--night)' },
-    { c: 'linear-gradient(160deg, #2E2E33 0%, #111113 100%)', ci: 'var(--white)', vc: 'var(--yellow)' },
-    { c: 'linear-gradient(160deg, #FFFFFF 0%, #D8D8DE 100%)', ci: 'var(--night)', vc: 'var(--gold)' }
-  ];
   const list = $('#lista');
-  const frame = $('#portadas');
-  const categorias = [...new Set(RECURSOS.map((r) => r.categoria))];
-  let n = 0;
-  categorias.forEach((cat) => {
-    const items = RECURSOS.filter((r) => r.categoria === cat);
-    const head = document.createElement('div');
-    head.className = 'cat';
-    head.setAttribute('data-reveal', '');
-    head.innerHTML = `<h3>${esc(cat)}</h3><span>${items.length} ${items.length === 1 ? 'recurso' : 'recursos'}</span>`;
-    list.appendChild(head);
-    const ul = document.createElement('ul');
-    ul.className = 'res-list';
-    items.forEach((r) => {
-      const i = n++;
-      const tono = TONOS[i % TONOS.length];
-      const vars = `--c:${tono.c};--ci:${tono.ci};--vc:${tono.vc}`;
-      const li = document.createElement('li');
-      li.className = 'res';
-      li.dataset.i = i;
-      li.setAttribute('data-reveal', '');
-      li.style.cssText = vars + `;--d:${i % 3}`;
-      li.innerHTML = `
-        <div class="res__cover" aria-hidden="true"><strong>${esc(r.titulo)}</strong><span>${esc(r.tipo || 'PDF')} en PDF</span></div>
-        <div class="res__row">
-          <div class="res__main">
-            <h4 class="res__name">${esc(r.titulo)}</h4>
-            <p class="res__desc">${esc(r.tipo || 'PDF')} en PDF. ${esc(r.descripcion || '')}</p>
-          </div>
-          <div class="res__side">
-            <div class="res__actions">
-              <button class="button button--ghost button--sm" type="button" data-ver aria-label="Ver ${esc(r.titulo)}">Ver</button>
-              <a class="button button--gold button--sm" href="${esc(r.archivo)}" download data-arrow="down" aria-label="Descargar ${esc(r.titulo)}">Descargar</a>
-            </div>
-            <p class="res__soon" hidden>Llega pronto. Te avisamos en el grupo.</p>
-          </div>
-        </div>`;
-      $$('.button', li).forEach(armar);
-      li.querySelector('[data-ver]').addEventListener('click', () => openPdf(r));
-      li.addEventListener('pointerenter', () => showCover(i));
-      li.addEventListener('focusin', () => showCover(i));
-      ul.appendChild(li);
-
-      const cover = document.createElement('div');
-      cover.className = 'cover' + (i === 0 ? ' is-on' : '');
-      cover.style.cssText = vars;
-      cover.dataset.vc = tono.vc;
-      cover.innerHTML = `<span class="cover__kind">${esc(r.tipo || 'PDF')}</span><strong class="cover__title">${esc(r.titulo)}</strong><span class="cover__foot"><span>Comunidad V · Serie N250</span><span>PDF</span></span>`;
-      frame.appendChild(cover);
-      if (i === 0) frame.style.setProperty('--vc', tono.vc);
-    });
-    list.appendChild(ul);
+  RECURSOS.forEach((r, i) => {
+    const li = document.createElement('li');
+    li.className = 'res';
+    li.dataset.i = i;
+    li.innerHTML = `
+      <span class="icon icon--soft res__icon" aria-hidden="true">${vIcon}</span>
+      <div class="res__text"><h3>${esc(r.titulo)}</h3><p>${esc(r.tipo)} en PDF · ${esc(r.descripcion)}</p></div>
+      <div class="res__actions">
+        <button class="btn btn--soft btn--sm" type="button" data-ver aria-label="Ver ${esc(r.titulo)}">Ver</button>
+        <a class="btn btn--sm" href="${esc(r.archivo)}" download aria-label="Descargar ${esc(r.titulo)}">Descargar</a>
+      </div>`;
+    li.querySelector('[data-ver]').addEventListener('click', () => openPdf(r));
+    list.appendChild(li);
   });
-  frame.insertAdjacentHTML('beforeend', '<svg class="vmark frame__v" aria-hidden="true"><use href="#v"/></svg>');
-  function showCover(i) {
-    $$('.cover', frame).forEach((c, k) => {
-      c.classList.toggle('is-on', k === i);
-      if (k === i) frame.style.setProperty('--vc', c.dataset.vc);
-    });
-  }
   function openPdf(r) {
-    const touch = matchMedia('(pointer: coarse)').matches || innerWidth < 860;
+    const touch = matchMedia('(pointer: coarse)').matches || innerWidth < 820;
     if (touch) { window.open(r.archivo, '_blank', 'noopener'); return; }
     $('#visor-titulo').textContent = r.titulo;
     $('#visor-descargar').href = r.archivo;
     $('#visor-frame').src = r.archivo + '#view=FitH';
     viewer.showModal();
   }
-  // Marca como "Llega pronto" los PDFs que todavía no subiste.
+  // Los PDFs que todavía no subes aparecen como "Pronto".
   if (location.protocol !== 'file:') {
     RECURSOS.forEach((r, i) => {
       fetch(r.archivo, { method: 'HEAD', cache: 'no-store' }).then((res) => {
@@ -1751,49 +770,39 @@ const RECURSOS = [
         const li = list.querySelector(`.res[data-i="${i}"]`);
         if (!li) return;
         li.classList.add('is-soon');
-        li.querySelector('.res__soon').hidden = false;
+        li.querySelector('.res__actions').outerHTML = '<span class="res__soon">Pronto</span>';
       }).catch(() => {});
     });
   }
 
-  /* =========================================================
-     VIDEO DE LA SERIE (si lo subiste)
-     ========================================================= */
+  /* ---------- video de la serie (si lo subiste) ---------- */
   if (CONFIG.videoSerie && location.protocol !== 'file:') {
     fetch(CONFIG.videoSerie, { method: 'HEAD', cache: 'no-store' }).then((res) => {
       if (!res.ok) return;
       const img = $('[data-foto="serie"]');
       if (!img) return;
       const v = document.createElement('video');
-      v.muted = true; v.loop = true; v.playsInline = true;
+      v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = !matchMedia('(prefers-reduced-motion: reduce)').matches;
       v.setAttribute('playsinline', '');
-      v.preload = 'metadata';
       v.poster = img.currentSrc || img.src;
       v.src = CONFIG.videoSerie;
       v.setAttribute('aria-label', 'Fragmento de un episodio de la serie N250');
       img.replaceWith(v);
-      if (reduceMotion || !('IntersectionObserver' in window)) return;
-      new IntersectionObserver(([en]) => { if (en.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: 0.25 }).observe(v);
     }).catch(() => {});
   }
 
-  /* =========================================================
-     APARICIÓN AL HACER SCROLL (una sola vez)
-     ========================================================= */
+  /* ---------- aparición suave al bajar (una sola vez) ---------- */
   const targets = $$('[data-reveal]');
   if (!('IntersectionObserver' in window)) targets.forEach((el) => el.classList.add('is-in'));
   else {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
     targets.forEach((el) => io.observe(el));
     window.addEventListener('load', () => setTimeout(() => {
       targets.forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('is-in'); });
-    }, 2500));
+    }, 2000));
   }
-
-  /* Si la persona pidió menos movimiento, se detiene el brillo de la V. */
-  if (reduceMotion) $$('svg').forEach((s) => s.pauseAnimations && s.pauseAnimations());
 })();
 </script>
 </body>
