@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Comunidad V · Serie N250</title>
 <meta name="description" content="La comunidad de la serie N250. La V es disciplina: lo que haces cuando nadie te ve. Grupo de WhatsApp, biblioteca de PDFs gratis y tu registro de días.">
-<meta name="theme-color" content="#050506">
+<meta name="theme-color" content="#F7F9F7">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
 <meta property="og:title" content="Comunidad V · Serie N250">
 <meta property="og:description" content="Disciplina sin público. Entra gratis a la comunidad de la serie N250.">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23050506'/%3E%3Cpolygon points='20,20 36.2,20 50,58.4 63.8,20 80,20 57.2,80 42.8,80' fill='%23FFD60A'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23F7F9F7'/%3E%3Cpolygon points='20,20 36.2,20 50,58.4 63.8,20 80,20 57.2,80 42.8,80' fill='%23FFD60A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
@@ -43,10 +43,10 @@
   --white: #FFFFFF;
   --mute: #A1A1A6;
   --mute-2: #6E6E73;
-  --yellow: #FFD60A;
-  --yellow-hi: #FFE766;
-  --gold: #FFB300;
-  --amber: #FF9F0A;
+  --yellow: #006B54;
+  --yellow-hi: #16856B;
+  --gold: #006B54;
+  --amber: #005744;
   --glow: 255 214 10;
   --line: rgba(255, 255, 255, 0.08);
   --line-2: rgba(255, 255, 255, 0.16);
@@ -725,6 +725,167 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.75); -webkit-backdrop-filter: blu
 @keyframes drip { 0% { transform: scaleY(0); opacity: 1; } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes parallax { from { transform: translateY(-6%); } to { transform: translateY(6%); } }
+
+/* =========================================================
+   REDISEÑO COMUNIDAD V · blanco + verde Pantone 3425 C
+   Movimiento discreto, jerarquía limpia y contraste accesible.
+   ========================================================= */
+:root {
+  --night:#F7F9F7;
+  --ink-1:#FFFFFF;
+  --ink-2:#F2F6F3;
+  --ink-3:#E7EEE9;
+  --ink-4:#D7E2DB;
+  --white:#173B30;
+  --mute:#667970;
+  --mute-2:#819087;
+  --yellow:#006B54;
+  --yellow-hi:#16856B;
+  --gold:#006B54;
+  --amber:#005744;
+  --glow:0 107 84;
+  --line:rgba(20,65,50,.10);
+  --line-2:rgba(20,65,50,.18);
+  --error:#B42318;
+  --shadow-card:0 8px 28px rgba(20,65,50,.06),0 0 0 1px rgba(20,65,50,.08);
+  --shadow-lift:0 14px 34px rgba(20,65,50,.10),0 0 0 1px rgba(0,107,84,.18);
+  --gold-grad:linear-gradient(180deg,#08765E 0%,#006B54 100%);
+  --steel-grad:linear-gradient(180deg,#174A3A 0%,#006B54 100%);
+}
+html,body { background:#F7F9F7; color:#173B30; }
+body::after { display:none; }
+::selection { background:#D7EDE4; color:#173B30; }
+:focus-visible { outline-color:#006B54; }
+.steel,.gold { color:#006B54; background:none; -webkit-text-fill-color:currentColor; }
+.mark .vmark,.pillar .vmark,.rule .vmark,.avatar .vmark { filter:none; }
+.button { min-height:52px; border-radius:14px; box-shadow:none; transition:background-color .18s ease,border-color .18s ease,color .18s ease,transform .18s ease; }
+.button::before { display:none; }
+.button::after { background:rgba(0,0,0,.08); }
+.button--gold { color:#fff; background:#006B54; box-shadow:none; }
+.button--gold .btn__dot { background:#fff; color:#006B54; }
+.button--ghost { color:#174A3A; background:#fff; border:1px solid #DCE6DF; box-shadow:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
+.button--ghost .btn__dot { background:#EAF3EE; color:#006B54; }
+.button--night { color:#fff; background:#174A3A; box-shadow:none; }
+.button--night .btn__dot { color:#006B54; background:#fff; }
+.button--gold:hover,.button--ghost:hover,.button--night:hover { box-shadow:none; }
+.button--ghost:hover { color:#006B54; background:#F2F7F4; }
+.button:active { --press:.985; }
+.button .btn__roll>span,.button .btn__dot svg { transition-duration:180ms; }
+.glass { background:#fff; border:1px solid #E3EBE5; box-shadow:var(--shadow-card); -webkit-backdrop-filter:none; backdrop-filter:none; }
+.spot::before { display:none; }
+@media (hover:hover) and (pointer:fine) {
+ .spot:hover { translate:0 -2px; box-shadow:var(--shadow-lift); }
+ .library__list:hover .res:not(:hover) { opacity:1; }
+ .button:hover .btn__roll>span { transform:none; }
+ .button:hover .btn__dot svg:first-child { transform:none; }
+ .button:hover .btn__dot svg:last-child { transform:translateX(-190%); }
+ .button[data-arrow="down"]:hover .btn__dot svg:last-child { transform:translateY(-190%); }
+ .button[data-arrow="out"]:hover .btn__dot svg:last-child { transform:translate(-190%,190%); }
+}
+.gate { background:#F7F9F7; color:#173B30; }
+.js .gate { background:linear-gradient(135deg,#F7F9F7 0%,#fff 60%,#EAF3EE 100%); }
+.gate__mark svg { filter:none; }
+.gate__mark .v-line { stroke:#006B54; }
+.gate__lede,.gate__note,.check { color:#667970; }
+.input { color:#173B30; background:#fff; box-shadow:inset 0 0 0 1px #D8E3DC; }
+.input::placeholder { color:#89978F; }
+.input:focus-visible { background:#fff; box-shadow:inset 0 0 0 1px #006B54,0 0 0 3px rgba(0,107,84,.10); }
+.check input { accent-color:#006B54; }
+.gate__msg.is-error { color:#B42318; }
+.gate__done p { color:#173B30; }
+.bar { background:rgba(255,255,255,.94); border-bottom:1px solid rgba(20,65,50,.08); }
+.bar.is-scrolled { background:rgba(255,255,255,.92); box-shadow:0 1px 0 rgba(20,65,50,.08); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); }
+.bar__links a { color:#667970; }
+.bar__links a.is-active,.bar__links a:hover { color:#006B54; }
+.bar__links a::after { background:#006B54; box-shadow:none; }
+.hero { background:radial-gradient(ellipse at 82% 12%,rgba(0,107,84,.08),transparent 38%),linear-gradient(180deg,#fff 0%,#F7F9F7 100%); }
+.hero__beams,.hero__cursor,.hero__halo { display:none; }
+.hero__emblem svg { filter:none; }
+.v-solid { fill:#006B54; }
+.v-edge { stroke:#B6D7C9; }
+.v-shine-rect { display:none; }
+.hero__lede,.hero__day { color:#667970; }
+.hero__day strong { color:#006B54; }
+.hero__scroll { color:#667970; }
+.hero__scroll i { background:linear-gradient(180deg,#006B54,transparent); }
+.marquee { background:#EAF3EE; box-shadow:inset 0 1px 0 #DCE8E0,inset 0 -1px 0 #DCE8E0; mask-image:none; -webkit-mask-image:none; }
+.marquee__track span:nth-child(odd) { color:#66877A; -webkit-text-stroke:0; }
+.marquee__track .vmark { color:#006B54; }
+.lav,.serie,.como,.library,.faq { background:#fff; }
+.lav__statement,.lav__body,.pillar p,.serie__body>p,.letter blockquote,.como__aside p,.step p,.racha__head p,.res__desc,.codigo__top p,.rule p,.faq__head p,.q__a p { color:#667970; }
+.pillar { background:#F7F9F7; border:1px solid #E5ECE7; border-radius:22px; box-shadow:none; }
+.pillar:nth-child(even) { margin-bottom:0; }
+.pillar .vmark { color:#006B54; }
+.pillar h3 { color:#174A3A; }
+.serie { background:linear-gradient(180deg,#F7F9F7,#fff); }
+.serie__media,.como__photo,.faq__photo { box-shadow:0 12px 32px rgba(20,65,50,.10); }
+.serie__media::before { background:linear-gradient(180deg,rgba(5,5,6,0) 25%,rgba(5,5,6,.72) 100%); }
+.serie__goal strong { color:#fff; }
+.letter { background:#F7F9F7; border:1px solid #E5ECE7; }
+.avatar { background:#EAF3EE; color:#006B54; box-shadow:none; }
+.avatar .vmark { filter:none; }
+.band { min-height:58svh; }
+.band::before { background:linear-gradient(180deg,rgba(5,5,6,.25),rgba(5,5,6,.45)); }
+.band h2 { color:#fff; }
+.timeline__rail { background:#DCE6DF; }
+.timeline__fill { background:#006B54; box-shadow:none; }
+.step__node { background:#EAF3EE; box-shadow:inset 0 0 0 2px #C8D9CF; }
+.step.is-lit .step__node { background:#006B54; box-shadow:0 0 0 4px rgba(0,107,84,.10); transform:none; }
+.step h3,.step.is-lit h3 { color:#174A3A; }
+.racha { background:#F7F9F7; }
+.racha__panel { background:#fff; border:1px solid #E1E9E3; border-radius:24px; box-shadow:0 8px 28px rgba(20,65,50,.05); }
+.compromiso label,.racha__stats,.cells__legend,.racha__note { color:#667970; }
+.compromiso__show { color:#174A3A; }
+.compromiso__show strong { color:#006B54; }
+.racha__count output { color:#006B54; }
+.racha__count span { color:#174A3A; }
+.cell { color:#75877D; background:#F2F6F3; box-shadow:inset 0 0 0 1px #E1E9E3; border-radius:8px; transition:background-color .18s ease,color .18s ease; }
+.cell.is-on { background:#006B54; color:#fff; box-shadow:none; }
+.cell.is-today { box-shadow:inset 0 0 0 2px #006B54; color:#174A3A; }
+.cell.is-today.is-on { box-shadow:inset 0 0 0 2px #fff,0 0 0 2px #006B54; color:#fff; }
+.cell.pop { animation:none; }
+.library__head p { color:#667970; }
+.res { border-radius:14px; }
+.res:hover { background:#F7F9F7; box-shadow:inset 0 0 0 1px #E1E9E3; }
+.res__name { color:#173B30; }
+.res__soon { color:#667970; }
+.cover { box-shadow:0 12px 32px rgba(20,65,50,.10); }
+.cover::after { background:linear-gradient(135deg,rgba(255,255,255,.16),transparent 35%); }
+.codigo { background:#F7F9F7; }
+.codigo__watermark { opacity:.07; }
+.rule::before { background:linear-gradient(90deg,#006B54,rgba(20,65,50,.12) 40%,transparent); }
+.rule .vmark { color:#006B54; filter:none; }
+.cta { color:#fff; background:#006B54; }
+.cta::before { display:none; animation:none; }
+.cta__v { filter:none; }
+.cta .button--night { color:#006B54; background:#fff; }
+.cta .link { color:#fff; }
+.q { background:#F7F9F7; box-shadow:inset 0 0 0 1px #E1E9E3; }
+.q[open] { background:#F0F6F2; box-shadow:inset 0 0 0 1px #BBD8C9; }
+.plus { color:#006B54; }
+.q__a p { color:#667970; }
+.foot { background:#fff; box-shadow:inset 0 1px 0 #E1E9E3; }
+.foot__top,.foot__meta { color:#667970; }
+.foot__meta nav a,.foot__meta nav button { color:#006B54; }
+dialog { background:#fff; color:#173B30; box-shadow:0 24px 80px rgba(20,65,50,.20),0 0 0 1px #DCE6DF; }
+dialog::backdrop { background:rgba(18,45,35,.42); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+.privacy__body p { color:#667970; }
+.viewer iframe { background:#F2F6F3; }
+.toast { color:#fff; background:#174A3A; box-shadow:0 8px 28px rgba(20,65,50,.18); }
+[data-reveal] { transition:opacity .35s ease,transform .35s ease; }
+[data-rise] { animation:none !important; opacity:1; transform:none; }
+.hero__beams span,.hero__cursor,.cta::before { animation:none !important; }
+@media (prefers-reduced-motion:reduce) {
+ *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
+}
+@media (max-width:860px) {
+ .hero__emblem { opacity:.12; }
+ .hero__text { grid-column:1 / 13; }
+ .gate__mark { opacity:.12; }
+ .pillar:nth-child(even) { margin-top:0; }
+ .racha__panel { border-radius:18px; }
+}
+
 </style>
 </head>
 <body>
@@ -733,16 +894,16 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.75); -webkit-backdrop-filter: blu
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <linearGradient id="vFill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFE766"/><stop offset="0.5" stop-color="#FFD60A"/><stop offset="1" stop-color="#FF9F0A"/>
+      <stop offset="0" stop-color="#16856B"/><stop offset="0.5" stop-color="#006B54"/><stop offset="1" stop-color="#005744"/>
     </linearGradient>
     <linearGradient id="vEdge" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"/><stop offset="0.5" stop-color="#FFD60A" stop-opacity="0.2"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.6"/>
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"/><stop offset="0.5" stop-color="#006B54" stop-opacity="0.2"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.6"/>
     </linearGradient>
     <linearGradient id="vShine" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.85"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="vGhost" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFD60A" stop-opacity="0.35"/><stop offset="1" stop-color="#FFD60A" stop-opacity="0"/>
+      <stop offset="0" stop-color="#006B54" stop-opacity="0.35"/><stop offset="1" stop-color="#006B54" stop-opacity="0"/>
     </linearGradient>
     <clipPath id="vClip"><polygon points="0,0 27,0 50,64 73,0 100,0 62,100 38,100"/></clipPath>
   </defs>
@@ -1510,7 +1671,7 @@ const RECURSOS = [
      BIBLIOTECA
      ========================================================= */
   const TONOS = [
-    { c: 'linear-gradient(160deg, #FFE766 0%, #FFD60A 45%, #FF9F0A 100%)', ci: 'var(--night)', vc: 'var(--night)' },
+    { c: 'linear-gradient(160deg, #16856B 0%, #006B54 45%, #005744 100%)', ci: 'var(--night)', vc: 'var(--night)' },
     { c: 'linear-gradient(160deg, #2E2E33 0%, #111113 100%)', ci: 'var(--white)', vc: 'var(--yellow)' },
     { c: 'linear-gradient(160deg, #FFFFFF 0%, #D8D8DE 100%)', ci: 'var(--night)', vc: 'var(--gold)' }
   ];
